@@ -12,14 +12,8 @@ const Home = () => {
     }
     getExistingUsers()
   }, [])
-  const setNewUsers = (newUser) => {
-    setUsers(newUser)
-  }
-  return (
-    <div>
-      <NewUser setNewUser={setNewUsers} />
-    </div>
-  )
+
+  return <div></div>
 }
 
 export default Home

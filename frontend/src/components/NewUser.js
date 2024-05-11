@@ -1,19 +1,15 @@
-import React, { useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import axios from "axios"
-const NewUser = ({ setNewUser }) => {
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [isAdmin, setIsAdmin] = useState(false)
-  const [loading, setLoading] = useState(false)
+import Home from "./Home"
+import Contexts from "./Contexts"
+const NewUser = () => {
+  const { newUser, handleStateChange } = useContext(Contexts)
+  const [users, setUsers] = useState([])
   const createUser = async () => {
     const { data } = await axios.post("/users", {
-      name,
-      email,
-      password,
-      isAdmin,
+      newUser,
     })
-    setNewUser(data)
+    setUsers(data)
   }
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -26,37 +22,37 @@ const NewUser = ({ setNewUser }) => {
         <div>
           <input
             type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={newUser.name}
+            onChange={(e) => handleStateChange(newUser.name, e.target.value)}
             placeholder="Name"
           />
         </div>
         <div>
           <input
             type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email"
+            value={newUser.email}
+            onChange={(e) => handleStateChange(newUser.email, e.target.value)}
+            placeholder="Name"
           />
         </div>
         <div>
           <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
+            type="text"
+            value={newUser.password}
+            onChange={(e) => handleStateChange(newUser.password, e.target.value)}
+            placeholder="password"
           />
         </div>
         <label>
           <input
             type="checkbox"
-            checked={isAdmin}
-            onChange={(e) => setIsAdmin(e.target.checked)}
+            checked={newUser.isAdmin}
+            onChange={(e) => handleStateChange(newUser.name, e.target.value)}
           />
           Is Admin
         </label>
-        <button type="submit" onClick={createUser} disabled={loading}>
-          {loading ? "Creating..." : "Create User"}
+        <button type="submit" onClick={createUser}>
+          Create User
         </button>
       </form>
     </div>
