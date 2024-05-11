@@ -4,6 +4,7 @@ import Contexts from "./Contexts"
 
 const NewUser = () => {
   const { newUser, handleStateChange, setUsers } = useContext(Contexts)
+
   const createUser = async () => {
     try {
       const { data } = await axios.post("/users", {
@@ -19,18 +20,15 @@ const NewUser = () => {
     event.preventDefault()
     createUser()
   }
-  const usingHandleStateChange = (key, value) => {
-    handleStateChange(key, value)
-  }
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <input type="text" />
         <div>
           <input
             type="text"
             value={newUser.name}
-            onChange={(e) => usingHandleStateChange("name", e.target.value)}
+            onChange={(e) => handleStateChange("name", e.target.value)}
             placeholder="Name"
           />
         </div>
@@ -38,7 +36,7 @@ const NewUser = () => {
           <input
             type="email"
             value={newUser.email}
-            onChange={(e) => usingHandleStateChange("email", e.target.value)}
+            onChange={(e) => handleStateChange("email", e.target.value)}
             placeholder="Email"
           />
         </div>
@@ -46,7 +44,7 @@ const NewUser = () => {
           <input
             type="password"
             value={newUser.password}
-            onChange={(e) => usingHandleStateChange("password", e.target.value)}
+            onChange={(e) => handleStateChange("password", e.target.value)}
             placeholder="Password"
           />
         </div>
@@ -54,7 +52,7 @@ const NewUser = () => {
           <input
             type="checkbox"
             checked={newUser.isAdmin}
-            onChange={(e) => usingHandleStateChange("isAdmin", e.target.checked)}
+            onChange={(e) => handleStateChange("isAdmin", e.target.checked)}
           />
           Is Admin
         </label>
