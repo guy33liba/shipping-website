@@ -5,7 +5,6 @@ import Cart from "./components/Cart"
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import NewUser from "./components/NewUser"
 import Contexts from "./components/Contexts"
-
 const App = () => {
   return (
     <Contexts>

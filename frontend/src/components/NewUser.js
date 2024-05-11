@@ -1,21 +1,18 @@
-import React, { useContext } from "react"
+import React, { useContext, useState } from "react"
 import axios from "axios"
-import Contexts from "./Contexts"
-
+import allStatesContexts from "./Contexts"
 const NewUser = () => {
-  const { newUser, handleStateChange, setUsers } = useContext(Contexts)
-
+  const { newUser, handleStateChange, users } = useContext(allStatesContexts)
   const createUser = async () => {
     try {
       const { data } = await axios.post("/users", {
         newUser,
       })
-      setUsers(data)
+      handleStateChange(null, null, data)
     } catch (error) {
       console.error("Error creating user:", error)
     }
   }
-
   const handleSubmit = (event) => {
     event.preventDefault()
     createUser()

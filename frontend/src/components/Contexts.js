@@ -1,10 +1,8 @@
 import React, { createContext, useState } from "react"
 
-const allStatesContext = createContext()
+export const allStatesContexts = createContext()
 
 const Contexts = ({ children }) => {
-  const [users, setUsers] = useState([])
-
   const [newUser, setNewUser] = useState({
     name: "",
     email: "",
@@ -12,13 +10,16 @@ const Contexts = ({ children }) => {
     isAdmin: false,
   })
 
-  const handleStateChange = (key, value) => {
+  const handleStateChange = (key, value, usersList) => {
     setNewUser((prev) => ({ ...prev, [key]: value }))
+    setUsers(usersList)
   }
+  const [users, setUsers] = useState("hello")
+
   return (
-    <allStatesContext.Provider value={{ newUser, handleStateChange, setUsers }}>
+    <allStatesContexts.Provider value={{ newUser, handleStateChange, users }}>
       {children}
-    </allStatesContext.Provider>
+    </allStatesContexts.Provider>
   )
 }
 
