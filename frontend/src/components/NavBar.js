@@ -12,7 +12,7 @@ const NavBar = () => {
             <Link to="/cart">Cart</Link>
           </ol>
           <ol>
-            <Link to="/user">Register </Link>
+            <Link to="/register">Register </Link>
           </ol>
         </ul>
       </nav>

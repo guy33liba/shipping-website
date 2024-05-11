@@ -1,29 +1,36 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext } from "react"
 import axios from "axios"
-import Home from "./Home"
 import Contexts from "./Contexts"
+
 const NewUser = () => {
-  const { newUser, handleStateChange } = useContext(Contexts)
-  const [users, setUsers] = useState([])
+  const { newUser, handleStateChange, setUsers } = useContext(Contexts)
   const createUser = async () => {
-    const { data } = await axios.post("/users", {
-      newUser,
-    })
-    setUsers(data)
+    try {
+      const { data } = await axios.post("/users", {
+        newUser,
+      })
+      setUsers(data)
+    } catch (error) {
+      console.error("Error creating user:", error)
+    }
   }
+
   const handleSubmit = (event) => {
     event.preventDefault()
     createUser()
   }
-
+  const usingHandleStateChange = (key, value) => {
+    handleStateChange(key, value)
+  }
   return (
     <div>
       <form onSubmit={handleSubmit}>
+        <input type="text" />
         <div>
           <input
             type="text"
             value={newUser.name}
-            onChange={(e) => handleStateChange(newUser.name, e.target.value)}
+            onChange={(e) => usingHandleStateChange("name", e.target.value)}
             placeholder="Name"
           />
         </div>
@@ -31,31 +38,30 @@ const NewUser = () => {
           <input
             type="email"
             value={newUser.email}
-            onChange={(e) => handleStateChange(newUser.email, e.target.value)}
-            placeholder="Name"
+            onChange={(e) => usingHandleStateChange("email", e.target.value)}
+            placeholder="Email"
           />
         </div>
         <div>
           <input
-            type="text"
+            type="password"
             value={newUser.password}
-            onChange={(e) => handleStateChange(newUser.password, e.target.value)}
-            placeholder="password"
+            onChange={(e) => usingHandleStateChange("password", e.target.value)}
+            placeholder="Password"
           />
         </div>
         <label>
           <input
             type="checkbox"
             checked={newUser.isAdmin}
-            onChange={(e) => handleStateChange(newUser.name, e.target.value)}
+            onChange={(e) => usingHandleStateChange("isAdmin", e.target.checked)}
           />
           Is Admin
         </label>
-        <button type="submit" onClick={createUser}>
-          Create User
-        </button>
+        <button type="submit">Create User</button>
       </form>
     </div>
   )
 }
+
 export default NewUser
