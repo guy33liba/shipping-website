@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react"
 import axios from "axios"
-import allStatesContexts from "./Contexts"
+import { allStatesContexts } from "./Contexts"
 const NewUser = () => {
   const { newUser, handleStateChange, users } = useContext(allStatesContexts)
   const createUser = async () => {
@@ -17,7 +17,6 @@ const NewUser = () => {
     event.preventDefault()
     createUser()
   }
-
   return (
     <div>
       <form onSubmit={handleSubmit}>
