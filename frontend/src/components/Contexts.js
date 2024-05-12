@@ -10,6 +10,12 @@ const Contexts = ({ children }) => {
     isAdmin: false,
   })
 
+  const [newShippment, setNewShippment] = useState({
+    address: "",
+    city: "",
+    postalCode: "",
+    country: "",
+  })
   const handleStateChange = (key, value, usersList) => {
     setNewUser((prev) => ({ ...prev, [key]: value }))
     setUsers(usersList)
@@ -17,7 +23,7 @@ const Contexts = ({ children }) => {
   const [users, setUsers] = useState("hello")
 
   return (
-    <allStatesContexts.Provider value={{ newUser, handleStateChange, users }}>
+    <allStatesContexts.Provider value={{ newShippment, newUser, handleStateChange, users }}>
       {children}
     </allStatesContexts.Provider>
   )

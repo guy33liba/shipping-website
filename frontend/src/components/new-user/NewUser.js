@@ -2,7 +2,10 @@ import React, { useContext, useState } from "react"
 import axios from "axios"
 import { allStatesContexts } from "../Contexts"
 import "./NewUser.css"
+import { useNavigate } from "react-router-dom"
 const NewUser = () => {
+  const navigate = useNavigate()
+
   const { newUser, handleStateChange, users } = useContext(allStatesContexts)
   const createUser = async () => {
     try {
@@ -17,6 +20,7 @@ const NewUser = () => {
   const handleSubmit = (event) => {
     event.preventDefault()
     createUser()
+    navigate("/shipping")
   }
   return (
     <div>
