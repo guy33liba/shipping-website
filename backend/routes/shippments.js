@@ -15,10 +15,8 @@ shippingRouter.get("/shipmments", async (req, res) => {
   }
 })
 
-// POST a new shipment with shipping address
 shippingRouter.post("/shippiments", async (req, res) => {
   try {
-    // Create a new order with the provided shipping address
     const { shippingAddress, ...orderData } = req.body
     const order = new Order({ ...orderData, shippingAddress })
     const savedOrder = await order.save()

@@ -9,9 +9,7 @@ const NewUser = () => {
   const { newUser, handleUsersChange, users } = useContext(allStatesContexts)
   const createUser = async () => {
     try {
-      const { data } = await axios.post("/users", {
-        newUser,
-      })
+      const { data } = await axios.post("/users", newUser)
       handleUsersChange(null, null, data)
     } catch (error) {
       console.error("Error creating user:", error)
