@@ -7,7 +7,7 @@ const shippingRouter = express.Router()
 shippingRouter.get("/shipments", async (req, res) => {
   try {
     // Populate the 'shippingAddress' field to get the complete shipping address details
-    const shipments = await Order.find({}).populate("shippingAddress")
+    const shipments = await Order.shippingAdress.find({})
     res.json(shipments)
     console.log(shipments)
   } catch (error) {
