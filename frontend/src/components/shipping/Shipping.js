@@ -22,6 +22,7 @@ const Shipping = () => {
     createShipping()
     navigate("/shippments")
   }
+  console.log(newShipment, paymentMethod)
   useEffect(() => {
     const getShippments = async () => {
       const { data } = await axios.get("/shipments")
@@ -34,44 +35,63 @@ const Shipping = () => {
       <form onSubmit={handleSubmit}>
         <div className="shippingInputs">
           <div>
-            <input
-              type="text"
-              value={newShipment.address}
-              placeholder="address"
-              onChange={(e) => handleShippingChange("address", e.target.value)}
+            <img
+              src="./shippingLogo.png"
+              alt=""
+       
             />
           </div>
-          <div>
-            <input
-              type="text"
-              value={newShipment.city}
-              placeholder="city"
-              onChange={(e) => handleShippingChange("city", e.target.value)}
-            />
+          <div className="inputsContainer">
+            <div>
+              <input
+                type="text"
+                value={newShipment.address}
+                placeholder="address"
+                onChange={(e) => handleShippingChange("address", e.target.value)}
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                value={newShipment.city}
+                placeholder="city"
+                onChange={(e) => handleShippingChange("city", e.target.value)}
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                value={newShipment.postalCode}
+                placeholder="postalCode"
+                onChange={(e) => handleShippingChange("postalCode", e.target.value)}
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                value={newShipment.country}
+                placeholder="country"
+                onChange={(e) => handleShippingChange("country", e.target.value)}
+              />
+            </div>
           </div>
-          <div>
-            <input
-              type="text"
-              value={newShipment.postalCode}
-              placeholder="postalCode"
-              onChange={(e) => handleShippingChange("postalCode", e.target.value)}
-            />
+
+          <div className="bottom">
+            <select
+              value={paymentMethod}
+              onChange={(e) => setPaymentMethod(e.target.value)}
+              required
+              className="selection"
+            >
+              <option value="" disabled>
+                Payment Method
+              </option>
+              <option value="Credit Card">Credit Card</option>
+              <option value="PayPal">PayPal</option>
+              {/* Add more payment methods as needed */}
+            </select>
+            <button type="submit">Submit</button>
           </div>
-          <div>
-            <input
-              type="text"
-              value={newShipment.country}
-              placeholder="country"
-              onChange={(e) => handleShippingChange("country", e.target.value)}
-            />
-          </div>
-          <select value={paymentMethod} onChange={(e) => setPaymentMethod(e.target.value)} required>
-            <option value="">Select Payment Method</option>
-            <option value="Credit Card">Credit Card</option>
-            <option value="PayPal">PayPal</option>
-            {/* Add more payment methods as needed */}
-          </select>
-          <button type="submit">Submit</button>
         </div>
       </form>
     </div>

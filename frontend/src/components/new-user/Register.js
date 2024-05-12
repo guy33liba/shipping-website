@@ -1,15 +1,15 @@
 import React, { useContext, useState } from "react"
 import axios from "axios"
 import { allStatesContexts } from "../Contexts"
-import "./NewUser.css"
+import "./Register.css"
 import { useNavigate } from "react-router-dom"
-const NewUser = () => {
+const Register = () => {
   const navigate = useNavigate()
 
-  const { newUser, handleUsersChange, users } = useContext(allStatesContexts)
+  const { register, handleUsersChange, users } = useContext(allStatesContexts)
   const createUser = async () => {
     try {
-      const { data } = await axios.post("/users", newUser)
+      const { data } = await axios.post("/users", register)
       handleUsersChange(null, null, data)
     } catch (error) {
       console.error("Error creating user:", error)
@@ -27,7 +27,7 @@ const NewUser = () => {
           <div>
             <input
               type="text"
-              value={newUser.name}
+              value={register.name}
               onChange={(e) => handleUsersChange("name", e.target.value)}
               placeholder="Name"
             />
@@ -35,7 +35,7 @@ const NewUser = () => {
           <div>
             <input
               type="email"
-              value={newUser.email}
+              value={register.email}
               onChange={(e) => handleUsersChange("email", e.target.value)}
               placeholder="Email"
             />
@@ -43,7 +43,7 @@ const NewUser = () => {
           <div>
             <input
               type="password"
-              value={newUser.password}
+              value={register.password}
               onChange={(e) => handleUsersChange("password", e.target.value)}
               placeholder="Password"
             />
@@ -53,7 +53,7 @@ const NewUser = () => {
           <div>Is Admin</div>
           <input
             type="checkbox"
-            checked={newUser.isAdmin}
+            checked={register.isAdmin}
             onChange={(e) => handleUsersChange("isAdmin", e.target.checked)}
           />
 
@@ -64,4 +64,4 @@ const NewUser = () => {
   )
 }
 
-export default NewUser
+export default Register

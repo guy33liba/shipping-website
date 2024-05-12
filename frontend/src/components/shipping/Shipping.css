@@ -6,15 +6,40 @@
   justify-content: center;
   flex-direction: column;
 }
+.inputsContainer {
+  margin-left: 20px;
+}
 .shippingInputs div {
-  margin-left: 30px;
-  margin-left: 20%;
   margin-top: 10px;
 }
 .shippingInputs button {
-  margin-left: 30px;
   margin-top: 10px;
   width: 225px;
-  padding: 10px;
-  margin-left: 20%;
+}
+.shippingInputs img {
+  width: 150px;
+  height: 100px;
+  position: absolute;
+  left: 13%;
+}
+.selection {
+  width: 200px;
+  margin-top: 25px;
+  height: 20px;
+  border-radius: 10px;
+  margin-left: 10px;
+}
+.bottom {
+  width: 100%;
+  display: flex;
+  font-size: 20px;
+  justify-content: space-between;
+}
+
+.bottom button {
+  height: 20px;
+  margin-top: 25px;
+  border-radius: 10px;
+  margin-right: 10px;
+  width: 100px;
 }

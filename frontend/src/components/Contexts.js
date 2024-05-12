@@ -3,37 +3,38 @@ import React, { createContext, useState } from "react"
 export const allStatesContexts = createContext()
 
 const Contexts = ({ children }) => {
-  const [newUser, setNewUser] = useState({
+  const [register, setRegister] = useState({
     name: "",
     email: "",
     password: "",
     isAdmin: false,
   })
 
-  const [newShippment, setNewShippment] = useState({
+  const [newShipment, setNewShipment] = useState({
     address: "",
     city: "",
     postalCode: "",
     country: "",
   })
   const handleUsersChange = (key, value, newList) => {
-    setNewUser((prev) => ({ ...prev, [key]: value }))
+    setRegister((prev) => ({ ...prev, [key]: value }))
     setUsers(newList)
   }
   const handleShippingChange = (key, value, newList) => {
-    setNewShippment((prev) => ({ ...prev, [key]: value }))
+    setNewShipment((prev) => ({ ...prev, [key]: value }))
   }
   const [users, setUsers] = useState([])
 
   return (
     <allStatesContexts.Provider
       value={{
-        newShippment,
-        newUser,
+        newShipment,
+        register,
         handleShippingChange,
         handleUsersChange,
         users,
-      }}>
+      }}
+    >
       {children}
     </allStatesContexts.Provider>
   )
