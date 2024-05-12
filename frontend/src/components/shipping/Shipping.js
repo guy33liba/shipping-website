@@ -2,15 +2,27 @@ import React, { useContext } from "react"
 import { allStatesContexts } from "../Contexts"
 import "./Shipping.css"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 const Shipping = () => {
+  const navigate = useNavigate()
+
   const { newShippment, handleShippingChange } = useContext(allStatesContexts)
   const createShipping = async () => {
-    const { data } = await axios.post("/shippments", newShippment)
-    handleShippingChange(null, null, data)
+    try {
+      const { data } = await axios.post("/shippments", newShippment)
+      handleShippingChange(null, null, data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    createShipping()
+    navigate("/shipping")
   }
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="shippingInputs">
           <div>
             <input
