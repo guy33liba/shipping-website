@@ -7,10 +7,11 @@ const Shipping = () => {
   const navigate = useNavigate()
 
   const { newShippment, handleShippingChange } = useContext(allStatesContexts)
+  const [paymentMethod, setPaymentMethod] = useState("")
   const [shippiments, setShippments] = useState([])
   const createShipping = async () => {
     try {
-      const { data } = await axios.post("/shippiments", newShippment)
+      const { data } = await axios.post("/shipments", { newShippment, paymentMethod })
       handleShippingChange(null, null, data)
     } catch (error) {
       console.log(error)
@@ -23,8 +24,8 @@ const Shipping = () => {
   }
   useEffect(() => {
     const getShippments = async () => {
-      const { data } = await axios.get("/shippiments")
-      setShippments(data)
+      const { data } = await axios.get("/shipments")
+      setShippments((prev) => ({ ...prev, data }))
     }
     getShippments()
   }, [])
@@ -64,7 +65,13 @@ const Shipping = () => {
               onChange={(e) => handleShippingChange("country", e.target.value)}
             />
           </div>
-          <button type="submit"> new shipping</button>
+          <select value={paymentMethod} onChange={(e) => setPaymentMethod(e.target.value)} required>
+            <option value="">Select Payment Method</option>
+            <option value="Credit Card">Credit Card</option>
+            <option value="PayPal">PayPal</option>
+            {/* Add more payment methods as needed */}
+          </select>
+          <button type="submit">Submit</button>
         </div>
       </form>
     </div>
