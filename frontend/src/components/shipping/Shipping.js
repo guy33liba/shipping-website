@@ -12,7 +12,7 @@ const Shipping = () => {
   const createShipping = async () => {
     try {
       const { data } = await axios.post("/shipments", { newShipment, paymentMethod })
-      handleShippingChange(null, null, data)
+      setShippments(data)
     } catch (error) {
       console.log(error)
     }
@@ -35,11 +35,7 @@ const Shipping = () => {
       <form onSubmit={handleSubmit}>
         <div className="shippingInputs">
           <div>
-            <img
-              src="./shippingLogo.png"
-              alt=""
-       
-            />
+            <img src="./shippingLogo.png" alt="" />
           </div>
           <div className="inputsContainer">
             <div>

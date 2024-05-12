@@ -20,8 +20,9 @@ const Contexts = ({ children }) => {
     setRegister((prev) => ({ ...prev, [key]: value }))
     setUsers(newList)
   }
-  const handleShippingChange = (key, value, newList) => {
+  const handleShippingChange = (key, value) => {
     setNewShipment((prev) => ({ ...prev, [key]: value }))
+    setNewShipment({ address: "", city: "", postalCode: "", country: "" })
   }
   const [users, setUsers] = useState([])
 

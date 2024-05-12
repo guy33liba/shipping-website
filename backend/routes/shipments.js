@@ -1,4 +1,4 @@
-import Order from "../model/ordersSchema.js"
+import Shipping from "../model/shippingSchema.js"
 import express from "express"
 
 const shippingRouter = express.Router()
@@ -6,7 +6,7 @@ const shippingRouter = express.Router()
 // GET all shipments with shipping addresses
 shippingRouter.get("/shipments", async (req, res) => {
   try {
-    const shipments = await Order.find({})
+    const shipments = await Shipping.find({})
     console.log(shipments)
     res.json(shipments)
   } catch (error) {
@@ -17,9 +17,10 @@ shippingRouter.get("/shipments", async (req, res) => {
 shippingRouter.post("/shipments", async (req, res) => {
   try {
     const { shippingAddress } = req.body
-    const order = new Order({ shippingAddress })
-    const savedOrder = await order.save()
-    res.status(201).json(savedOrder)
+    const shipping = new Shipping({ shippingAddress })
+    const savedShipping = await shipping.save()
+    res.status(201).json(savedShipping)
+    console.log(shippingAddress)
   } catch (error) {
     res.status(500).json({ message: error.message })
   }
