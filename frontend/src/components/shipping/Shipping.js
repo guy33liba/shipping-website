@@ -5,10 +5,20 @@ const Shipping = () => {
   const { newShipping } = useContext(allStatesContexts)
   return (
     <div>
-      <input type="text" />
-      <input type="text" />
-      <input type="text" />
-      <input type="text" />
+      <div>
+        <div>
+          <input type="text" placeholder="" />
+        </div>
+        <div>
+          <input type="text" placeholder="" />
+        </div>
+        <div>
+          <input type="text" placeholder="" />
+        </div>
+        <div>
+          <input type="text" placeholder="" />
+        </div>
+      </div>
     </div>
   )
 }
