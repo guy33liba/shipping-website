@@ -2,7 +2,7 @@ import express from "express"
 import cors from "cors"
 import userRouter from "./routes/users.js"
 import mongoose from "mongoose"
-import shippingRouter from "./routes/shippments.js"
+import shippingRouter from "./routes/shipments.js"
 
 //
 const mongoURI =
