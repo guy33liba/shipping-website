@@ -1,0 +1,20 @@
+.shippingInputs {
+  width: 400px;
+  height: 250px;
+  border: solid 1px black;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.shippingInputs div {
+  margin-left: 30px;
+  margin-left: 20%;
+  margin-top: 10px;
+}
+.shippingInputs button {
+  margin-left: 30px;
+  margin-top: 10px;
+  width: 225px;
+  padding: 10px;
+  margin-left: 20%;
+}

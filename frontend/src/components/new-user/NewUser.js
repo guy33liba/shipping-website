@@ -6,13 +6,13 @@ import { useNavigate } from "react-router-dom"
 const NewUser = () => {
   const navigate = useNavigate()
 
-  const { newUser, handleStateChange, users } = useContext(allStatesContexts)
+  const { newUser, handleUsersChange, users } = useContext(allStatesContexts)
   const createUser = async () => {
     try {
       const { data } = await axios.post("/users", {
         newUser,
       })
-      handleStateChange(null, null, data)
+      handleUsersChange(null, null, data)
     } catch (error) {
       console.error("Error creating user:", error)
     }
@@ -30,7 +30,7 @@ const NewUser = () => {
             <input
               type="text"
               value={newUser.name}
-              onChange={(e) => handleStateChange("name", e.target.value)}
+              onChange={(e) => handleUsersChange("name", e.target.value)}
               placeholder="Name"
             />
           </div>
@@ -38,7 +38,7 @@ const NewUser = () => {
             <input
               type="email"
               value={newUser.email}
-              onChange={(e) => handleStateChange("email", e.target.value)}
+              onChange={(e) => handleUsersChange("email", e.target.value)}
               placeholder="Email"
             />
           </div>
@@ -46,7 +46,7 @@ const NewUser = () => {
             <input
               type="password"
               value={newUser.password}
-              onChange={(e) => handleStateChange("password", e.target.value)}
+              onChange={(e) => handleUsersChange("password", e.target.value)}
               placeholder="Password"
             />
           </div>
@@ -56,7 +56,7 @@ const NewUser = () => {
           <input
             type="checkbox"
             checked={newUser.isAdmin}
-            onChange={(e) => handleStateChange("isAdmin", e.target.checked)}
+            onChange={(e) => handleUsersChange("isAdmin", e.target.checked)}
           />
 
           <button type="submit">Create User</button>

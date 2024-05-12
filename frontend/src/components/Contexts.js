@@ -16,14 +16,19 @@ const Contexts = ({ children }) => {
     postalCode: "",
     country: "",
   })
-  const handleStateChange = (key, value, usersList) => {
+  const handleUsersChange = (key, value, newList) => {
     setNewUser((prev) => ({ ...prev, [key]: value }))
-    setUsers(usersList)
+    setUsers(newList)
+  }
+  const handleShippingChange = (key, value, newList) => {
+    setNewUser((prev) => ({ ...prev, [key]: value }))
+    setNewShippment(newList)
   }
   const [users, setUsers] = useState("hello")
 
   return (
-    <allStatesContexts.Provider value={{ newShippment, newUser, handleStateChange, users }}>
+    <allStatesContexts.Provider
+      value={{ newShippment, newUser, handleShippingChange, handleUsersChange, users }}>
       {children}
     </allStatesContexts.Provider>
   )
