@@ -6,12 +6,12 @@ import { useNavigate } from "react-router-dom"
 const Shipping = () => {
   const navigate = useNavigate()
 
-  const { newShippment, handleShippingChange } = useContext(allStatesContexts)
+  const { newShipment, handleShippingChange } = useContext(allStatesContexts)
   const [paymentMethod, setPaymentMethod] = useState("")
   const [shippiments, setShippments] = useState([])
   const createShipping = async () => {
     try {
-      const { data } = await axios.post("/shipments", { newShippment, paymentMethod })
+      const { data } = await axios.post("/shipments", { newShipment, paymentMethod })
       handleShippingChange(null, null, data)
     } catch (error) {
       console.log(error)
@@ -36,7 +36,7 @@ const Shipping = () => {
           <div>
             <input
               type="text"
-              value={newShippment.address}
+              value={newShipment.address}
               placeholder="address"
               onChange={(e) => handleShippingChange("address", e.target.value)}
             />
@@ -44,7 +44,7 @@ const Shipping = () => {
           <div>
             <input
               type="text"
-              value={newShippment.city}
+              value={newShipment.city}
               placeholder="city"
               onChange={(e) => handleShippingChange("city", e.target.value)}
             />
@@ -52,7 +52,7 @@ const Shipping = () => {
           <div>
             <input
               type="text"
-              value={newShippment.postalCode}
+              value={newShipment.postalCode}
               placeholder="postalCode"
               onChange={(e) => handleShippingChange("postalCode", e.target.value)}
             />
@@ -60,7 +60,7 @@ const Shipping = () => {
           <div>
             <input
               type="text"
-              value={newShippment.country}
+              value={newShipment.country}
               placeholder="country"
               onChange={(e) => handleShippingChange("country", e.target.value)}
             />

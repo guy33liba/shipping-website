@@ -3,13 +3,13 @@ import express from "express"
 
 const shippingRouter = express.Router()
 
-// GET all shipmments with shipping addresses
+// GET all shipments with shipping addresses
 shippingRouter.get("/shipments", async (req, res) => {
   try {
     // Populate the 'shippingAddress' field to get the complete shipping address details
-    const shipmments = await Order.find({}).populate("shippingAddress")
-    res.json(shipmments)
-    console.log(shipmments)
+    const shipments = await Order.find({}).populate("shippingAddress")
+    res.json(shipments)
+    console.log(shipments)
   } catch (error) {
     res.status(500).json({ message: error.message })
   }
@@ -17,8 +17,8 @@ shippingRouter.get("/shipments", async (req, res) => {
 
 shippingRouter.post("/shipments", async (req, res) => {
   try {
-    const { shippingAddress } = req.body
-    const order = new Order({ shippingAddress })
+    const { newShipment } = req.body
+    const order = new Order({ newShipment })
     const savedOrder = await order.save()
     res.status(201).json(savedOrder)
   } catch (error) {
