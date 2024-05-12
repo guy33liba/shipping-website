@@ -7,9 +7,8 @@ const shippingRouter = express.Router()
 shippingRouter.get("/shipments", async (req, res) => {
   try {
     // Populate the 'shippingAddress' field to get the complete shipping address details
-    const shipments = await Order.shippingAdress.find({})
+    const shipments = await Order.find({})
     res.json(shipments)
-    console.log(shipments)
   } catch (error) {
     res.status(500).json({ message: error.message })
   }
@@ -17,8 +16,8 @@ shippingRouter.get("/shipments", async (req, res) => {
 
 shippingRouter.post("/shipments", async (req, res) => {
   try {
-    const { newShipment } = req.body
-    const order = new Order({ newShipment })
+    const { shippingAddress } = req.body
+    const order = new Order({ shippingAddress })
     const savedOrder = await order.save()
     res.status(201).json(savedOrder)
   } catch (error) {
