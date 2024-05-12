@@ -3,7 +3,14 @@ import { allStatesContexts } from "../Contexts"
 
 const Shipping = () => {
   const { newShipping } = useContext(allStatesContexts)
-  return <div></div>
+  return (
+    <div>
+      <input type="text" />
+      <input type="text" />
+      <input type="text" />
+      <input type="text" />
+    </div>
+  )
 }
 
 export default Shipping
