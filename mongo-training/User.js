@@ -1,4 +1,5 @@
 import mongoose from "mongoose"
+
 const addressSchema = new mongoose.Schema({
   street: String,
   city: String,
@@ -6,6 +7,7 @@ const addressSchema = new mongoose.Schema({
   country: String,
   postalCode: String,
 })
+
 const userSchema = new mongoose.Schema({
   name: String,
   age: Number,
