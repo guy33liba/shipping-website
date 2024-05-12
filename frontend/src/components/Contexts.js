@@ -22,7 +22,6 @@ const Contexts = ({ children }) => {
   }
   const handleShippingChange = (key, value) => {
     setNewShipment((prev) => ({ ...prev, [key]: value }))
-    setNewShipment({ address: "", city: "", postalCode: "", country: "" })
   }
   const [users, setUsers] = useState([])
 

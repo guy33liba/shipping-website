@@ -11,7 +11,7 @@ const Shipping = () => {
   const [shippiments, setShippments] = useState([])
   const createShipping = async () => {
     try {
-      const { data } = await axios.post("/shipments", { newShipment, paymentMethod })
+      const { data } = await axios.post("/shipments", { ...newShipment, paymentMethod })
       setShippments(data)
     } catch (error) {
       console.log(error)
