@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { allStatesContexts } from "../Contexts"
 import "./Shipping.css"
 import axios from "axios"
@@ -7,9 +7,10 @@ const Shipping = () => {
   const navigate = useNavigate()
 
   const { newShippment, handleShippingChange } = useContext(allStatesContexts)
+  const [shippiments, setShippments] = useState([])
   const createShipping = async () => {
     try {
-      const { data } = await axios.post("/shippments", newShippment)
+      const { data } = await axios.post("/shippiments", newShippment)
       handleShippingChange(null, null, data)
     } catch (error) {
       console.log(error)
@@ -18,8 +19,15 @@ const Shipping = () => {
   const handleSubmit = (event) => {
     event.preventDefault()
     createShipping()
-    navigate("/shipping")
+    navigate("/shippments")
   }
+  useEffect(() => {
+    const getShippments = async () => {
+      const { data } = await axios.get("/shippiments")
+      setShippments(data)
+    }
+    getShippments()
+  }, [])
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -35,7 +43,7 @@ const Shipping = () => {
           <div>
             <input
               type="text"
-              value={newShippment.address}
+              value={newShippment.city}
               placeholder="city"
               onChange={(e) => handleShippingChange("city", e.target.value)}
             />
@@ -43,7 +51,7 @@ const Shipping = () => {
           <div>
             <input
               type="text"
-              value={newShippment.address}
+              value={newShippment.postalCode}
               placeholder="postalCode"
               onChange={(e) => handleShippingChange("postalCode", e.target.value)}
             />
@@ -51,7 +59,7 @@ const Shipping = () => {
           <div>
             <input
               type="text"
-              value={newShippment.address}
+              value={newShippment.country}
               placeholder="country"
               onChange={(e) => handleShippingChange("country", e.target.value)}
             />

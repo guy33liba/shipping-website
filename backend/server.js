@@ -2,6 +2,8 @@ import express from "express"
 import cors from "cors"
 import userRouter from "./routes/users.js"
 import mongoose from "mongoose"
+import shippingRouter from "./routes/shippments.js"
+
 //
 const mongoURI =
   "mongodb+srv://guy33liba:g33g33g33@shipping.bnmim8g.mongodb.net/?retryWrites=true&w=majority&appName=shipping"
@@ -12,6 +14,7 @@ app.use(express.json())
 //
 app.use(cors())
 app.use("/", userRouter)
+app.use("/", shippingRouter)
 
 app.listen(4000, () => {
   console.log("4000")

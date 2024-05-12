@@ -21,14 +21,19 @@ const Contexts = ({ children }) => {
     setUsers(newList)
   }
   const handleShippingChange = (key, value, newList) => {
-    setNewUser((prev) => ({ ...prev, [key]: value }))
-    setNewShippment(newList)
+    setNewShippment((prev) => ({ ...prev, [key]: value }))
   }
-  const [users, setUsers] = useState("hello")
+  const [users, setUsers] = useState([])
 
   return (
     <allStatesContexts.Provider
-      value={{ newShippment, newUser, handleShippingChange, handleUsersChange, users }}>
+      value={{
+        newShippment,
+        newUser,
+        handleShippingChange,
+        handleUsersChange,
+        users,
+      }}>
       {children}
     </allStatesContexts.Provider>
   )
