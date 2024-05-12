@@ -17,8 +17,8 @@ shippingRouter.get("/shipmments", async (req, res) => {
 
 shippingRouter.post("/shippiments", async (req, res) => {
   try {
-    const { shippingAddress, ...orderData } = req.body
-    const order = new Order({ ...orderData, shippingAddress })
+    const { shippingAddress } = req.body
+    const order = new Order({ shippingAddress })
     const savedOrder = await order.save()
     res.status(201).json(savedOrder)
   } catch (error) {
