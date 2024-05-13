@@ -6,10 +6,12 @@ const shippingRouter = express.Router()
 // GET all shipments with shipping addresses
 shippingRouter.get("/shipments", async (req, res) => {
   try {
-    const shipments = await Shipping.find({})
-    console.log(shipments)
+    const { address } = req.query
+    const shipments = await Shipping.find({ address })
     res.json(shipments)
+    console.log(shipments)
   } catch (error) {
+    console.error(error) // Log the error to console
     res.status(500).json({ message: error.message })
   }
 })
@@ -17,17 +19,12 @@ shippingRouter.get("/shipments", async (req, res) => {
 shippingRouter.post("/shipments", async (req, res) => {
   try {
     const { shippingAddress } = req.body
-    const shipping = new Shipping({
-      address: shippingAddress.address,
-      city: shippingAddress.city,
-      postalCode: shippingAddress.postalCode,
-      country: shippingAddress.country,
-    })
+    const shipping = new Shipping({})
     const savedShipping = await shipping.save()
     res.status(201).json(savedShipping)
     console.log(shippingAddress)
   } catch (error) {
-    res.status(500).json({ message: error.message })
+    console.log(error.message)
   }
 })
 export default shippingRouter
