@@ -15,11 +15,10 @@ shippingRouter.get("/shipments", async (req, res) => {
     res.status(500).json({ message: error.message })
   }
 })
-
 shippingRouter.post("/shipments", async (req, res) => {
   try {
-    const { shippingAddress } = req.body
-    const shipping = new Shipping({})
+    const { address, city, postalCode, country } = req.body.shippingAddress
+    const shipping = new Shipping({ address, city, postalCode, country })
     const savedShipping = await shipping.save()
     res.status(201).json(savedShipping)
     console.log(shippingAddress)
