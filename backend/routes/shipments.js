@@ -6,24 +6,30 @@ const shippingRouter = express.Router()
 // GET all shipments with shipping addresses
 shippingRouter.get("/shipments", async (req, res) => {
   try {
-    const { address } = req.query
-    const shipments = await Shipping.find({ address })
+    const shipments = await Shipping.find({})
     res.json(shipments)
-    console.log(shipments)
   } catch (error) {
     console.error(error) // Log the error to console
-    res.status(500).json({ message: error.message })
+    res.status(500).json({ message: "Internal server error" })
   }
 })
+
+// POST a new shipment
 shippingRouter.post("/shipments", async (req, res) => {
   try {
-    const { address, city, postalCode, country } = req.body.shippingAddress
-    const shipping = new Shipping({ address, city, postalCode, country })
+    const { address, city, postalCode, country } = req.body
+    const shipping = new Shipping({
+      address,
+      city,
+      postalCode,
+      country,
+    })
     const savedShipping = await shipping.save()
     res.status(201).json(savedShipping)
-    console.log(shippingAddress)
+    console.log(savedShipping)
   } catch (error) {
-    console.log(error.message)
+    console.error(error.message)
   }
 })
+
 export default shippingRouter

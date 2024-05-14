@@ -3,29 +3,29 @@ import { allStatesContexts } from "../Contexts"
 import "./Shipping.css"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+import { shipments } from "../shipments/Shipments"
 const Shipping = () => {
   const navigate = useNavigate()
 
   const { newShipment, handleShippingChange } = useContext(allStatesContexts)
   const [paymentMethod, setPaymentMethod] = useState("")
-  const [shippiments, setShippments] = useState([])
   const createShipping = async () => {
     try {
       const { data } = await axios.post("/shipments", { newShipment, paymentMethod })
-      setShippments(data)
+      shipments.push(data)
     } catch (error) {
-      console.log(error)
+      console.log(error.message)
     }
   }
   const handleSubmit = (event) => {
     event.preventDefault()
     createShipping()
-    navigate("/shippments")
+    navigate("/shipments")
   }
   useEffect(() => {
     const getShippments = async () => {
       const { data } = await axios.get("/shipments")
-      setShippments((prev) => ({ ...prev, data }))
+      shipments.push(data)
     }
     getShippments()
   }, [])

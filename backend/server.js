@@ -14,7 +14,7 @@ app.use(express.json())
 //
 app.use(cors())
 app.use("/", userRouter)
-app.use("/", shippingRouter)
+app.use("/shipments", shippingRouter)
 
 app.listen(4000, () => {
   console.log("4000")
