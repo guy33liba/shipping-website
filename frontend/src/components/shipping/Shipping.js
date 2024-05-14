@@ -11,7 +11,10 @@ const Shipping = () => {
   const [paymentMethod, setPaymentMethod] = useState("")
   const createShipping = async () => {
     try {
-      const { data } = await axios.post("/shipments", { newShipment, paymentMethod })
+      const { data } = await axios.post("/shipments", {
+        shippingAddress: newShipment,
+        paymentMethod,
+      })
       shipments.push(data)
     } catch (error) {
       console.log(error.message)

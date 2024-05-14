@@ -4,7 +4,7 @@ import express from "express"
 const shippingRouter = express.Router()
 
 // GET all shipments with shipping addresses
-shippingRouter.get("/shipments", async (req, res) => {
+shippingRouter.get("/", async (req, res) => {
   try {
     const shipments = await Shipping.find({})
     res.json(shipments)
@@ -15,13 +15,11 @@ shippingRouter.get("/shipments", async (req, res) => {
 })
 
 // POST a new shipment
-shippingRouter.post("/shipments", async (req, res) => {
-  const { address, city, postalCode, country } = req.body
+shippingRouter.post("/", async (req, res) => {
+  const { shippingAddress, paymentMethod } = req.body
   const shipping = new Shipping({
-    address,
-    city,
-    postalCode,
-    country,
+    shippingAddress,
+    paymentMethod,
   })
   try {
     const savedShipping = await shipping.save()
