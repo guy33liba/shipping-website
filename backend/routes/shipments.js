@@ -16,14 +16,14 @@ shippingRouter.get("/shipments", async (req, res) => {
 
 // POST a new shipment
 shippingRouter.post("/shipments", async (req, res) => {
+  const { address, city, postalCode, country } = req.body
+  const shipping = new Shipping({
+    address,
+    city,
+    postalCode,
+    country,
+  })
   try {
-    const { address, city, postalCode, country } = req.body
-    const shipping = new Shipping({
-      address,
-      city,
-      postalCode,
-      country,
-    })
     const savedShipping = await shipping.save()
     res.status(201).json(savedShipping)
     console.log(savedShipping)
