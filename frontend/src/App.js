@@ -19,7 +19,7 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/shipping" element={<Shipping />} />
           <Route path="/shipments" element={<Shipments />} />
-          <Route path="/shipments" element={<UsersList />} />
+          <Route path="/users" element={<UsersList />} />
         </Routes>
       </Router>
     </Contexts>

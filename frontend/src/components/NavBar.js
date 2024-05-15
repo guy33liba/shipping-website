@@ -21,7 +21,7 @@ const NavBar = () => {
             <Link to="/shipments">shipments list </Link>
           </ol>
           <ol>
-            <Link to="/usersList">Users List </Link>
+            <Link to="/users">Users List </Link>
           </ol>
         </ul>
       </nav>

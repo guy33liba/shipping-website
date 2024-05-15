@@ -12,12 +12,12 @@ userRouter.get("/", async (req, res) => {
 })
 
 userRouter.post("/", async (req, res) => {
-  const {name,email,password,isAdmin} = req.body
+  const { name, email, password, isAdmin } = req.body
   const user = new User({
-    name ,
-    email ,
-    password ,
-    isAdmin ,
+    name,
+    email,
+    password,
+    isAdmin,
   })
   try {
     const newUser = await user.save()
