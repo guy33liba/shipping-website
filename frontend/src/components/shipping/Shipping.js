@@ -15,7 +15,7 @@ const Shipping = () => {
         shippingAddress: newShipment,
         paymentMethod,
       })
-      shipments.push(data)
+      return shipments.push(data)
     } catch (error) {
       console.log(error.message)
     }
@@ -28,7 +28,7 @@ const Shipping = () => {
   useEffect(() => {
     const getShippments = async () => {
       const { data } = await axios.get("/shipments")
-      shipments.push(data)
+      return shipments.push(data)
     }
     getShippments()
   }, [])
@@ -79,8 +79,7 @@ const Shipping = () => {
               value={paymentMethod}
               onChange={(e) => setPaymentMethod(e.target.value)}
               required
-              className="selection"
-            >
+              className="selection">
               <option value="" disabled>
                 Payment Method
               </option>
@@ -92,6 +91,9 @@ const Shipping = () => {
           </div>
         </div>
       </form>
+      {shipments.map((shipment) => {
+        return <div>{shipment.address}</div>
+      })}
     </div>
   )
 }
