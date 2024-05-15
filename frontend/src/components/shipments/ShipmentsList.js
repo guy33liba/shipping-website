@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
 
-const Shipments = () => {
+const ShipmentsList = () => {
   const [shipments, setShipments] = useState([])
 
   useEffect(() => {
@@ -20,15 +20,17 @@ const Shipments = () => {
 
   return (
     <div>
-      <h1>{}</h1>
+      <h1>Shipments ::</h1>
       {shipments.map(({ paymentMethod, shippingAddress }, index) => {
         return (
-          <div key={index}>
-            <h3>Address : {shippingAddress.address}</h3>
-            <h3>City : {shippingAddress.city}</h3>
-            <h3>Postal Code : {shippingAddress.postalCode}</h3>
-            <h3>Country : {shippingAddress.country}</h3>
-            <h2>Payment Method : {paymentMethod}</h2>
+          <div key={index} style={{ border: "1px solid black", width: "30%" }}>
+            <div key={index} style={{ marginLeft: "20px" }}>
+              <h3>Address : {shippingAddress.address}</h3>
+              <h3>City : {shippingAddress.city}</h3>
+              <h3>Postal Code : {shippingAddress.postalCode}</h3>
+              <h3>Country : {shippingAddress.country}</h3>
+              <h2>Payment Method : {paymentMethod}</h2>
+            </div>
           </div>
         )
       })}
@@ -36,4 +38,4 @@ const Shipments = () => {
   )
 }
 
-export default Shipments
+export default ShipmentsList
