@@ -16,6 +16,9 @@ const NavBar = () => {
           </ol>{" "}
           <ol>
             <Link to="/shipping">shipping Form </Link>
+          </ol>{" "}
+          <ol>
+            <Link to="/shipments">shipments list </Link>
           </ol>
         </ul>
       </nav>
