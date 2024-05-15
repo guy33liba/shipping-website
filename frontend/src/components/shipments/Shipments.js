@@ -3,18 +3,14 @@ import axios from "axios"
 export const shippmentsArray = []
 const Shipments = () => {
   const [shipp, setShipp] = useState([])
-
-  useEffect(() => {
-    const fetchShipments = async () => {
-      try {
-        const { data } = await axios.get("http://localhost:5000/shipments")
-        setShipp(data)
-      } catch (error) {
-        console.error("Error fetching shipments:", error.message)
-      }
+  const fetchShipments = async () => {
+    try {
+      const { data } = await axios.get("http://localhost:5000/shipments")
+      setShipp(data)
+    } catch (error) {
+      console.error("Error fetching shipments:", error.message)
     }
-    fetchShipments()
-  }, [])
+  }
 
   return (
     <div>
@@ -27,7 +23,7 @@ const Shipments = () => {
           <p>{shipment.country}</p>
         </div>
       ))}
-      <button onClick={() => setShipp([...shippmentsArray])}>Refresh Shipments</button>
+      <button onClick={fetchShipments}>Refresh Shipments</button>
     </div>
   )
 }

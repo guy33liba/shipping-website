@@ -18,12 +18,14 @@ const Contexts = ({ children }) => {
   })
   const handleUsersChange = (key, value, newList) => {
     setRegister((prev) => ({ ...prev, [key]: value }))
-    setUsers(newList)
+    setUsers({ newList })
   }
-  const handleShippingChange = (key, value) => {
+  const handleShippingChange = (key, value, newList) => {
     setNewShipment((prev) => ({ ...prev, [key]: value }))
+    setShipments({ newList })
   }
   const [users, setUsers] = useState([])
+  const [shipments, setShipments] = useState([])
 
   return (
     <allStatesContexts.Provider
@@ -32,9 +34,9 @@ const Contexts = ({ children }) => {
         register,
         handleShippingChange,
         handleUsersChange,
+        shipments,
         users,
-      }}
-    >
+      }}>
       {children}
     </allStatesContexts.Provider>
   )
