@@ -9,9 +9,6 @@ const NavBar = () => {
             <Link to="/">Home</Link>
           </ol>
           <ol>
-            <Link to="/ordersList">Orders List</Link>
-          </ol>
-          <ol>
             <Link to="/register">Register </Link>
           </ol>{" "}
           <ol>

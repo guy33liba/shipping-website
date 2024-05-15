@@ -1,14 +1,13 @@
 import mongoose from "mongoose"
 import express from "express"
-import OrdersList from "../model/ordersSchema.js"
-import express from "express"
+import ProductsList from "../model/productSchema"
 
 const ordersRouter = express.Router()
 
 // GET all shipments with shipping addresses
 ordersRouter.get("/", async (req, res) => {
   try {
-    const newOroductList = await OroductLIst.find({})
+    const newOroductList = await ProductsList.find({})
     res.json(newOroductList)
   } catch (error) {
     console.error(error) // Log the error to console
@@ -18,9 +17,9 @@ ordersRouter.get("/", async (req, res) => {
 
 // POST a new shipment
 ordersRouter.post("/", async (req, res) => {
-  const { ordersList, reviews } = req.body
-  const shipping = new OroductLIst({
-    ordersList,
+  const { ProductsList, reviews } = req.body
+  const shipping = new ProductsList({
+    ProductsList,
     reviews,
   })
   try {

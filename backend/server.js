@@ -3,7 +3,7 @@ import cors from "cors"
 import userRouter from "./routes/usersRoute.js"
 import mongoose from "mongoose"
 import shippingRouter from "./routes/shipmentsRoute.js"
-import OrderList from "./model/ordersSchema.js"
+import OrderList from "./model/productSchema.js"
 
 //
 const mongoURI =

@@ -21,9 +21,9 @@ const reviewsSchema = new mongoose.Schema(
   },
   { timestamps: true }
 )
-const ordersListSchema = new mongoose.Schema(
+const productSchema = new mongoose.Schema(
   {
-    ordersList: {
+    ProductsList: {
       user: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
@@ -49,7 +49,7 @@ const ordersListSchema = new mongoose.Schema(
         type: String,
         required: true,
       },
-      reviews: [reviewSchema],
+      reviews: [reviewsSchema],
       rating: { type: Number, required: true, default: 0 },
       numReviews: { type: Number, required: true, default: 0 },
       price: { type: Number, required: true, default: 0 },
@@ -58,6 +58,6 @@ const ordersListSchema = new mongoose.Schema(
   },
   { timestamps: true }
 )
-const OrdersList = mongoose.model("OrdersList", ordersListSchema)
+const ProductsList = mongoose.model("ProductsList", productSchema)
 
-export default OrdersList
+export default ProductsList

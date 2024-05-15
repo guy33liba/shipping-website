@@ -7,7 +7,6 @@ import Shipping from "./components/shipping/Shipping"
 import Register from "./components/register/Register"
 import UsersList from "./components/users-list/UsersList"
 import ShipmentsList from "./components/shipments/ShipmentsList"
-import OrdersList from "./components/orders-list/OrdersList"
 const App = () => {
   return (
     <Contexts>
@@ -15,7 +14,6 @@ const App = () => {
         <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/createOrder" element={<OrdersList />} />
           <Route path="/register" element={<Register />} />
           <Route path="/shipping" element={<Shipping />} />
           <Route path="/shipments" element={<ShipmentsList />} />

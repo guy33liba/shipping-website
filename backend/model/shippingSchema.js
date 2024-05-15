@@ -3,6 +3,7 @@ import mongoose from "mongoose"
 const shippingSchema = new mongoose.Schema(
   {
     shippingAddress: {
+      productName: { type: String },
       address: { type: String, required: true },
       city: { type: String, required: true },
       postalCode: { type: String, required: true },
@@ -10,7 +11,7 @@ const shippingSchema = new mongoose.Schema(
     },
     paymentMethod: { type: String, required: true },
   },
-  { timestamps: true },
+  { timestamps: true }
 )
 
 const Shipping = mongoose.model("Shipping", shippingSchema)

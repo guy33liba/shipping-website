@@ -11,24 +11,13 @@ const Contexts = ({ children }) => {
   })
 
   const [newShipment, setNewShipment] = useState({
+    productName: "",
     address: "",
     city: "",
     postalCode: "",
     country: "",
   })
-  const [order, setOrder] = useState({
-    user: "",
-    name: "",
-    image: "",
-    brand: "",
-    category: "",
-    description: "",
-    reviews: "",
-    rating: "",
-    numReviews: "",
-    price: "",
-    countInStock: "",
-  })
+
   const [newReview, setNewReview] = useState({
     user: "",
     name: "",
@@ -43,17 +32,13 @@ const Contexts = ({ children }) => {
     setNewShipment((prev) => ({ ...prev, [key]: value }))
     setShipments([newList])
   }
-  const handleCreateOrderChange = (key, value, newList) => {
-    setNewShipment((prev) => ({ ...prev, [key]: value }))
-    setCreateOrder([newList])
-  }
+
   const handleReviewChange = (key, value, newList) => {
     setNewReview((prev) => ({ ...prev, [key]: value }))
     setReviews([newList])
   }
   const [users, setUsers] = useState([])
   const [shipments, setShipments] = useState([])
-  const [createOrder, setCreateOrder] = useState([])
   const [reviews, setReviews] = useState([])
   return (
     <allStatesContexts.Provider
@@ -65,8 +50,6 @@ const Contexts = ({ children }) => {
         handleReviewChange,
         shipments,
         users,
-        handleCreateOrderChange,
-        createOrder,
         reviews,
         newReview,
       }}
