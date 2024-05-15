@@ -17,11 +17,15 @@ const UsersList = () => {
         console.log(user)
         return (
           <div key={index}>
-            <div style={{}}>
-              <h2>User Name : {user.name}</h2>
-              <h2>email : {user.email}</h2>
-              <h2>password : {user.password}</h2>
-              <h2>isAdmin : {user.isAdmin.toString()}</h2>
+            <div
+              style={{ border: "1px solid black", width: "400px", marginLeft: "20px" }}
+            >
+              <div style={{ marginLeft: "20px" }}>
+                <h2>User Name : {user.name}</h2>
+                <h2>Email : {user.email}</h2>
+                <h2>Password : {user.password}</h2>
+                <h2>IsAdmin : {user.isAdmin.toString()}</h2>
+              </div>
             </div>
           </div>
         )
