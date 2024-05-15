@@ -3,7 +3,6 @@ import axios from "axios"
 import { allStatesContexts } from "../Contexts"
 import "./Register.css"
 import { useNavigate } from "react-router-dom"
-import UsersList from "../users-list/UsersList"
 const Register = () => {
   const navigate = useNavigate()
 
