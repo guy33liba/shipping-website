@@ -13,14 +13,8 @@ const app = express()
 app.use(express.json())
 //
 app.use(cors())
-app.use("/", userRouter, (req, res, next) => {
-  console.log("Request URL:", req.originalUrl)
-  next()
-})
-app.use("/shipments", shippingRouter, (req, res, next) => {
-  console.log("Request URL:", req.originalUrl)
-  next()
-})
+app.use("/", userRouter)
+app.use("/shipments", shippingRouter)
 
 app.listen(4000, () => {
   console.log("4000")

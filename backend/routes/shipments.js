@@ -6,7 +6,7 @@ const shippingRouter = express.Router()
 // GET all shipments with shipping addresses
 shippingRouter.get("/", async (req, res) => {
   try {
-    const shipments = await Shipping.find()
+    const shipments = await Shipping.find({})
     res.json(shipments)
   } catch (error) {
     console.error(error) // Log the error to console
