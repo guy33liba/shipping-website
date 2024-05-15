@@ -2,7 +2,7 @@ import express from "express"
 import User from "../model/userSchema.js"
 
 const userRouter = express.Router()
-userRouter.get("/users", async (req, res) => {
+userRouter.get("/", async (req, res) => {
   try {
     const users = await User.find({})
     res.json(users)
@@ -11,7 +11,7 @@ userRouter.get("/users", async (req, res) => {
   }
 })
 
-userRouter.post("/users", async (req, res) => {
+userRouter.post("/", async (req, res) => {
   const {name,email,password,isAdmin} = req.body
   const user = new User({
     name ,
