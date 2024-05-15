@@ -3,7 +3,7 @@ import { allStatesContexts } from "../Contexts"
 import "./Shipping.css"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
-import { shipments } from "../shipments/Shipments"
+import { shippmentsArray } from "../shipments/Shipments"
 const Shipping = () => {
   const navigate = useNavigate()
 
@@ -15,7 +15,7 @@ const Shipping = () => {
         shippingAddress: newShipment,
         paymentMethod,
       })
-      return shipments.push(data)
+      shippmentsArray.push(data)
     } catch (error) {
       console.log(error.message)
     }
@@ -25,13 +25,12 @@ const Shipping = () => {
     createShipping()
     navigate("/shipments")
   }
-  useEffect(() => {
-    const getShippments = async () => {
-      const { data } = await axios.get("/shipments")
-      return shipments.push(data)
-    }
-    getShippments()
-  }, [])
+  // useEffect(() => {
+  //   const getShippments = async () => {
+  //     const { data } = await axios.get("/shipments")
+  //   }
+  //   getShippments()
+  // }, [])
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -85,15 +84,11 @@ const Shipping = () => {
               </option>
               <option value="Credit Card">Credit Card</option>
               <option value="PayPal">PayPal</option>
-              {/* Add more payment methods as needed */}
             </select>
             <button type="submit">Submit</button>
           </div>
         </div>
       </form>
-      {shipments.map((shipment) => {
-        return <div>{shipment.address}</div>
-      })}
     </div>
   )
 }
