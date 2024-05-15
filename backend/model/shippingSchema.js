@@ -10,7 +10,7 @@ const shippingSchema = new mongoose.Schema(
     },
     paymentMethod: { type: String, required: true },
   },
-  { timestamps: true }
+  { timestamps: true },
 )
 
 const Shipping = mongoose.model("Shipping", shippingSchema)

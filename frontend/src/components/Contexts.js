@@ -10,19 +10,21 @@ const Contexts = ({ children }) => {
     isAdmin: false,
   })
 
-  const [newShipment, setNewShipment] = useState({
-    address: "",
-    city: "",
-    postalCode: "",
-    country: "",
-  })
+  const [newShipment, setNewShipment] = useState([
+    {
+      address: "",
+      city: "",
+      postalCode: "",
+      country: "",
+    },
+  ])
   const handleUsersChange = (key, value, newList) => {
     setRegister((prev) => ({ ...prev, [key]: value }))
-    setUsers({ newList })
+    setUsers([newList])
   }
   const handleShippingChange = (key, value, newList) => {
     setNewShipment((prev) => ({ ...prev, [key]: value }))
-    setShipments({ newList })
+    setShipments([newList])
   }
   const [users, setUsers] = useState([])
   const [shipments, setShipments] = useState([])
