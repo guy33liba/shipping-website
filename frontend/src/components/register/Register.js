@@ -3,6 +3,7 @@ import axios from "axios"
 import { allStatesContexts } from "../Contexts"
 import "./Register.css"
 import { useNavigate } from "react-router-dom"
+import UsersList from "../users-list/UsersList"
 const Register = () => {
   const navigate = useNavigate()
 
@@ -60,6 +61,7 @@ const Register = () => {
           <button type="submit">Create User</button>
         </div>
       </form>
+      {<UsersList />}
     </div>
   )
 }
