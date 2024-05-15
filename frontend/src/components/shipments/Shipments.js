@@ -1,16 +1,21 @@
-import React, { useState, useEffect } from "react"
-import axios from "axios"
-export const shippmentsArray = []
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+
 const Shipments = () => {
-  const [shipp, setShipp] = useState([])
+  const [shipp, setShipp] = useState([]);
+
   const fetchShipments = async () => {
     try {
-      const { data } = await axios.get("http://localhost:5000/shipments")
-      setShipp(data)
+      const { data } = await axios.get("http://localhost:5000/shipments");
+      setShipp(data);
     } catch (error) {
-      console.error("Error fetching shipments:", error.message)
+      console.error("Error fetching shipments:", error.message);
     }
-  }
+  };
+
+  useEffect(() => {
+    fetchShipments();
+  }, []);
 
   return (
     <div>
@@ -25,7 +30,7 @@ const Shipments = () => {
       ))}
       <button onClick={fetchShipments}>Refresh Shipments</button>
     </div>
-  )
-}
+  );
+};
 
-export default Shipments
+export default Shipments;
