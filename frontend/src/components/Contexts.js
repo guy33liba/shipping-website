@@ -10,14 +10,12 @@ const Contexts = ({ children }) => {
     isAdmin: false,
   })
 
-  const [newShipment, setNewShipment] = useState([
-    {
-      address: "",
-      city: "",
-      postalCode: "",
-      country: "",
-    },
-  ])
+  const [newShipment, setNewShipment] = useState({
+    address: "",
+    city: "",
+    postalCode: "",
+    country: "",
+  })
   const handleUsersChange = (key, value, newList) => {
     setRegister((prev) => ({ ...prev, [key]: value }))
     setUsers([newList])
@@ -38,7 +36,8 @@ const Contexts = ({ children }) => {
         handleUsersChange,
         shipments,
         users,
-      }}>
+      }}
+    >
       {children}
     </allStatesContexts.Provider>
   )

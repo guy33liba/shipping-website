@@ -61,7 +61,6 @@ const Register = () => {
           <button type="submit">Create User</button>
         </div>
       </form>
-      {<UsersList />}
     </div>
   )
 }

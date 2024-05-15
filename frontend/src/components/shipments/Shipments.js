@@ -8,7 +8,7 @@ const Shipments = () => {
     const fetchShipments = async () => {
       try {
         const { data } = await axios.get("/shipments")
-        setShipments([[...data]])
+        setShipments([...data])
         console.log([...data])
       } catch (error) {
         console.error("Error fetching shipments:", error.message)
@@ -20,16 +20,18 @@ const Shipments = () => {
 
   return (
     <div>
-      <h1>Shipments</h1>
-      {shipments.map((shipment, index) => (
-        <div key={index}>
-          <h3>Address : {shipment.address}</h3>
-          <h3>City : {shipment.city}</h3>
-          <h3>Postal Code : {shipment.postalCode}</h3>
-          <h3>Country : {shipment.country}</h3>
-          <h2>Payment Method : {shipment.paymentMethod}</h2>
-        </div>
-      ))}
+      <h1>{}</h1>
+      {shipments.map(({ paymentMethod, shippingAddress }, index) => {
+        return (
+          <div key={index}>
+            <h3>Address : {shippingAddress.address}</h3>
+            <h3>City : {shippingAddress.city}</h3>
+            <h3>Postal Code : {shippingAddress.postalCode}</h3>
+            <h3>Country : {shippingAddress.country}</h3>
+            <h2>Payment Method : {paymentMethod}</h2>
+          </div>
+        )
+      })}
     </div>
   )
 }

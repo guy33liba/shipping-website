@@ -13,8 +13,9 @@ const UsersList = () => {
 
   return (
     <div>
-      {userList.map((user) => {
-        return <div>{user.name}</div>
+      {userList?.map((user, index) => {
+        console.log(user)
+        return <div key={index}>{user.name}</div>
       })}
     </div>
   )

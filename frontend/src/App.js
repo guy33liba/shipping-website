@@ -7,6 +7,7 @@ import Contexts from "./components/Contexts"
 import Shipping from "./components/shipping/Shipping"
 import Register from "./components/register/Register"
 import Shipments from "./components/shipments/Shipments"
+import UsersList from "./components/users-list/UsersList"
 const App = () => {
   return (
     <Contexts>
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/shipping" element={<Shipping />} />
           <Route path="/shipments" element={<Shipments />} />
+          <Route path="/shipments" element={<UsersList />} />
         </Routes>
       </Router>
     </Contexts>
