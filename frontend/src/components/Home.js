@@ -24,17 +24,16 @@ const Home = () => {
     <div>
       <div style={{ display: "flex", width: "100vw" }}>
         <div style={{ border: "1px solid black", width: "100%" }}>
-          <h1>Products</h1>
-          <ul>
+          <div className="prodcutsContainer">
             {products.map((product) => (
-              <li key={product._id}>
+              <div key={product._id}>
                 <img src={product.image} alt={product.name} />
                 <h2>{product.name}</h2>
                 <p>{product.description}</p>
                 <p>${product.price}</p>
-              </li>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
         <div style={{ border: "1px solid black", width: "500px" }}>
           {users?.map((user) => (

@@ -1,0 +1,16 @@
+.prodcutsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+}
+
+.prodcutsContainer div {
+  height: 500px;
+  width: 500px;
+  border: 1px solid black;
+  text-align: center;
+}
+.prodcutsContainer img {
+  width: 250px;
+  height: 250px;
+}
