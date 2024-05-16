@@ -7,18 +7,23 @@ import Shipping from "./components/shipping/Shipping"
 import Register from "./components/register/Register"
 import UsersList from "./components/users-list/UsersList"
 import ShipmentsList from "./components/shipments/ShipmentsList"
+import "./App.css"
 const App = () => {
   return (
     <Contexts>
       <Router>
-        <NavBar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/shipping" element={<Shipping />} />
-          <Route path="/shipments" element={<ShipmentsList />} />
-          <Route path="/users" element={<UsersList />} />
-        </Routes>
+        <div>
+          <NavBar />
+        </div>
+        <div>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/shipping" element={<Shipping />} />
+            <Route path="/shipments" element={<ShipmentsList />} />
+            <Route path="/users" element={<UsersList />} />
+          </Routes>
+        </div>
       </Router>
     </Contexts>
   )

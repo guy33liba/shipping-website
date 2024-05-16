@@ -2,18 +2,9 @@ import React from "react"
 import { Link } from "react-router-dom"
 const NavBar = () => {
   return (
-    <div>
-      <nav
-        style={{
-          display: "flex",
-          position: "absolute",
-          position: "absolute",
-          left: "60%",
-        }}>
-        <ul
-          style={{
-            display: "flex",
-          }}>
+    <div className="navbar">
+      <nav>
+        <ul style={{ display: "flex", justifyContent: "space-around", width: "200px" }}>
           <ol>
             <Link to="/">Home</Link>
           </ol>
