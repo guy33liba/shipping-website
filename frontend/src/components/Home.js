@@ -3,16 +3,50 @@ import axios from "axios"
 
 const Home = () => {
   const [products, setProducts] = useState([])
+  const [users, setusers] = useState([])
 
   useEffect(() => {
-    const getExistingUsers = async () => {
+    const getProducts = async () => {
       const { data } = await axios.get("/products")
+      console.log(data)
       setProducts(data)
     }
-    getExistingUsers()
+    const getUsersList = async () => {
+      const { data } = await axios.get("/users")
+      console.log(data)
+      setusers(data)
+    }
+    getProducts()
+    getUsersList()
   }, [])
 
-  return <div></div>
+  return (
+    <div>
+      <div style={{ display: "flex", width: "100vw" }}>
+        <div style={{ border: "1px solid black", width: "100%" }}>
+          <h1>Products</h1>
+          <ul>
+            {products.map((product) => (
+              <li key={product._id}>
+                <img src={product.image} alt={product.name} />
+                <h2>{product.name}</h2>
+                <p>{product.description}</p>
+                <p>${product.price}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div style={{ border: "1px solid black", width: "500px" }}>
+          {users?.map((user) => (
+            <div style={{ display: "flex", justifyContent: "start" }}>
+              <div style={{ width: "100px" }}>{user.name}</div>
+              <div style={{ marginLeft: "20px", width: "200px" }}>{user.email}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
 }
 
 export default Home

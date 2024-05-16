@@ -6,7 +6,7 @@ const NavBar = () => {
       <nav>
         <ul style={{ display: "flex", justifyContent: "space-around", width: "200px" }}>
           <ol>
-            <Link to="/">Home</Link>
+            <Link to="/products">Home</Link>
           </ol>
           <ol>
             <Link to="/register">Register </Link>

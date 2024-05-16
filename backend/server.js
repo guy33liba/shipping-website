@@ -6,7 +6,7 @@ import shippingRouter from "./routes/shipmentsRoute.js"
 import productRouter from "./routes/productsRoute.js"
 
 //
-const mongoURI =
+export const mongoURI =
   "mongodb+srv://guy33liba:g33g33g33@shipping.bnmim8g.mongodb.net/?retryWrites=true&w=majority&appName=shipping"
 mongoose.connect(mongoURI)
 //
