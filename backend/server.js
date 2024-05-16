@@ -3,7 +3,7 @@ import cors from "cors"
 import userRouter from "./routes/usersRoute.js"
 import mongoose from "mongoose"
 import shippingRouter from "./routes/shipmentsRoute.js"
-import OrderList from "./model/productSchema.js"
+import productRouter from "./routes/productsRoute.js"
 
 //
 const mongoURI =
@@ -16,6 +16,7 @@ app.use(express.json())
 app.use(cors())
 app.use("/users", userRouter)
 app.use("/shipments", shippingRouter)
+app.use("/products", productRouter)
 
 app.listen(4000, () => {
   console.log("4000")

@@ -1,7 +1,7 @@
 const products = [
   {
     name: "Samsung Galaxy S21",
-    image: "/images/samsung-galaxy-s21.jpg",
+    image: "../assets/galaxy.png",
     brand: "Samsung",
     category: "Electronics",
     description: "Latest Samsung Galaxy S21 smartphone with 8GB RAM and 128GB storage.",
@@ -13,7 +13,7 @@ const products = [
   },
   {
     name: "Nike Air Max 270",
-    image: "/images/nike-air-max-270.jpg",
+    image: "../assets/nike.png",
     brand: "Nike",
     category: "Footwear",
     description: "Comfortable and stylish Nike Air Max 270 sneakers.",
@@ -25,8 +25,7 @@ const products = [
   },
   {
     name: "Apple MacBook Pro",
-    image: "/images/macbook-pro.jpg",
-    brand: "Apple",
+    image: "../assets/macbook.png",
     category: "Computers",
     description: "Apple MacBook Pro with M1 chip, 16GB RAM, and 512GB SSD.",
     reviews: [],
@@ -37,7 +36,7 @@ const products = [
   },
   {
     name: "Sony WH-1000XM4",
-    image: "/images/sony-wh-1000xm4.jpg",
+    image: "../assets/sony.png",
     brand: "Sony",
     category: "Electronics",
     description: "Sony noise-canceling wireless headphones with superior sound quality.",
@@ -49,7 +48,7 @@ const products = [
   },
   {
     name: "The North Face Borealis Backpack",
-    image: "/images/north-face-borealis.jpg",
+    image: "../assets/backpack.png",
     brand: "The North Face",
     category: "Accessories",
     description: "Durable and spacious backpack for outdoor adventures.",
@@ -61,7 +60,7 @@ const products = [
   },
   {
     name: "Fitbit Charge 4",
-    image: "/images/fitbit-charge-4.jpg",
+    image: "../assets/fitbit.png",
     brand: "Fitbit",
     category: "Wearables",
     description: "Advanced fitness tracker with built-in GPS and heart rate monitor.",
@@ -73,7 +72,7 @@ const products = [
   },
   {
     name: "Instant Pot Duo 7-in-1",
-    image: "/images/instant-pot-duo.jpg",
+    image: "../assets/pot.png",
     brand: "Instant Pot",
     category: "Kitchen Appliances",
     description: "Multi-functional pressure cooker for quick and easy meals.",
@@ -85,11 +84,10 @@ const products = [
   },
   {
     name: "Canon EOS R6",
-    image: "/images/canon-eos-r6.jpg",
+    image: "../assets/canon",
     brand: "Canon",
     category: "Cameras",
-    description:
-      "High-performance mirrorless camera with 4K video recording capabilities.",
+    description: "High-performance mirrorless camera with 4K video recording capabilities.",
     reviews: [],
     rating: 4.9,
     numReviews: 65,
@@ -98,7 +96,7 @@ const products = [
   },
   {
     name: "KitchenAid Stand Mixer",
-    image: "/images/kitchenaid-stand-mixer.jpg",
+    image: "../assets/standmixer.png",
     brand: "KitchenAid",
     category: "Kitchen Appliances",
     description: "Versatile stand mixer for all your baking and cooking needs.",
@@ -110,7 +108,7 @@ const products = [
   },
   {
     name: "Patagonia Nano Puff Jacket",
-    image: "/images/patagonia-nano-puff.jpg",
+    image: "../assets/jacket.png",
     brand: "Patagonia",
     category: "Clothing",
     description: "Lightweight and warm insulated jacket for outdoor activities.",

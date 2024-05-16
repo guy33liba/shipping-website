@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react"
 import axios from "axios"
 
 const Home = () => {
-  const [users, setUsers] = useState([])
+  const [products, setProducts] = useState([])
 
   useEffect(() => {
     const getExistingUsers = async () => {
-      const { data } = await axios.get("/")
-      setUsers(data)
+      const { data } = await axios.get("/products")
+      setProducts(data)
     }
     getExistingUsers()
   }, [])

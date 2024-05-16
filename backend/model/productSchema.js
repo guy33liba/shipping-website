@@ -19,11 +19,11 @@ const reviewsSchema = new mongoose.Schema(
       comment: { type: String, required: true },
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 )
 const productSchema = new mongoose.Schema(
   {
-    ProductsList: {
+    productsList: {
       user: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
@@ -56,7 +56,7 @@ const productSchema = new mongoose.Schema(
       countInStock: { type: Number, required: true, default: 0 },
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 )
 const ProductsList = mongoose.model("ProductsList", productSchema)
 

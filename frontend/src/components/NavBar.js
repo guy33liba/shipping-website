@@ -3,8 +3,17 @@ import { Link } from "react-router-dom"
 const NavBar = () => {
   return (
     <div>
-      <nav>
-        <ul style={{ display: "flex", justifyContent: "space-around", width: "200px" }}>
+      <nav
+        style={{
+          display: "flex",
+          position: "absolute",
+          position: "absolute",
+          left: "60%",
+        }}>
+        <ul
+          style={{
+            display: "flex",
+          }}>
           <ol>
             <Link to="/">Home</Link>
           </ol>
