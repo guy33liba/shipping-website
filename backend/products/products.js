@@ -27,6 +27,7 @@ const products = [
     name: "Apple MacBook Pro",
     image: "../assets/macbook.png",
     category: "Computers",
+    brand: "Apple",
     description: "Apple MacBook Pro with M1 chip, 16GB RAM, and 512GB SSD.",
     reviews: [],
     rating: 4.8,
@@ -87,11 +88,12 @@ const products = [
     image: "../assets/canon.png",
     brand: "Canon",
     category: "Cameras",
-    description: "High-performance mirrorless camera with 4K video recording capabilities.",
+    description:
+      "High-performance mirrorless camera with 4K video recording capabilities.",
     reviews: [],
     rating: 4.9,
     numReviews: 65,
-    price: 2499.99,
+    price: 499.99,
     countInStock: 25,
   },
   {
@@ -133,7 +135,7 @@ const products = [
   {
     name: "Samsung Tablet Pro",
     image: "../assets/tablet.png",
-    brand: "Apple",
+    brand: "samsung",
     category: "Electronics",
     description: "samsung tablet Pro with 12.9-inch Liquid Retina display.",
     reviews: [],
