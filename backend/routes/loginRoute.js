@@ -3,7 +3,9 @@ import bcrypt from "bcryptjs"
 import User from "../model/userSchema"
 import dotenv from "dotenv"
 
+const loginRouter = express.Router()
 dotenv.config()
+
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRE,
@@ -33,3 +35,4 @@ const loginUser = asyncHandler(async (req, res) => {
     throw new Error("Invalid credentials")
   }
 })
+loginRouter.post("login", loginUser)

@@ -7,19 +7,25 @@ const Login = () => {
   const navigate = useNavigate()
 
   const { login, handleUsersChange } = useContext(allStatesContexts)
-  const createUser = async () => {
-    try {
-      const { data } = await axios.post("/login", login)
-      handleUsersChange({ newList: data })
-    } catch (error) {
-      console.error("Error creating user:", error)
+  const [user, setUser] = useState(null)
+
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem("user"))
+    if (storedUser) {
+      setUser(storedUser)
     }
+  }, [])
+
+  const loginStorage = (userData) => {
+    localStorage.setItem("user", JSON.stringify(userData))
+    setUser(userData)
   }
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    createUser()
-    navigate("/shipping")
+
+  const logout = () => {
+    localStorage.removeItem("user")
+    setUser(null)
   }
+
   return (
     <div className="loginForm">
       <h1>Login Page</h1>
