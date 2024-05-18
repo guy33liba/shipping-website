@@ -7,34 +7,37 @@ import express from "express"
 const loginRouter = express.Router()
 dotenv.config()
 
-const generateToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRE,
-  })
-}
-
-const loginUser = async (req, res) => {
+userRouter.post("/login", async (req, res) => {
   const { email, password } = req.body
 
-  if (!email || !password) {
-    res.status(400)
-    throw new Error("Please add all fields")
-  }
+  try {
+    // Find user by email
+    const user = await Login.findOne({ email })
 
-  // Check for user email
-  const user = await Login.findOne({ email })
+    if (!user) {
+      return res.status(404).json({ message: "User not found" })
+    }
 
-  if (user && (await bcrypt.compare(password, user.password))) {
-    res.json({
-      _id: user.id,
-      name: user.name,
-      email: user.email,
-      token: generateToken(user._id),
-    })
-  } else {
-    res.status(400)
-    throw new Error("Invalid credentials")
+    // Check if password is correct
+    const isPasswordValid = await bcrypt.compare(password, user.password)
+
+    if (!isPasswordValid) {
+      return res.status(401).json({ message: "Invalid credentials" })
+    }
+
+    // Generate JWT token
+    const token = jwt.sign(
+      { userId: user._id, email: user.email },
+      process.env.JWT_SECRET,
+      { expiresIn: "1h" }
+    )
+
+    // Send token in response
+    res.status(200).json({ token })
+  } catch (error) {
+    res.status(500).json({ message: error.message })
   }
-}
+})
+
 loginRouter.post("login", loginUser)
 export default loginRouter
