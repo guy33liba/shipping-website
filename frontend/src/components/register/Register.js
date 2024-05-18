@@ -20,6 +20,7 @@ const Register = () => {
     createUser()
     navigate("/login")
   }
+  console.log(register)
   return (
     <div>
       <form onSubmit={handleSubmit} className="inputs">

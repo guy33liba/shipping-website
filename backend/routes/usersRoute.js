@@ -1,11 +1,11 @@
 import express from "express"
 import User from "../model/userSchema.js"
 
-
 const userRouter = express.Router()
 userRouter.get("/", async (req, res) => {
   try {
     const users = await User.find({})
+    console.log(users)
     res.json(users)
   } catch (error) {
     res.status(500).json({ message: error.message })
@@ -14,9 +14,6 @@ userRouter.get("/", async (req, res) => {
 
 userRouter.post("/", async (req, res) => {
   const { name, email, password, isAdmin } = req.body
-  if (password.length < 6) {
-    return res.status(400).json("Password must be at least 6 characters")
-  }
   const user = new User({
     name,
     email,

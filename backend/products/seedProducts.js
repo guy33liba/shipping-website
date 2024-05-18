@@ -7,10 +7,7 @@ export const seedProducts = async () => {
   try {
     await mongoose.connect(mongoURI)
     await ProductsList.deleteMany({})
-    console.log(products)
-    const x = await ProductsList.insertMany(products)
-    console.log({ x })
-    console.log("Products seeded successfully!")
+    await ProductsList.insertMany(products)
   } catch (error) {
     console.error("Error seeding products:", error.message)
     process.exit(1)

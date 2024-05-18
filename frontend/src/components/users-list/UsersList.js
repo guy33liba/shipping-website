@@ -10,14 +10,14 @@ const UsersList = () => {
     }
     fetchUsers()
   }, [])
-
   return (
     <div>
       {userList.map((user, index) => {
-        console.log(user)
         return (
           <div key={index}>
-            <div style={{ border: "1px solid black", marginLeft: "20px", width: "500px" }}>
+            <div
+              style={{ border: "1px solid black", marginLeft: "20px", width: "500px" }}
+            >
               <div style={{ marginLeft: "20px" }}>
                 <h2>User Name : {user.name}</h2>
                 <h2>Email : {user.email}</h2>

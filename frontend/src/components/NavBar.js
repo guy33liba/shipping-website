@@ -3,7 +3,6 @@ import { Link } from "react-router-dom"
 import { allStatesContexts } from "./Contexts"
 const NavBar = () => {
   const { toggle, handleToggle } = useContext(allStatesContexts)
-  console.log(toggle)
   return (
     <div className="navbar">
       <nav>

@@ -8,12 +8,10 @@ const Home = () => {
   useEffect(() => {
     const getProducts = async () => {
       const { data } = await axios.get("/products")
-      console.log(data)
       setProducts(data)
     }
     const getUsersList = async () => {
       const { data } = await axios.get("/users")
-      console.log(data)
       setusers(data)
     }
     getProducts()
