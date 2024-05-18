@@ -6,10 +6,9 @@ const productRouter = express.Router()
 
 productRouter.get("/", async (req, res) => {
   try {
-    const newProductList = await ProductsList.find({})
-    res.send(products)
     seedProducts()
-    console.log(newProductList)
+    const newProductList = await ProductsList.find({})
+    res.send(newProductList)
   } catch (error) {
     console.log(error.message)
   }
