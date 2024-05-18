@@ -23,7 +23,6 @@ shippingRouter.post("/", async (req, res) => {
   })
   try {
     const savedShipping = await shipping.save()
-    console.log(savedShipping)
     res.status(201).json(savedShipping)
   } catch (error) {
     console.error(error.message)

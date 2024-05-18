@@ -9,7 +9,6 @@ const ShipmentsList = () => {
       try {
         const { data } = await axios.get("/shipments")
         setShipments([...data])
-        console.log([...data])
       } catch (error) {
         console.error("Error fetching shipments:", error.message)
       }

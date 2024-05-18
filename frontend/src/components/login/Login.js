@@ -33,6 +33,7 @@ const Login = () => {
           style={{
             textAlign: "center",
             border: "2px solid black",
+            borderRadius: "20px",
             width: "200px",
             position: "fixed",
             left: "45%",

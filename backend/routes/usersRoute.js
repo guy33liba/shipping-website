@@ -5,7 +5,6 @@ const userRouter = express.Router()
 userRouter.get("/", async (req, res) => {
   try {
     const users = await User.find({})
-    console.log(users)
     res.json(users)
   } catch (error) {
     res.status(500).json({ message: error.message })
@@ -23,7 +22,6 @@ userRouter.post("/", async (req, res) => {
   try {
     const newUser = await user.save()
     res.status(201).json(newUser)
-    console.log(newUser)
   } catch (error) {
     res.status(400).json({ message: error.message })
   }
