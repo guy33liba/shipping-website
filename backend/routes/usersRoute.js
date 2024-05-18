@@ -13,6 +13,9 @@ userRouter.get("/", async (req, res) => {
 
 userRouter.post("/", async (req, res) => {
   const { name, email, password, isAdmin } = req.body
+  if (password.length < 6) {
+    return res.status(400).json("Password must be at least 6 characters")
+  }
   const user = new User({
     name,
     email,
