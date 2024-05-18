@@ -5,7 +5,7 @@ const NavBar = () => {
   const { toggle, handleToggle } = useContext(allStatesContexts)
   console.log(toggle)
   return (
-    <div className={toggle ? "navbar" : "displaying"}>
+    <div className="navbar">
       <nav>
         <ul style={{ display: "flex", justifyContent: "space-around", width: "20%" }}>
           <ol>
@@ -20,7 +20,7 @@ const NavBar = () => {
           <ol>
             <Link to="/users">Users List </Link>
           </ol>
-          <ol style={{ marginLeft: "60rem" }} onClick={handleToggle}>
+          <ol style={{ marginLeft: "60rem" }}>
             <Link to="/login">Login </Link>
           </ol>
           <ol>

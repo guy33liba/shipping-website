@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react"
+import React, { useContext } from "react"
 import axios from "axios"
 import { allStatesContexts } from "../Contexts"
 import { useNavigate } from "react-router-dom"
@@ -6,7 +6,7 @@ import "./Login.css"
 const Login = () => {
   const navigate = useNavigate()
 
-  const { login, handleUsersChange, handleToggle } = useContext(allStatesContexts)
+  const { login, handleUsersChange } = useContext(allStatesContexts)
   const createUser = async () => {
     try {
       const { data } = await axios.post("/login", login)
@@ -21,8 +21,9 @@ const Login = () => {
     navigate("/shipping")
   }
   return (
-    <div>
-      <form onSubmit={handleSubmit} className="inputs">
+    <div className="loginForm">
+      <h1>Login Page</h1>
+      <form onSubmit={handleSubmit} className="loginInputs">
         <div>
           <div>
             <input
@@ -49,9 +50,7 @@ const Login = () => {
             />
           </div>
 
-          <button type="submit" onClick={handleToggle}>
-            Login Submit
-          </button>
+          <button type="submit">Login Submit</button>
         </div>
       </form>
     </div>
