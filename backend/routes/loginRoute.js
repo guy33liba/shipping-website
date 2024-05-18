@@ -7,7 +7,7 @@ import express from "express"
 const loginRouter = express.Router()
 dotenv.config()
 
-userRouter.post("/login", async (req, res) => {
+loginRouter.post("/login", async (req, res) => {
   const { email, password } = req.body
 
   try {
