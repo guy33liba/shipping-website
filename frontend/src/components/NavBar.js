@@ -4,7 +4,7 @@ const NavBar = () => {
   return (
     <div className="navbar">
       <nav>
-        <ul style={{ display: "flex", justifyContent: "space-around", width: "200px" }}>
+        <ul style={{ display: "flex", justifyContent: "space-around", width: "20%" }}>
           <ol>
             <Link to="/">Home</Link>
           </ol>
@@ -19,6 +19,9 @@ const NavBar = () => {
           </ol>
           <ol>
             <Link to="/users">Users List </Link>
+          </ol>
+          <ol style={{ marginLeft: "60rem" }}>
+            <Link to="/login">Login </Link>
           </ol>
         </ul>
       </nav>

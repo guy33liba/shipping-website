@@ -1,12 +1,13 @@
 import React from "react"
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import NavBar from "./components/NavBar"
 import Home from "./components/Home"
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import Contexts from "./components/Contexts"
 import Shipping from "./components/shipping/Shipping"
 import Register from "./components/register/Register"
 import UsersList from "./components/users-list/UsersList"
 import ShipmentsList from "./components/shipments/ShipmentsList"
+import Login from "./components/login/Login"
 import "./App.css"
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
             <Route path="/shipping" element={<Shipping />} />
             <Route path="/shipments" element={<ShipmentsList />} />
             <Route path="/users" element={<UsersList />} />
+            <Route path="/login" element={<Login />} />
           </Routes>
         </div>
       </Router>

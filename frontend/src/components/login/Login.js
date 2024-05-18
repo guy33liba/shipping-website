@@ -1,15 +1,15 @@
 import React, { useContext, useState } from "react"
 import axios from "axios"
 import { allStatesContexts } from "../Contexts"
-import "./Register.css"
 import { useNavigate } from "react-router-dom"
-const Register = () => {
+import "./Login.css"
+const Login = () => {
   const navigate = useNavigate()
 
-  const { register, handleUsersChange } = useContext(allStatesContexts)
+  const { login, handleUsersChange } = useContext(allStatesContexts)
   const createUser = async () => {
     try {
-      const { data } = await axios.post("/users", register)
+      const { data } = await axios.post("/login", login)
       handleUsersChange({ newList: data })
     } catch (error) {
       console.error("Error creating user:", error)
@@ -27,7 +27,7 @@ const Register = () => {
           <div>
             <input
               type="text"
-              value={register.name}
+              value={login.name}
               onChange={(e) => handleUsersChange("name", e.target.value)}
               placeholder="Name"
             />
@@ -35,7 +35,7 @@ const Register = () => {
           <div>
             <input
               type="email"
-              value={register.email}
+              value={login.email}
               onChange={(e) => handleUsersChange("email", e.target.value)}
               placeholder="Email"
             />
@@ -43,25 +43,17 @@ const Register = () => {
           <div>
             <input
               type="password"
-              value={register.password}
+              value={login.password}
               onChange={(e) => handleUsersChange("password", e.target.value)}
               placeholder="Password"
             />
           </div>
-        </div>
-        <div className="checkbox">
-          <div>Is Admin</div>
-          <input
-            type="checkbox"
-            checked={register.isAdmin}
-            onChange={(e) => handleUsersChange("isAdmin", e.target.checked)}
-          />
 
-          <button type="submit">Create User</button>
+          <button type="submit">Login Submit</button>
         </div>
       </form>
     </div>
   )
 }
 
-export default Register
+export default Login

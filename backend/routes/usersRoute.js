@@ -1,6 +1,7 @@
 import express from "express"
 import User from "../model/userSchema.js"
 
+
 const userRouter = express.Router()
 userRouter.get("/", async (req, res) => {
   try {

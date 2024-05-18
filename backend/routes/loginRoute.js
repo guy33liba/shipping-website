@@ -1,6 +1,15 @@
-import mongoose from "mongoose"
-import express from "express"
+import jwt from "jsonwebtoken"
+import bcrypt from "bcryptjs"
 import User from "../model/userSchema"
+import dotenv from "dotenv"
+
+dotenv.config()
+const generateToken = (id) => {
+  return jwt.sign({ id }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRE,
+  })
+}
+
 const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body
 

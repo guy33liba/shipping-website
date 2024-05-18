@@ -37,6 +37,11 @@ const Contexts = ({ children }) => {
     setNewReview((prev) => ({ ...prev, [key]: value }))
     setReviews([newList])
   }
+  const handleLogin = (key, value, newList) => {
+    setLogin((prev) => ({ ...prev, [key]: value }))
+    setLogin([newList])
+  }
+  const [login, setLogin] = useState([])
   const [users, setUsers] = useState([])
   const [shipments, setShipments] = useState([])
   const [reviews, setReviews] = useState([])
@@ -48,10 +53,12 @@ const Contexts = ({ children }) => {
         handleShippingChange,
         handleUsersChange,
         handleReviewChange,
+        handleLogin,
         shipments,
         users,
         reviews,
         newReview,
+        login,
       }}
     >
       {children}
