@@ -1,7 +1,8 @@
 import jwt from "jsonwebtoken"
 import bcrypt from "bcryptjs"
-import User from "../model/userSchema"
 import dotenv from "dotenv"
+import Login from "../model/loginSchema.js"
+import express from "express"
 
 const loginRouter = express.Router()
 dotenv.config()
@@ -12,7 +13,7 @@ const generateToken = (id) => {
   })
 }
 
-const loginUser = asyncHandler(async (req, res) => {
+const loginUser = async (req, res) => {
   const { email, password } = req.body
 
   if (!email || !password) {
@@ -21,7 +22,7 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 
   // Check for user email
-  const user = await User.findOne({ email })
+  const user = await Login.findOne({ email })
 
   if (user && (await bcrypt.compare(password, user.password))) {
     res.json({
@@ -34,5 +35,6 @@ const loginUser = asyncHandler(async (req, res) => {
     res.status(400)
     throw new Error("Invalid credentials")
   }
-})
+}
 loginRouter.post("login", loginUser)
+export default loginRouter
