@@ -2,15 +2,35 @@
   display: flex;
   flex-wrap: wrap;
   height: 100%;
+  border: 1px solid black;
+  width: 100%;
 }
 
 .prodcutsContainer div {
-  height: 500px;
-  width: 500px;
+  height: 430px;
+  width: 430px;
   border: 1px solid black;
   text-align: center;
 }
 .prodcutsContainer img {
   width: 180px;
   height: 180px;
+}
+.usersList {
+  border: 1px solid black;
+  max-height: 300px;
+  width: 600px;
+  margin-right: 210px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  background: linear-gradient(45deg, white, rgba(22, 22, 255, 0.5) 70.71%);
+}
+.usersList div {
+  display: flex;
+  margin-left: 10px;
+  font-size: 25px;
+  border: 1px solid black;
+  width: 300px;
 }
