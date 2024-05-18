@@ -41,10 +41,14 @@ const Contexts = ({ children }) => {
     setLogin((prev) => ({ ...prev, [key]: value }))
     setLogin([newList])
   }
+  const handleToggle = () => {
+    setToggle(!toggle)
+  }
   const [login, setLogin] = useState([])
   const [users, setUsers] = useState([])
   const [shipments, setShipments] = useState([])
   const [reviews, setReviews] = useState([])
+  const [toggle, setToggle] = useState(false)
   return (
     <allStatesContexts.Provider
       value={{
@@ -59,6 +63,8 @@ const Contexts = ({ children }) => {
         reviews,
         newReview,
         login,
+        handleToggle,
+        toggle,
       }}
     >
       {children}

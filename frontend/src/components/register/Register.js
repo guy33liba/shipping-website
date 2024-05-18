@@ -18,7 +18,7 @@ const Register = () => {
   const handleSubmit = (event) => {
     event.preventDefault()
     createUser()
-    navigate("/shipping")
+    navigate("/login")
   }
   return (
     <div>

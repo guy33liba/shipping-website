@@ -6,7 +6,7 @@ import "./Login.css"
 const Login = () => {
   const navigate = useNavigate()
 
-  const { login, handleUsersChange } = useContext(allStatesContexts)
+  const { login, handleUsersChange, handleToggle } = useContext(allStatesContexts)
   const createUser = async () => {
     try {
       const { data } = await axios.post("/login", login)
@@ -49,7 +49,9 @@ const Login = () => {
             />
           </div>
 
-          <button type="submit">Login Submit</button>
+          <button type="submit" onClick={handleToggle}>
+            Login Submit
+          </button>
         </div>
       </form>
     </div>

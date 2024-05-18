@@ -36,3 +36,6 @@
   font-size: 25px;
   width: 300px;
 }
+.displaying {
+  display: none;
+}
