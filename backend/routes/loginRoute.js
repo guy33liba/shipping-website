@@ -39,5 +39,4 @@ loginRouter.post("/login", async (req, res) => {
   }
 })
 
-loginRouter.post("login", loginUser)
 export default loginRouter
