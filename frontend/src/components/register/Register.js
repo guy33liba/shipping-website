@@ -8,8 +8,9 @@ const Register = () => {
 
   const { register, handleUsersChange } = useContext(allStatesContexts)
   const createUser = async () => {
+    console.log(register)
     try {
-      const { data } = await axios.post("/users", register)
+      const { data } = await axios.post("/users", { register })
       handleUsersChange({ newList: data })
     } catch (error) {
       console.error("Error creating user:", error)
