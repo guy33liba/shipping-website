@@ -11,9 +11,7 @@ const Login = () => {
   const loginPost = async () => {
     const { data } = await axios.post("/login", login)
     console.log(data)
-    if (data === "success") {
-      navigate("/")
-    }
+    navigate("/")
   }
   useEffect(() => {}, [])
   return (
