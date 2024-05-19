@@ -18,7 +18,6 @@ const Home = () => {
     getUsersList()
   }, [])
 
-  
   return (
     <div>
       <div style={{ display: "flex", width: "100vw" }}>
@@ -29,6 +28,7 @@ const Home = () => {
               <h2>{product.name}</h2>
               <p>{product.description}</p>
               <p>${product.price}</p>
+              <button>Purchase</button>
             </div>
           ))}
         </div>
