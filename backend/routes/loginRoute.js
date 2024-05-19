@@ -8,7 +8,6 @@ const loginRouter = express.Router()
 dotenv.config()
 
 loginRouter.post("/", async (req, res) => {
-
   const { email, password } = req.body
 
   try {
@@ -17,7 +16,7 @@ loginRouter.post("/", async (req, res) => {
       password,
     })
     await user.save()
-    res.status(201).json({ token })
+    res.status(201).json(user)
   } catch (error) {
     res.status(500).json({ message: error.message })
   }
