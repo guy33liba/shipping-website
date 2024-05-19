@@ -6,13 +6,18 @@ import "./Login.css"
 const Login = () => {
   const navigate = useNavigate()
 
-  const { login, handleLogin } = useContext(allStatesContexts)
-
+  const [login, setLogin] = useState({
+    email: "",
+    password: "",
+  })
+  const handleLogin = (key, value) => {
+    setLogin((prev) => ({ ...prev, [key]: value }))
+  }
   const loginPost = async () => {
     const { data } = await axios.post("/login", {login})
     console.log(data)
     navigate("/")
-  } 
+  }
   useEffect(() => {}, [])
   return (
     <div>

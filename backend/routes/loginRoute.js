@@ -8,8 +8,8 @@ const loginRouter = express.Router()
 dotenv.config()
 
 loginRouter.post("/", async (req, res) => {
-  const { email, password } = req.body
-
+  const { email, password } = req.body.login
+  console.log(email, password)
   try {
     const user = await Login.findOne({ email: email })
 

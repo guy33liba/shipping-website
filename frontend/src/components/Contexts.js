@@ -24,10 +24,7 @@ const Contexts = ({ children }) => {
     rating: "",
     comment: "",
   })
-  const [login, setLogin] = useState({
-    email: "",
-    password: "",
-  })
+
   const handleUsersChange = (key, value, newList) => {
     setRegister((prev) => ({ ...prev, [key]: value }))
     setUsers([newList])
@@ -41,17 +38,10 @@ const Contexts = ({ children }) => {
     setNewReview((prev) => ({ ...prev, [key]: value }))
     setReviews([newList])
   }
-  const handleLogin = (key, value, newList) => {
-    setLogin((prev) => ({ ...prev, [key]: value }))
-    setLogin([newList])
-  }
-  const handleToggle = () => {
-    setToggle(!toggle)
-  }
+
   const [users, setUsers] = useState([])
   const [shipments, setShipments] = useState([])
   const [reviews, setReviews] = useState([])
-  const [toggle, setToggle] = useState(false)
   return (
     <allStatesContexts.Provider
       value={{
@@ -60,14 +50,10 @@ const Contexts = ({ children }) => {
         handleShippingChange,
         handleUsersChange,
         handleReviewChange,
-        handleLogin,
         shipments,
         users,
         reviews,
         newReview,
-        login,
-        handleToggle,
-        toggle,
       }}
     >
       {children}

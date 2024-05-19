@@ -17,6 +17,7 @@ shippingRouter.get("/", async (req, res) => {
 // POST a new shipment
 shippingRouter.post("/", async (req, res) => {
   const { shippingAddress, paymentMethod } = req.body
+  console.log(shippingAddress)
   const shipping = new Shipping({
     shippingAddress,
     paymentMethod,

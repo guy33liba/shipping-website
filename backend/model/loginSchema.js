@@ -2,14 +2,14 @@ import mongoose from "mongoose"
 
 const loginSchema = mongoose.Schema(
   {
-    loginForm: {
+    login: {
       email: {
         type: String,
-        required: [true, "Please add an email"],
+        required: true,
       },
       password: {
         type: String,
-        required: [true, "Please add a password"],
+        required: true,
       },
     },
   },
