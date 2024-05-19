@@ -7,13 +7,11 @@ const Login = () => {
   const navigate = useNavigate()
 
   const { login, handleLogin } = useContext(allStatesContexts)
-  const [user, setUser] = useState(null)
 
   const loginPost = async () => {
-    const { data } = await axios.post("/login", { login })
+    const { data } = await axios.post("/login", login)
     console.log(data)
     if (data === "success") {
-      setUser(data)
       navigate("/")
     }
   }

@@ -68,7 +68,8 @@ const Contexts = ({ children }) => {
         login,
         handleToggle,
         toggle,
-      }}>
+      }}
+    >
       {children}
     </allStatesContexts.Provider>
   )
