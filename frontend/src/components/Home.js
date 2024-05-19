@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react"
 import axios from "axios"
-
+import { useLocation } from "react-router-dom"
 const Home = () => {
   const [products, setProducts] = useState([])
   const [users, setusers] = useState([])
-
+  const location = useLocation()
   useEffect(() => {
     const getProducts = async () => {
       const { data } = await axios.get("/products")

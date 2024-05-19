@@ -6,7 +6,7 @@ import "./Login.css"
 const Login = () => {
   const navigate = useNavigate()
 
-  const { login, handleUsersChange } = useContext(allStatesContexts)
+  const { login, handleLogin } = useContext(allStatesContexts)
   const [user, setUser] = useState(null)
 
   useEffect(() => {
@@ -16,16 +16,17 @@ const Login = () => {
     }
   }, [])
 
-  const loginStorage = (userData) => {
+  const loginStorage = async (userData) => {
     localStorage.setItem("user", JSON.stringify(userData))
-    setUser(userData)
+    const { data } = await axios.post("/login", { login })
+    setUser(data)
   }
 
   const logout = () => {
     localStorage.removeItem("user")
     setUser(null)
+    navigate("/login")
   }
-
   return (
     <div>
       <div className="loginForm">
@@ -37,8 +38,7 @@ const Login = () => {
             width: "200px",
             position: "fixed",
             left: "45%",
-          }}
-        >
+          }}>
           Login Page
         </h1>
         <form className="loginInputs">
@@ -46,8 +46,8 @@ const Login = () => {
             <div>
               <input
                 type="text"
-                value={login.name}
-                onChange={(e) => handleUsersChange("name", e.target.value)}
+                value={login.username}
+                onChange={(e) => handleLogin("username", e.target.value)}
                 placeholder="Name"
               />
             </div>
@@ -55,7 +55,7 @@ const Login = () => {
               <input
                 type="email"
                 value={login.email}
-                onChange={(e) => handleUsersChange("email", e.target.value)}
+                onChange={(e) => handleLogin("email", e.target.value)}
                 placeholder="Email"
               />
             </div>
@@ -63,7 +63,7 @@ const Login = () => {
               <input
                 type="password"
                 value={login.password}
-                onChange={(e) => handleUsersChange("password", e.target.value)}
+                onChange={(e) => handleLogin("password", e.target.value)}
                 placeholder="Password"
               />
             </div>

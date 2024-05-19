@@ -12,19 +12,19 @@ const NavBar = () => {
           </ol>
           <ol>
             <Link to="/shipping">shipping Form </Link>
-          </ol>{" "}
+          </ol>
           <ol>
             <Link to="/shipments">shipments list </Link>
           </ol>
           <ol>
             <Link to="/users">Users List </Link>
           </ol>
-          <ol style={{ marginLeft: "60rem" }}>
+          <ol style={{ marginLeft: "40rem" }}>
             <Link to="/login">Login </Link>
           </ol>
           <ol>
             <Link to="/register">Register </Link>
-          </ol>{" "}
+          </ol>
         </ul>
       </nav>
     </div>

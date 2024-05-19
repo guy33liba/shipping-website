@@ -24,6 +24,11 @@ const Contexts = ({ children }) => {
     rating: "",
     comment: "",
   })
+  const [login, setLogin] = useState({
+    name: "",
+    email: "",
+    password: "",
+  })
   const handleUsersChange = (key, value, newList) => {
     setRegister((prev) => ({ ...prev, [key]: value }))
     setUsers([newList])
@@ -44,7 +49,6 @@ const Contexts = ({ children }) => {
   const handleToggle = () => {
     setToggle(!toggle)
   }
-  const [login, setLogin] = useState([])
   const [users, setUsers] = useState([])
   const [shipments, setShipments] = useState([])
   const [reviews, setReviews] = useState([])
@@ -65,8 +69,7 @@ const Contexts = ({ children }) => {
         login,
         handleToggle,
         toggle,
-      }}
-    >
+      }}>
       {children}
     </allStatesContexts.Provider>
   )
