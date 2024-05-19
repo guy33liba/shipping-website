@@ -9,7 +9,7 @@ const Login = () => {
   const { login, handleLogin } = useContext(allStatesContexts)
 
   const loginPost = async () => {
-    const { data } = await axios.post("/login", login)
+    const { data } = await axios.post("/login", {login})
     console.log(data)
     navigate("/")
   } 

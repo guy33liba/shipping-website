@@ -8,10 +8,10 @@ const loginRouter = express.Router()
 dotenv.config()
 
 loginRouter.post("/", async (req, res) => {
-  const { email, password } = req.body
+  const { loginForm } = req.body
 
   try {
-    const user = await Login.findOne({ email: email })
+    const user = await Login.findOne({ loginForm })
 
     if (!user) {
       return res.status(404).json("No Record Existed")
