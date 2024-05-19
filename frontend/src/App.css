@@ -39,3 +39,6 @@
 .displaying {
   display: none;
 }
+.navbar {
+  font-size: 25px;
+}
