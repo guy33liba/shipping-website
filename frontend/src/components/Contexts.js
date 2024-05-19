@@ -25,7 +25,6 @@ const Contexts = ({ children }) => {
     comment: "",
   })
   const [login, setLogin] = useState({
-    name: "",
     email: "",
     password: "",
   })

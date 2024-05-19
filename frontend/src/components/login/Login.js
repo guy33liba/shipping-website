@@ -8,25 +8,12 @@ const Login = () => {
 
   const { login, handleLogin } = useContext(allStatesContexts)
   const [user, setUser] = useState(null)
-
-  useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem("user"))
-    if (storedUser) {
-      setUser(storedUser)
-    }
-  }, [])
-
-  const loginStorage = async (userData) => {
-    localStorage.setItem("user", JSON.stringify(userData))
-    const { data } = await axios.post("/login", { login })
+  
+  const loginPost = async () => {
+    const { data } = await axios.post("/login", login)
     setUser(data)
   }
-
-  const logout = () => {
-    localStorage.removeItem("user")
-    setUser(null)
-    navigate("/login")
-  }
+  useEffect(() => {}, [])
   return (
     <div>
       <div className="loginForm">
@@ -41,38 +28,26 @@ const Login = () => {
           }}>
           Login Page
         </h1>
-        <form className="loginInputs">
+        <div className="loginInputs">
           <div>
-            <div>
-              <input
-                type="text"
-                value={login.username}
-                onChange={(e) => handleLogin("username", e.target.value)}
-                placeholder="Name"
-              />
-            </div>
-            <div>
-              <input
-                type="email"
-                value={login.email}
-                onChange={(e) => handleLogin("email", e.target.value)}
-                placeholder="Email"
-              />
-            </div>
-            <div>
-              <input
-                type="password"
-                value={login.password}
-                onChange={(e) => handleLogin("password", e.target.value)}
-                placeholder="Password"
-              />
-            </div>
-
-            <button type="submit" onClick={loginStorage}>
-              Login Submit
-            </button>
+            <input
+              type="email"
+              value={login.email}
+              onChange={(e) => handleLogin("email", e.target.value)}
+              placeholder="Email"
+            />
           </div>
-        </form>
+          <div>
+            <input
+              type="password"
+              value={login.password}
+              onChange={(e) => handleLogin("password", e.target.value)}
+              placeholder="Password"
+            />
+          </div>
+
+          <button onClick={loginPost}>Login Submit</button>
+        </div>
       </div>
     </div>
   )

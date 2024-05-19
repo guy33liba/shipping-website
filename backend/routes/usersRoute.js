@@ -13,7 +13,6 @@ userRouter.get("/", async (req, res) => {
 
 userRouter.post("/", async (req, res) => {
   const { register } = req.body
-  
   const user = new User({
     register,
   })

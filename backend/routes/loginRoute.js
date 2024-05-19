@@ -7,24 +7,17 @@ import express from "express"
 const loginRouter = express.Router()
 dotenv.config()
 
-loginRouter.post("/login", async (req, res) => {
+loginRouter.post("/", async (req, res) => {
+
   const { email, password } = req.body
 
   try {
-    const user = await Login.findOne({ email })
-
-    if (!user) {
-      return res.status(404).json({ message: "User not found" })
-    }
-    const isPasswordValid = await bcrypt.compare(password, user.password)
-    if (!isPasswordValid) {
-      return res.status(401).json({ message: "Invalid credentials" })
-    }
-
-    const token = jwt.sign({ userId: user._id, email: user.email }, process.env.JWT_SECRET, {
-      expiresIn: "1h",
+    user = new Login({
+      email,
+      password,
     })
-    res.status(200).json({ token })
+    await user.save()
+    res.status(201).json({ token })
   } catch (error) {
     res.status(500).json({ message: error.message })
   }
