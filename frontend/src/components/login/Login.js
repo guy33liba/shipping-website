@@ -12,7 +12,7 @@ const Login = () => {
     const { data } = await axios.post("/login", login)
     console.log(data)
     navigate("/")
-  }
+  } 
   useEffect(() => {}, [])
   return (
     <div>
