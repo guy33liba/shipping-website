@@ -8,17 +8,22 @@ const loginRouter = express.Router()
 dotenv.config()
 
 loginRouter.post("/", async (req, res) => {
-  const { email, password } = req.body.login
-  console.log(email, password)
+  console.log("Received request body:", req.body) // Log entire request body
+
+  const { email, password } = req.body.login // Assuming email and password are sent directly in the request body
+
   try {
-    const user = await Login.findOne({ email: email })
+    const user = await Login.findOne({ email })
+    console.log("Queried user from database:", user) // Log the queried user
 
     if (!user) {
-      return res.status(404).json("No Record Existed")
+      return res.status(404).json({ message: "No record found" })
     }
+
     const isPasswordValid = await bcrypt.compare(password, user.password)
     if (!isPasswordValid) {
-      return res.status(401).json("The password is incorrect")
+      // Avoid leaking information about existing email addresses
+      return res.status(401).json({ message: "Invalid email or password" })
     }
 
     const token = jwt.sign(
@@ -29,7 +34,8 @@ loginRouter.post("/", async (req, res) => {
 
     res.status(200).json({ token })
   } catch (error) {
-    res.status(500).json({ message: error.message })
+    console.error("Error during login process:", error) // Log any error
+    res.status(500).json({ message: "Internal server error" })
   }
 })
 

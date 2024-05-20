@@ -10,7 +10,7 @@ const Register = () => {
   const createUser = async () => {
     console.log(register)
     try {
-      const { data } = await axios.post("/users", { register })
+      const { data } = await axios.post("http://localhost:4000/users", { register })
       handleUsersChange({ newList: data })
     } catch (error) {
       console.error("Error creating user:", error)

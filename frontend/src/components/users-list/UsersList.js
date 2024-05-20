@@ -5,7 +5,7 @@ const UsersList = () => {
   const [userList, setuserList] = useState([])
   useEffect(() => {
     const fetchUsers = async () => {
-      const { data } = await axios.get("/users")
+      const { data } = await axios.get("http://localhost:4000/users")
       console.log(data)
       setuserList([...data])
     }

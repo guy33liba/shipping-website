@@ -3,13 +3,6 @@ import React, { createContext, useState } from "react"
 export const allStatesContexts = createContext()
 
 const Contexts = ({ children }) => {
-  const [register, setRegister] = useState({
-    name: "",
-    email: "",
-    password: "",
-    isAdmin: false,
-  })
-
   const [newShipment, setNewShipment] = useState({
     productName: "",
     address: "",
@@ -24,7 +17,12 @@ const Contexts = ({ children }) => {
     rating: "",
     comment: "",
   })
-
+  const [register, setRegister] = useState({
+    name: "",
+    email: "",
+    password: "",
+    isAdmin: false,
+  })
   const handleUsersChange = (key, value, newList) => {
     setRegister((prev) => ({ ...prev, [key]: value }))
     setUsers([newList])

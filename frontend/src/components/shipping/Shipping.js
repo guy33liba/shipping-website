@@ -11,7 +11,7 @@ const Shipping = () => {
   const [paymentMethod, setPaymentMethod] = useState("")
   const createShipping = async () => {
     try {
-      const { data } = await axios.post("/shipments", {
+      const { data } = await axios.post("http://localhost:4000/shipments", {
         shippingAddress: newShipment,
         paymentMethod,
       })
@@ -73,7 +73,8 @@ const Shipping = () => {
               value={paymentMethod}
               onChange={(e) => setPaymentMethod(e.target.value)}
               required
-              className="selection">
+              className="selection"
+            >
               <option value="" disabled>
                 Payment Method
               </option>

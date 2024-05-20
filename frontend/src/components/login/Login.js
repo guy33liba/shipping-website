@@ -14,7 +14,7 @@ const Login = () => {
     setLogin((prev) => ({ ...prev, [key]: value }))
   }
   const loginPost = async () => {
-    const { data } = await axios.post("/login", {login})
+  const { data } = await axios.post("http://localhost:4000/login", {login})
     console.log(data)
     navigate("/")
   }
