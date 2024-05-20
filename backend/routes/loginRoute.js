@@ -9,21 +9,20 @@ dotenv.config()
 
 loginRouter.post("/", async (req, res) => {
   console.log("Received request body:", req.body) // Log entire request body
-
-  const { email, password } = req.body.login // Assuming email and password are sent directly in the request body
+  const { email, password } = req.body.login
+  console.log("Extracted email and password:", email, password) // Log extracted email and password
 
   try {
-    const user = await Login.findOne({ email })
+    const user = await Login.findOne({ email: email })
     console.log("Queried user from database:", user) // Log the queried user
 
     if (!user) {
-      return res.status(404).json({ message: "No record found" })
+      return res.status(404).json("No Record Existed")
     }
 
     const isPasswordValid = await bcrypt.compare(password, user.password)
     if (!isPasswordValid) {
-      // Avoid leaking information about existing email addresses
-      return res.status(401).json({ message: "Invalid email or password" })
+      return res.status(401).json("The password is incorrect")
     }
 
     const token = jwt.sign(
@@ -35,7 +34,7 @@ loginRouter.post("/", async (req, res) => {
     res.status(200).json({ token })
   } catch (error) {
     console.error("Error during login process:", error) // Log any error
-    res.status(500).json({ message: "Internal server error" })
+    res.status(500).json({ message: error.message })
   }
 })
 
