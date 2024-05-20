@@ -6,12 +6,17 @@ import "./Login.css"
 const Login = () => {
   const navigate = useNavigate()
 
-  const { login, handleLogin } = useContext(allStatesContexts)
-  const [user, setUser] = useState(null)
-  
+  const [login, setLogin] = useState({
+    email: "",
+    password: "",
+  })
+  const handleLogin = (key, value) => {
+    setLogin((prev) => ({ ...prev, [key]: value }))
+  }
   const loginPost = async () => {
-    const { data } = await axios.post("/login", login)
-    setUser(data)
+    const { data } = await axios.post("/login", {login})
+    console.log(data)
+    navigate("/")
   }
   useEffect(() => {}, [])
   return (
@@ -25,7 +30,8 @@ const Login = () => {
             width: "200px",
             position: "fixed",
             left: "45%",
-          }}>
+          }}
+        >
           Login Page
         </h1>
         <div className="loginInputs">

@@ -12,32 +12,32 @@ const Home = () => {
     }
     const getUsersList = async () => {
       const { data } = await axios.get("/users")
-      setusers(data)
+      setusers([...data])
     }
     getProducts()
     getUsersList()
   }, [])
 
-  
   return (
     <div>
       <div style={{ display: "flex", width: "100vw" }}>
-        <div style={{}} className="prodcutsContainer">
+        <div className="prodcutsContainer">
           {products.map((product) => (
             <div key={product._id}>
               <img src={product.image} alt={product.name} />
               <h2>{product.name}</h2>
               <p>{product.description}</p>
               <p>${product.price}</p>
+              <button>Purchase</button>
             </div>
           ))}
         </div>
 
         <div className="usersList">
-          {users?.map((user) => (
+          {users?.map(({ register }) => (
             <div>
-              <div>{user.name}</div>
-              <div>{user.email}</div>
+              <div>{register.name}</div>
+              <div>{register.email}</div>
             </div>
           ))}
         </div>

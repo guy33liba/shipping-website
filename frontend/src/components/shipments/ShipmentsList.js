@@ -9,6 +9,7 @@ const ShipmentsList = () => {
       try {
         const { data } = await axios.get("/shipments")
         setShipments([...data])
+        console.log()
       } catch (error) {
         console.error("Error fetching shipments:", error.message)
       }
@@ -19,7 +20,7 @@ const ShipmentsList = () => {
 
   return (
     <div>
-      <h1>Shipments ::</h1>
+      <h1>Shipments :</h1>
       {shipments.map(({ paymentMethod, shippingAddress }, index) => {
         return (
           <div key={index} style={{ border: "1px solid black", width: "30%" }}>
