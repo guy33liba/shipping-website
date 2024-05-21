@@ -12,8 +12,9 @@ const userSchema = new mongoose.Schema(
         default: false,
       },
     },
+    role: { type: String },
   },
-  { timestamps: true }
+  { timestamps: true },
 )
 
 const User = mongoose.model("User", userSchema)

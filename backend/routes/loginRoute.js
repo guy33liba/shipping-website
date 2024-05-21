@@ -1,8 +1,8 @@
 import jwt from "jsonwebtoken"
 import bcrypt from "bcryptjs"
 import dotenv from "dotenv"
-import Login from "../model/loginSchema.js"
 import express from "express"
+import User from "../model/userSchema.js"
 
 const loginRouter = express.Router()
 dotenv.config()
@@ -11,7 +11,7 @@ loginRouter.post("/", async (req, res) => {
   const { email, password } = req.body.login
   console.log(email, password)
   try {
-    const user = await Login.findOne({ email: email })
+    const user = await User.findOne({ email: email })
 
     if (!user) {
       return res.status(404).json("No Record Existed")

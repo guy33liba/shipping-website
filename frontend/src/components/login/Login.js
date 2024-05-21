@@ -14,7 +14,7 @@ const Login = () => {
     setLogin((prev) => ({ ...prev, [key]: value }))
   }
   const loginPost = async () => {
-    const { data } = await axios.post("/login", {login})
+    const { data } = await axios.post("/login", { login })
     console.log(data)
     navigate("/")
   }
@@ -30,8 +30,7 @@ const Login = () => {
             width: "200px",
             position: "fixed",
             left: "45%",
-          }}
-        >
+          }}>
           Login Page
         </h1>
         <div className="loginInputs">
