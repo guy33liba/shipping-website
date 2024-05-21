@@ -7,7 +7,7 @@ const ShipmentsList = () => {
   useEffect(() => {
     const fetchShipments = async () => {
       try {
-        const { data } = await axios.get("http://localhost:4000/shipments")
+        const { data } = await axios.get("/shipments")
         setShipments([...data])
         console.log()
       } catch (error) {
