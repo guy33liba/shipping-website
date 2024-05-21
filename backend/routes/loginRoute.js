@@ -8,10 +8,17 @@ const loginRouter = express.Router()
 dotenv.config()
 
 loginRouter.post("/", async (req, res) => {
+  console.log("Received request body:", req.body) // Log entire request body
   const { email, password } = req.body.login
-  console.log(email, password)
+  console.log("Extracted email and password:", email, password) // Log extracted email and password
+
   try {
+<<<<<<< HEAD
     const user = await User.findOne({ email: email })
+=======
+    const user = await Login.findOne({ email: email })
+    console.log("Queried user from database:", user) // Log the queried user
+>>>>>>> 0642d4d0f8be721497207701ff45cdaaff3787f7
 
     if (!user) {
       return res.status(404).json("No Record Existed")
@@ -30,6 +37,7 @@ loginRouter.post("/", async (req, res) => {
 
     res.status(200).json({ token })
   } catch (error) {
+    console.error("Error during login process:", error) // Log any error
     res.status(500).json({ message: error.message })
   }
 })

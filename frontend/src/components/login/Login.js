@@ -14,7 +14,12 @@ const Login = () => {
     setLogin((prev) => ({ ...prev, [key]: value }))
   }
   const loginPost = async () => {
+<<<<<<< HEAD
     const { data } = await axios.post("/login", { login })
+=======
+
+    const { data } = await axios.post("/login", {login})
+>>>>>>> 0642d4d0f8be721497207701ff45cdaaff3787f7
     console.log(data)
     navigate("/")
   }
