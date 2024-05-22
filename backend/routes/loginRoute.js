@@ -13,7 +13,8 @@ loginRouter.post("/", async (req, res) => {
   console.log("Extracted email and password:", email, password) // Log extracted email and password
 
   try {
-    const user = await User.findOne({ email: email })
+    console.log({ email })
+    const user = console.log(await User.findOne({ email }))
     console.log("Queried user from database:", user) // Log the queried user
 
     if (!user) {
@@ -25,9 +26,13 @@ loginRouter.post("/", async (req, res) => {
       return res.status(401).json("The password is incorrect")
     }
 
-    const token = jwt.sign({ userId: user._id, email: user.email }, process.env.JWT_SECRET, {
-      expiresIn: "1h",
-    })
+    const token = jwt.sign(
+      { userId: user._id, email: user.email },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: "1h",
+      }
+    )
 
     res.status(200).json({ token })
   } catch (error) {
