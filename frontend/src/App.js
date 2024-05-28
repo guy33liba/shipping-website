@@ -8,6 +8,8 @@ import Register from "./components/register/Register"
 import UsersList from "./components/users-list/UsersList"
 import ShipmentsList from "./components/shipments/ShipmentsList"
 import Login from "./components/login/Login"
+import SingleItem from "./components/single-item/SingleItem"
+import Cart from "./components/cart/Cart"
 import "./App.css"
 const App = () => {
   return (
@@ -24,6 +26,8 @@ const App = () => {
             <Route path="/shipments" element={<ShipmentsList />} />
             <Route path="/users" element={<UsersList />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/singleItem" element={<SingleItem />} />
+            <Route path="/cart" element={<Cart />} />
           </Routes>
         </div>
       </Router>

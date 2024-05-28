@@ -18,31 +18,18 @@ const Home = () => {
     getProducts()
     getUsersList()
   }, [])
-  const handleCheckBox = (index) => {
-    setCheckBox((prevCheckBox) => {
-      const newCheckBox = [...prevCheckBox]
-      newCheckBox[index] = !newCheckBox[index]
-      return newCheckBox
-    })
-  }
 
+  const getSingleProduct = async () => {
+    const { data } = await axios.post("/product")
+    setProducts(data)
+  }
   return (
     <div>
       <div style={{ display: "flex", width: "100vw" }}>
         <div className="prodcutsContainer">
           {products.map((product, index) => (
             <div key={product._id}>
-              <label className="checkboxLabel">
-                {checkBox[index] === true ? "Checked" : "Not Checked"}
-              </label>
-
-              <input
-                type="checkbox"
-                checked={checkBox[index]}
-                className="checking"
-                onChange={() => handleCheckBox(index)}
-              />
-              <img src={product.image} alt={product.name} />
+              <img src={product.image} alt={product.name} onClick={(e) => {}} />
               <h2>{product.name}</h2>
               <p>{product.description}</p>
               <p>${product.price}</p>
@@ -50,7 +37,6 @@ const Home = () => {
           ))}
         </div>
         {console.log(checkBox)}
-
         <div className="usersList">
           {users?.map(({ register }) => (
             <div>
