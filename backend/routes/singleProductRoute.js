@@ -1,10 +1,11 @@
-import Shipping from "../model/shippingSchema.js"
 import express from "express"
+import ProductsList from "../model/productSchema.js"
+
 const singleProductRoute = express.Router()
-singleProductRoute.get("/", async (req, res) => {
-  const { id } = req.params
+singleProductRoute.post("/", async (req, res) => {
+  const { name } = req.body
   try {
-    const product = await Shipping.findById(id)
+    const product = await ProductsList.findOne({ name })
     console.log(product)
     if (!product) {
       return res.status(404).json({ message: "Product not found" })
