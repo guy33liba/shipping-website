@@ -21,10 +21,11 @@ const Home = () => {
   }, [])
   const navigate = useNavigate()
   const getSingleProduct = async (id) => {
-    const { data } = await axios.post(`/product/${id}`, singleItem)
-    handleSingleItem(data)
+    const { data } = await axios.post(`/product`, singleItem)
+    const singleItem = data.filter((item) => item._id === id)
+    handleSingleItem(singleItem)
     console.log(singleItem)
-    navigate(`/singleItem/${id}`)
+    navigate(`/singleItem`)
   }
   return (
     <div>
