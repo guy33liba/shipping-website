@@ -10,7 +10,15 @@ const Contexts = ({ children }) => {
     postalCode: "",
     country: "",
   })
-
+  const [singleItem, setSingleItem] = useState({
+    name: "",
+    image: "",
+    brand: "",
+    category: "",
+    description: "",
+    price: "",
+    countInStock: "",
+  })
   const [newReview, setNewReview] = useState({
     user: "",
     name: "",
@@ -36,7 +44,9 @@ const Contexts = ({ children }) => {
     setNewReview((prev) => ({ ...prev, [key]: value }))
     setReviews([newList])
   }
-
+  const handleSingleItem = (key, value, newList) => {
+    setSingleItem(value)
+  }
   const [users, setUsers] = useState([])
   const [shipments, setShipments] = useState([])
   const [reviews, setReviews] = useState([])
@@ -48,10 +58,12 @@ const Contexts = ({ children }) => {
         handleShippingChange,
         handleUsersChange,
         handleReviewChange,
+        handleSingleItem,
         shipments,
         users,
         reviews,
         newReview,
+        singleItem,
       }}
     >
       {children}

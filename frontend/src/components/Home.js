@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import axios from "axios"
-import { useLocation } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
+import { allStatesContexts } from "./Contexts"
 const Home = () => {
   const [products, setProducts] = useState([])
   const [users, setusers] = useState([])
-  const [checkBox, setCheckBox] = useState([])
-  const location = useLocation()
+  const { singleItem, handleSingleItem } = useContext(allStatesContexts)
+
   useEffect(() => {
     const getProducts = async () => {
       const { data } = await axios.get("/products")
@@ -18,10 +19,12 @@ const Home = () => {
     getProducts()
     getUsersList()
   }, [])
-
-  const getSingleProduct = async () => {
-    const { data } = await axios.post("/product")
-    setProducts(data)
+  const navigate = useNavigate()
+  const getSingleProduct = async (id) => {
+    const { data } = await axios.get(`/product/${id}`, singleItem)
+    handleSingleItem(data)
+    console.log(singleItem)
+    navigate(`/singleItem/${id}`)
   }
   return (
     <div>
@@ -29,14 +32,17 @@ const Home = () => {
         <div className="prodcutsContainer">
           {products.map((product, index) => (
             <div key={product._id}>
-              <img src={product.image} alt={product.name} onClick={(e) => {}} />
+              <img
+                src={product.image}
+                alt={product.name}
+                onClick={() => getSingleProduct(product._id)}
+              />
               <h2>{product.name}</h2>
               <p>{product.description}</p>
               <p>${product.price}</p>
             </div>
           ))}
         </div>
-        {console.log(checkBox)}
         <div className="usersList">
           {users?.map(({ register }) => (
             <div>
