@@ -8,10 +8,7 @@ const loginRouter = express.Router()
 dotenv.config()
 
 loginRouter.post("/", async (req, res) => {
-  console.log("Received request body:", req.body) // Log entire request body
   const { email, password } = req.body.login
-  console.log("Extracted email and password:", email, password) // Log extracted email and password
-
   try {
     const user = await User.findOne({ email })
     console.log(`Queried user from database: ${email}`) // Log the queried user
