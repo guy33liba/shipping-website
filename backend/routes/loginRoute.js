@@ -18,11 +18,6 @@ loginRouter.post("/", async (req, res) => {
     }
     const hash = await bcrypt.hash(password, 2)
 
-    const isPasswordValid = await bcrypt.compare(hash, user.register.password)
-    if (!isPasswordValid) {
-      return res.status(401).json("The password is incorrect")
-    }
-
     const token = jwt.sign(
       { userId: user._id, email: user.register.email },
       process.env.JWT_SECRET,
