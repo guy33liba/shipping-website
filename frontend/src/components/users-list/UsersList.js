@@ -11,6 +11,7 @@ const UsersList = () => {
     }
     fetchUsers()
   }, [])
+ 
   return (
     <div>
       {userList.map(({ register }, index) => {
@@ -24,6 +25,7 @@ const UsersList = () => {
                 <h2>Email : {register.email}</h2>
                 <h2>Password : {register.password}</h2>
                 <h2>IsAdmin : {register.isAdmin ? "yes" : "no"}</h2>
+              
               </div>
             </div>
           </div>

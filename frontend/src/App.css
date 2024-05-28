@@ -53,3 +53,13 @@
 .navbar {
   font-size: 25px;
 }
+.checking {
+  width: 30px;
+  height: 30px;
+  margin: 20px;
+}
+.checkboxLabel {
+  font-size: 25px;
+  display: flex;
+  flex-direction: column;
+}
