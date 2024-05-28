@@ -11,7 +11,7 @@ loginRouter.post("/", async (req, res) => {
   const { email, password } = req.body.login
   try {
     const user = await User.findOne({ email })
-    console.log(`Queried user from database: ${email}`) // Log the queried user
+    console.log(`Queried user from database: ${user}`) // Log the queried user
     if (!user) {
       return res.status(404).json("No Record Existed")
     }
