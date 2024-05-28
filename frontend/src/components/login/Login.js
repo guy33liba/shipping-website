@@ -30,6 +30,7 @@ const Login = () => {
             width: "200px",
             position: "fixed",
             left: "45%",
+            backgroundColor:'white'
           }}>
           Login Page
         </h1>
