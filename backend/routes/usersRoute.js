@@ -24,6 +24,7 @@ userRouter.post("/", async (req, res) => {
       isAdmin,
     },
   })
+  console.log(user)
   try {
     const newUser = await user.save()
     res.status(201).json(newUser)
@@ -38,7 +39,7 @@ userRouter.post("/login", async (req, res) => {
   try {
     const user = await User.findOne({ "register.email": email })
     if (user && (await user.matchPassword(password, user.register.passowrd))) {
-      const token = jwt.sign({id:user._id},'secret')
+      const token = jwt.sign({ id: user._id }, "secret")
       res.json({ token, user })
     } else {
       res.status(401).json({ message: "Invalid email or password" })

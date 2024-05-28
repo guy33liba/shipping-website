@@ -13,7 +13,8 @@ const Login = () => {
   const handleLogin = (key, value) => {
     setLogin((prev) => ({ ...prev, [key]: value }))
   }
-  const loginPost = async () => {
+  const loginPost = async (e) => {
+    e.preventDefault()
     const { data } = await axios.post("/login", { login })
     console.log(data)
     navigate("/")
@@ -21,39 +22,42 @@ const Login = () => {
   useEffect(() => {}, [])
   return (
     <div>
-      <div className="loginForm">
-        <h1
-          style={{
-            textAlign: "center",
-            border: "2px solid black",
-            borderRadius: "20px",
-            width: "200px",
-            position: "fixed",
-            left: "45%",
-          }}>
-          Login Page
-        </h1>
-        <div className="loginInputs">
-          <div>
-            <input
-              type="email"
-              value={login.email}
-              onChange={(e) => handleLogin("email", e.target.value)}
-              placeholder="Email"
-            />
-          </div>
-          <div>
-            <input
-              type="password"
-              value={login.password}
-              onChange={(e) => handleLogin("password", e.target.value)}
-              placeholder="Password"
-            />
-          </div>
+      <form onSubmit={loginPost}>
+        <div className="loginForm">
+          <h1
+            style={{
+              textAlign: "center",
+              border: "2px solid black",
+              borderRadius: "20px",
+              width: "200px",
+              position: "fixed",
+              left: "45%",
+            }}
+          >
+            Login Page
+          </h1>
+          <div className="loginInputs">
+            <div>
+              <input
+                type="email"
+                value={login.email}
+                onChange={(e) => handleLogin("email", e.target.value)}
+                placeholder="Email"
+              />
+            </div>
+            <div>
+              <input
+                type="password"
+                value={login.password}
+                onChange={(e) => handleLogin("password", e.target.value)}
+                placeholder="Password"
+              />
+            </div>
 
-          <button onClick={loginPost}>Login Submit</button>
+            <button onClick={loginPost}>Login Submit</button>
+          </div>
         </div>
-      </div>
+      </form>
     </div>
   )
 }
