@@ -37,8 +37,8 @@ userRouter.post("/login", async (req, res) => {
 
   try {
     const user = await User.findOne({ "register.email": email })
-    if (user && (await user.matchPassword(password))) {
-      const token = user.getSignedJwtToken()
+    if (user && (await user.matchPassword(password, user.register.passowrd))) {
+      const token = jwt.sign({id:user._id},'secret')
       res.json({ token, user })
     } else {
       res.status(401).json({ message: "Invalid email or password" })
@@ -46,21 +46,6 @@ userRouter.post("/login", async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message })
   }
-})
-
-userRouter.get("/:userId", (req, res) => {
-  const userId = req.params.userId
-  res.json({ message: `Get user with ID ${userId}` })
-})
-
-userRouter.put("/:userId", (req, res) => {
-  const userId = req.params.userId
-  res.json({ message: `Update user with ID ${userId}` })
-})
-
-userRouter.delete("/:userId", (req, res) => {
-  const userId = req.params.userId
-  res.json({ message: `Delete user with ID ${userId}` })
 })
 
 export default userRouter
