@@ -18,7 +18,7 @@ const UsersList = () => {
         return (
           <div key={index}>
             <div
-              style={{ border: "1px solid black", marginLeft: "20px", width: "500px" }}
+              style={{ border: "1px solid black", marginLeft: "20px", width: "400px" }}
             >
               <div style={{ marginLeft: "20px" }}>
                 <h2>User Name : {register.name}</h2>
