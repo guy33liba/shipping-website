@@ -24,6 +24,7 @@ const Home = () => {
       </>
     )
   }
+  const navigate = useNavigate()
   useEffect(() => {
     const getProducts = async () => {
       const { data } = await axios.get("/products")
@@ -36,11 +37,8 @@ const Home = () => {
     getProducts()
     getUsersList()
   }, [])
-  const navigate = useNavigate()
-  const getSingleProduct = async (id) => {
-    const { data } = await axios.post(`/product`, singleItem)
-
-    navigate(`/singleItem`)
+  const getSingleProduct = (product) => {
+    navigate(`/singleItem/${product._id}`, { state: { ...product } })
   }
   return (
     <div>
@@ -51,9 +49,9 @@ const Home = () => {
               <img
                 src={product.image}
                 alt={product.name}
-                onClick={() => getSingleProduct(product._id)}
+                onClick={() => getSingleProduct(product)}
               />
-              <h2>{renderStars(product.rating)}</h2>
+              <h2 className="stars">{renderStars(product.rating)}</h2>
               <h2>{product.name}</h2>
               <p>{product.description}</p>
               <p>${product.price}</p>
