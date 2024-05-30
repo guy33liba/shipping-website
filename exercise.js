@@ -24,4 +24,4 @@ function factorialize(num) {
     return num * factorialize(num - 1)
   }
 }
-console.log(factorialize(32))
+console.log(factorialize(6))
