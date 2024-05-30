@@ -15,10 +15,13 @@ let str3 = "nitin"
 function reverseString(str) {
   return str.split("").reverse().join("")
 }
-console.log(reverseString("hello"))
+// console.log(reverseString("hello"))
+// console.log(palindrome("nitin"))
 function factorialize(num) {
-  // Your code here
+  if (num < 0) return -1
+  else if (num == 0) return 1
+  else {
+    return num * factorialize(num - 1)
+  }
 }
-
-console.log(factorialize(5)) // 120
-console.log(factorialize(10)) // 3628800
+console.log(factorialize(32))
