@@ -59,3 +59,75 @@ function recursion(num) {
   }
 }
 console.log(recursion(5))
+function fizzBuzz() {
+  // Your code here
+  for (let i = 1; i <= 100; i++) {
+    if (i % 3 === 0 && i % 5 === 0) {
+      console.log("FizzBuzz")
+    } else if (i % 3 == 0) {
+      console.log("Fizz")
+    } else if (i % 5 == 0) {
+      console.log("Buzz")
+    } else {
+      console.log(i)
+    }
+  }
+}
+
+// fizzBuzz()
+function mergeObjects(obj1, obj2) {
+  if (obj2.b < obj1.b) return { ...obj2, ...obj1 }
+  if (obj2.b > obj1.b) return { ...obj1, ...obj2 }
+}
+const obj1 = { b: 23, a: 1 }
+const obj2 = { b: 21, c: 4 }
+// console.log(mergeObjects(obj1, obj2))
+
+function printEvenNumber() {
+  for (let i = 0; i < 10; i++) {
+    if (i % 2 == 0) {
+      console.log(i)
+    }
+  }
+}
+// printEvenNumber()
+function printNotEvenNumber() {
+  for (let i = 0; i < 10; i++) {
+    if (i % 2 !== 0) {
+      console.log(i)
+    }
+  }
+}
+// printNotEvenNumber()
+
+function tablePrint() {
+  const number = parseInt(1)
+
+  //creating a multiplication table
+  for (let i = 1; i <= 10; i++) {
+    // multiply i with number
+    const result = i * number
+
+    // display the result
+    console.log(`${number} * ${i} = ${result}`)
+  }
+}
+// tablePrint()
+
+function lengthConverter(str) {
+  let len = str.length
+  return len
+}
+
+// console.log(lengthConverter("123123123123123123123213"))
+function fizzfuzz() {
+  for (let i = 0; i < 100; i++) {
+    if (i % 3 == 0 && i % 5 == 0) console.log("Fizzfuzz")
+    else if (i % 3 == 0) {
+      console.log("Fizz")
+    } else if (i % 5 == 0) {
+      console.log("Fuzz")
+    }else{console.log(i)}
+  }
+}
+fizzfuzz()
