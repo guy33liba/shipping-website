@@ -16,3 +16,9 @@ function reverseString(str) {
   return str.split("").reverse().join("")
 }
 console.log(reverseString("hello"))
+function factorialize(num) {
+  // Your code here
+}
+
+console.log(factorialize(5)) // 120
+console.log(factorialize(10)) // 3628800
