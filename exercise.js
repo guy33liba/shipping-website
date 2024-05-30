@@ -20,8 +20,15 @@ function reverseString(str) {
 function factorialize(num) {
   if (num < 0) return -1
   else if (num == 0) return 1
-  else {
+  if (num) {
     return num * factorialize(num - 1)
   }
 }
-console.log(factorialize(6))
+console.log(factorialize(12))
+
+function findLongestWord(str) {
+  let word = 0
+str.split(' ')
+}
+
+console.log(findLongestWord("The quick brown fox jumped over the lazy dog")) // 6
