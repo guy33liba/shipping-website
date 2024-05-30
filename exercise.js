@@ -12,16 +12,7 @@ let str1 = "racecar"
 let str2 = "hello"
 let str3 = "nitin"
 
-
-function reverse(str) {
-  let rev = ""
-  for (let i = str.length - 1; i >= 0; i--) {
-    rev += str[i]
-    if (rev == str) {
-      return true
-    } else {
-      return false
-    }
-  }
+function reverseString(str) {
+  return str.split("").reverse().join("")
 }
-console.log(reverse(str3))
+console.log(reverseString("hello"))
