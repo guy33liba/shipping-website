@@ -53,8 +53,8 @@ function palindrome(str) {
 console.log(palindrome("da")) // Should return false
 console.log(palindrome("ititi")) // Should return true
 function recursion(num) {
+  if (num == 0) return 1
   if (num) {
-    if (num == 0) return 1
     return num * recursion(num - 1)
   }
 }
