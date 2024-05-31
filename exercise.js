@@ -1,6 +1,6 @@
 function palindrome(str) {
   let j = str.length - 1
-  for (let i = 0; i < str.length / 2; i++) {
+  for (let i = 0; i < str.length; i++) {
     if (str[i] !== str[j]) {
       return false
     }
@@ -147,8 +147,8 @@ function sumArray(arr) {
 }
 
 // Example usage:
-console.log(sumArray([1, 2, 3, 4, 5])) // Should return 15
-console.log(sumArray([10, 20, 30])) // Should return 60
+// console.log(sumArray([1, 2, 3, 4, 5])) // Should return 15
+// console.log(sumArray([10, 20, 30])) // Should return 60
 function isEven(num) {
   if (num % 2 == 0) return "even"
   if (num % 2 !== 0) return "not even"
@@ -194,15 +194,17 @@ function faziziz() {
 }
 // faziziz()
 function removeDuplicates(arr) {
+  let duplicated = []
   for (let i = 0; i < arr.length; i++) {
-    let dup = arr[i]
-    if (dup == i) {
-      arr.splice(i, 1)
+    for (let j = 0; j < arr.length; j++) {
+      if (arr[i] === arr[j] && !duplicated.includes(arr[i])) {
+        duplicated.push(arr[i])
+      }
     }
-    return dup
   }
+  return duplicated
 }
 
 // Example usage:
-console.log(removeDuplicates([1, 2, 2, 3, 4, 4, 5])) // Should return [1, 2, 3, 4, 5]
-console.log(removeDuplicates([10, 10, 20, 20, 30])) // Should return [10, 20, 30]
+// console.log(removeDuplicates([1, 2, 2, 3, 4, 4, 5])) // Should return [1, 2, 3, 4, 5]
+// console.log(removeDuplicates([10, 10, 20, 20, 30])) // Should return [10, 20, 30]
