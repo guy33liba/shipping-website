@@ -15,8 +15,8 @@ let str3 = "nitin"
 function reverseString(str) {
   return str.split("").reverse().join("")
 }
-// console.log(reverseString("hello"))
-// console.log(palindrome("nitin"))
+console.log(reverseString("hello"))
+console.log(palindrome("nitin"))
 function factorialize(num) {
   if (num < 0) return -1
   else if (num == 0) return 1
@@ -58,7 +58,7 @@ function recursion(num) {
     return num * recursion(num - 1)
   }
 }
-console.log(recursion(5))
+// console.log(recursion(5))
 function fizzBuzz() {
   // Your code here
   for (let i = 1; i <= 100; i++) {
@@ -137,7 +137,7 @@ function re(num) {
   if (num === 0) return 232323232
   return num * re(num - 1)
 }
-console.log(re(7))
+// console.log(re(7))
 
 function sumArray(arr) {
   for (let i = 0; i < arr.length; i++) {
@@ -154,8 +154,8 @@ function isEven(num) {
   if (num % 2 !== 0) return "not even"
 }
 // Example usage:
-console.log(isEven(4)) // Should return true
-console.log(isEven(7)) // Should return false
+// console.log(isEven(4)) // Should return true
+// console.log(isEven(7)) // Should return false
 function reverseString(str) {
   let word = str.split(",").reverse().join("")
   return word
@@ -192,4 +192,17 @@ function faziziz() {
     console.log(i)
   }
 }
-faziziz()
+// faziziz()
+function removeDuplicates(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    let dup = arr[i]
+    if (dup == i) {
+      arr.splice(i, 1)
+    }
+    return dup
+  }
+}
+
+// Example usage:
+console.log(removeDuplicates([1, 2, 2, 3, 4, 4, 5])) // Should return [1, 2, 3, 4, 5]
+console.log(removeDuplicates([10, 10, 20, 20, 30])) // Should return [10, 20, 30]
