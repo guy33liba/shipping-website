@@ -127,7 +127,59 @@ function fizzfuzz() {
       console.log("Fizz")
     } else if (i % 5 == 0) {
       console.log("Fuzz")
-    }else{console.log(i)}
+    } else {
+      console.log(i)
+    }
   }
 }
 fizzfuzz()
+function re(num) {
+  if (num === 0) return 232323232
+  return num * re(num - 1)
+}
+console.log(re(7))
+
+function sumArray(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    const sum = arr.reduce((a, b) => a + b)
+    return sum
+  }
+}
+
+// Example usage:
+console.log(sumArray([1, 2, 3, 4, 5])) // Should return 15
+console.log(sumArray([10, 20, 30])) // Should return 60
+function isEven(num) {
+  if (num % 2 == 0) return "even"
+  if (num % 2 !== 0) return "not even"
+}
+// Example usage:
+console.log(isEven(4)) // Should return true
+console.log(isEven(7)) // Should return false
+function reverseString(str) {
+  let word = str.split(",").reverse().join("")
+  return word
+}
+
+console.log(reverseString("hello")) // Should return "olleh"
+function findMax(arr) {
+  let max = arr[0]
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > max) {
+      max = arr[i]
+    }
+  }
+  return max
+}
+console.log(findMax([1, 2, 3, 4, 5])) // Should return 5
+console.log(findMax([10, 20, 30])) // Should return 30
+
+function fuzuzz() {
+  for (let i = 0; i < 111; i++) {
+    if (i % 3 == 0 && i % 5 == 0) console.log("hello")
+    if (i % 3 == 0) console.log("olleh")
+    if (i % 5 == 0) console.log("shit")
+    console.log(i)
+  }
+}
+fuzuzz()
