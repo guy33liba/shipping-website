@@ -132,7 +132,7 @@ function fizzfuzz() {
     }
   }
 }
-fizzfuzz()
+// fizzfuzz()
 function re(num) {
   if (num === 0) return 232323232
   return num * re(num - 1)
@@ -171,8 +171,8 @@ function findMax(arr) {
   }
   return max
 }
-console.log(findMax([1, 2, 3, 4, 5])) // Should return 5
-console.log(findMax([10, 20, 30])) // Should return 30
+// console.log(findMax([1, 2, 3, 4, 5])) // Should return 5
+// console.log(findMax([10, 20, 30])) // Should return 30
 
 function fuzuzz() {
   for (let i = 0; i < 111; i++) {
@@ -182,4 +182,14 @@ function fuzuzz() {
     console.log(i)
   }
 }
-fuzuzz()
+// fuzuzz()
+
+function faziziz() {
+  for (let i = 0; i < 100; i++) {
+    if (i % 3 == 0 && i % 6 == 0) console.log("hello")
+    if (i % 3 == 0) console.log("olleh")
+    if (i % 6 == 0) console.log("shit")
+    console.log(i)
+  }
+}
+faziziz()
