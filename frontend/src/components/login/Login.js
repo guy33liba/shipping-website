@@ -5,11 +5,7 @@ import { useNavigate } from "react-router-dom"
 import "./Login.css"
 const Login = () => {
   const navigate = useNavigate()
-
-  const [login, setLogin] = useState({
-    email: "",
-    password: "",
-  })
+  const { login, setLogin } = useContext(allStatesContexts)
   const handleLogin = (key, value) => {
     setLogin((prev) => ({ ...prev, [key]: value }))
   }
@@ -33,11 +29,18 @@ const Login = () => {
               position: "fixed",
               left: "45%",
               backgroundColor: "white",
-            }}
-          >
+            }}>
             Login Page
           </h1>
           <div className="loginInputs">
+            <div>
+              <input
+                type="text"
+                value={login.name}
+                onChange={(e) => handleLogin("name", e.target.value)}
+                placeholder="Name"
+              />
+            </div>
             <div>
               <input
                 type="email"
@@ -46,6 +49,7 @@ const Login = () => {
                 placeholder="Email"
               />
             </div>
+
             <div>
               <input
                 type="password"

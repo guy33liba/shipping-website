@@ -11,6 +11,7 @@ loginRouter.post("/", async (req, res) => {
   try {
     console.log({ email })
     const user = await User.findOne({ "register.email": email })
+
     console.log(`Queried user from database: ${user}`) // Log the queried user
 
     if (!user) {
@@ -23,19 +24,50 @@ loginRouter.post("/", async (req, res) => {
       return res.status(401).json("The password is incorrect")
     }
 
-    const token = jwt.sign(
+    const accessToken = jwt.sign(
       { userId: user._id, email: user.register.email },
       process.env.JWT_SECRET,
       {
         expiresIn: "1h",
       },
     )
-
-    res.status(200).json({ token })
+    const refreshToken = jwt.sign(
+      { userId: user._id, email: user.register.email },
+      "REFERSH_TOKEN",
+      { expiresIn: "7d" }, // Long-lived token (e.g., 7 days)
+    )
+    res.cookie("refreshToken", refreshToken, { httpOnly: true, secure: true, sameSite: "Strict" })
+    res.status(200).json({ accessToken })
   } catch (error) {
     console.error("Error during login process:", error) // Log any error
     res.status(500).json({ message: error.message })
   }
 })
 
+loginRouter.post("/refresh-token", (req, res) => {
+  const refreshToken = req.cookies.refreshToken
+
+  if (!refreshToken) {
+    return res.status(401).json({ message: "Refresh Token not found, please log in again" })
+  }
+
+  try {
+    jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
+      if (err) {
+        return res.status(403).json({ message: "Invalid Refresh Token" })
+      }
+
+      const newAccessToken = jwt.sign(
+        { userId: user.userId, email: user.email },
+        process.env.JWT_SECRET,
+        { expiresIn: "15m" },
+      )
+
+      res.status(200).json({ accessToken: newAccessToken })
+    })
+  } catch (error) {
+    console.error("Error during token refresh process:", error)
+    res.status(500).json({ message: "Internal Server Error" })
+  }
+})
 export default loginRouter

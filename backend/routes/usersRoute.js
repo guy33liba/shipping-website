@@ -15,21 +15,37 @@ userRouter.get("/", async (req, res) => {
 })
 
 userRouter.post("/", async (req, res) => {
-  const { name, email, password, isAdmin } = req.body.register
-  const user = new User({
-    register: {
-      name,
-      email,
-      password,
-      isAdmin,
-    },
-  })
-  console.log(user)
+  const { email, password } = req.body.register;
+
+  // Input validation
+  if (!email || !password) {
+    return res.status(400).json({ message: "Email and password are required." });
+  }
+
   try {
-    const newUser = await user.save()
-    res.status(201).json(newUser)
+    // Check if the user already exists
+    const existingUser = await User.findOne({ "register.email": email });
+    if (existingUser) {
+      return res.status(400).json({ message: "User already exists." });
+    }
+
+    // Hash the password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Create a new user instance
+    const newUser = new User({
+      register: {
+        email,
+        password: hashedPassword,
+      },
+    });
+
+    // Save the user to the database
+    const savedUser = await newUser.save();
+    res.status(201).json({ message: "User registered successfully", user: savedUser });
   } catch (error) {
-    res.status(400).json({ message: error.message })
+    console.error("Error during user registration:", error);
+    res.status(500).json({ message: "Internal Server Error" });
   }
 })
 

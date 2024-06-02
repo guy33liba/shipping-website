@@ -6,7 +6,7 @@ import { allStatesContexts } from "./Contexts"
 const Home = () => {
   const [products, setProducts] = useState([])
   const [users, setusers] = useState([])
-  const { singleItem, handleSingleItem } = useContext(allStatesContexts)
+  const { login, register } = useContext(allStatesContexts)
   const renderStars = (rating) => {
     const fullStars = Math.floor(rating)
     const halfStar = rating % 1 !== 0
@@ -42,10 +42,12 @@ const Home = () => {
   }
   return (
     <div>
+      <h1 style={{ textAlign: "center" }}>{login.name}</h1>
+      {console.log(login)}
       <div style={{ display: "flex", width: "100vw" }}>
         <div className="prodcutsContainer">
           {products.map((product, index) => (
-            <div key={product._id}>
+            <div key={index}>
               <img
                 src={product.image}
                 alt={product.name}
@@ -59,8 +61,8 @@ const Home = () => {
           ))}
         </div>
         <div className="usersList">
-          {users?.map(({ register }) => (
-            <div>
+          {users?.map(({ register, index }) => (
+            <div key={index}>
               <div>{register.name}</div>
               <div>{register.email}</div>
             </div>

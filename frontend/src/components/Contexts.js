@@ -31,6 +31,11 @@ const Contexts = ({ children }) => {
     password: "",
     isAdmin: false,
   })
+  const [login, setLogin] = useState({
+    name: "",
+    email: "",
+    password: "",
+  })
   const handleUsersChange = (key, value, newList) => {
     setRegister((prev) => ({ ...prev, [key]: value }))
     setUsers([newList])
@@ -64,8 +69,10 @@ const Contexts = ({ children }) => {
         reviews,
         newReview,
         singleItem,
-      }}
-    >
+        login,
+        setLogin,
+        setRegister,
+      }}>
       {children}
     </allStatesContexts.Provider>
   )
