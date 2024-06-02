@@ -47,7 +47,7 @@ const Home = () => {
       <div style={{ display: "flex", width: "100vw" }}>
         <div className="prodcutsContainer">
           {products.map((product, index) => (
-            <div key={index}>
+            <div key={product._id}>
               <img
                 src={product.image}
                 alt={product.name}
@@ -62,8 +62,8 @@ const Home = () => {
         </div>
         <div className="usersList">
           {users?.map(({ register, index }) => (
-            <div key={index}>
-              <div>{register.name}</div>
+            <div>
+              <div >{register.name}</div>
               <div>{register.email}</div>
             </div>
           ))}

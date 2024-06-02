@@ -34,7 +34,7 @@ loginRouter.post("/", async (req, res) => {
     const refreshToken = jwt.sign(
       { userId: user._id, email: user.register.email },
       "REFERSH_TOKEN",
-      { expiresIn: "7d" }, // Long-lived token (e.g., 7 days)
+      { expiresIn: "7d" },
     )
     res.cookie("refreshToken", refreshToken, { httpOnly: true, secure: true, sameSite: "Strict" })
     res.status(200).json({ accessToken })
@@ -68,6 +68,21 @@ loginRouter.post("/refresh-token", (req, res) => {
     })
   } catch (error) {
     console.error("Error during token refresh process:", error)
+    res.status(500).json({ message: "Internal Server Error" })
+  }
+})
+loginRouter.get("/singleUser/:id", async (req, res) => {
+  const userId = req.params.id
+  try {
+    const user = await User.findById(userId).select("-register.password") // Exclude password
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" })
+    }
+
+    res.status(200).json(user)
+  } catch (error) {
+    console.error("Error fetching user details:", error)
     res.status(500).json({ message: "Internal Server Error" })
   }
 })

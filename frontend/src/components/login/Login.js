@@ -33,14 +33,14 @@ const Login = () => {
             Login Page
           </h1>
           <div className="loginInputs">
-            <div>
+            {/* <div>
               <input
                 type="text"
                 value={login.name}
                 onChange={(e) => handleLogin("name", e.target.value)}
                 placeholder="Name"
               />
-            </div>
+            </div> */}
             <div>
               <input
                 type="email"
