@@ -13,6 +13,12 @@ const Login = () => {
     e.preventDefault()
     const { data } = await axios.post("/login", { login })
     console.log(data)
+    // navigate("/")
+  }
+  const fetchSingleUser = async (id) => {
+    const { data } = await axios.get(`/users/${id}`)
+    console.log(data)
+    setLogin(data)
     navigate("/")
   }
   useEffect(() => {}, [])
@@ -29,7 +35,8 @@ const Login = () => {
               position: "fixed",
               left: "45%",
               backgroundColor: "white",
-            }}>
+            }}
+          >
             Login Page
           </h1>
           <div className="loginInputs">
@@ -59,7 +66,14 @@ const Login = () => {
               />
             </div>
 
-            <button onClick={loginPost}>Login Submit</button>
+            <button
+              onClick={(e) => {
+                loginPost(e)
+                fetchSingleUser(login.name)
+              }}
+            >
+              Login Submit
+            </button>
           </div>
         </div>
       </form>
