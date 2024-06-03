@@ -43,15 +43,15 @@ app.get("/api/items/:id", async (req, res) => {
   }
 })
 
-app.get("/api/items", async (req, res) => {
-  try {
-    const items = await Item.find({})
-    res.json(items)
-  } catch (err) {
-    console.error("Error fetching items:", err) // Log the detailed error
-    res.status(500).json({ message: "Server error", error: err.message })
-  }
-})
+// app.get("/api/items", async (req, res) => {
+//   try {
+//     const items = await Item.find({})
+//     res.json(items)
+//   } catch (err) {
+//     console.error("Error fetching items:", err) // Log the detailed error
+//     res.status(500).json({ message: "Server error", error: err.message })
+//   }
+// })
 
 const populateDB = async () => {
   try {
