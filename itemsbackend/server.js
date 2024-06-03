@@ -8,6 +8,11 @@ const port = 5000 // Your desired port
 app.use(cors())
 app.use(express.json())
 
+const items = [
+  { name: "Item 1", description: "Description for Item 1" },
+  { name: "Item 2", description: "Description for Item 2" },
+  { name: "Item 3", description: "Description for Item 3" },
+]
 // Connect to MongoDB
 mongoose
   .connect(
@@ -38,11 +43,15 @@ app.get("/api/items/:id", async (req, res) => {
   }
 })
 
-const items = [
-  { name: "Item 1", description: "Description for Item 1" },
-  { name: "Item 2", description: "Description for Item 2" },
-  { name: "Item 3", description: "Description for Item 3" },
-]
+app.get("/api/items", async (req, res) => {
+  try {
+    const items = await Item.find({})
+    res.json(items)
+  } catch (err) {
+    console.error("Error fetching items:", err) // Log the detailed error
+    res.status(500).json({ message: "Server error", error: err.message })
+  }
+})
 
 const populateDB = async () => {
   try {
