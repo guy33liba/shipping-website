@@ -11,7 +11,7 @@ import Contexts from "./components/Contexts"
 // import SingleItem from "./components/single-item/SingleItem"
 // import Cart from "./components/cart/Cart"
 import "./App.css"
-import Items from "./Items"
+import Item from "./Item"
 const App = () => {
   return (
     <Contexts>
@@ -29,7 +29,7 @@ const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/singleItem/:id" element={<SingleItem />} />
             <Route path="/cart" element={<Cart />} /> */}
-            <Route path="/item" element={<Items />} />
+            <Route path="/item/:id" element={<Item />} />
           </Routes>
         </div>
       </Router>
