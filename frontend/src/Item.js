@@ -3,29 +3,39 @@ import axios from "axios"
 import { useParams } from "react-router-dom"
 
 const Item = () => {
-  const { id } = useParams() // Assumes you are using react-router for routing
+  const { id } = useParams()
   const [item, setItem] = useState(null)
   const [error, setError] = useState(null)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    let isMounted = true
+
     const fetchItem = async () => {
       try {
         const response = await axios.get(`http://localhost:5000/api/items/${id}`)
-        setItem(response.data)
+        if (isMounted) {
+          setItem(response.data)
+        }
       } catch (err) {
-        setError(err.message)
+        if (isMounted) {
+          setError(err.message)
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false)
+        }
       }
     }
     fetchItem()
+
+    return () => {
+      isMounted = false
+    }
   }, [id])
 
-  if (error) {
-    return <div>Error: {error}</div>
-  }
-
-  if (!item) {
-    return <div>Loading...</div>
-  }
+  if (loading) return <div>Loading...</div>
+  if (error) return <div>Error: {error}</div>
 
   return (
     <div>

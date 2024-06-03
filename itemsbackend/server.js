@@ -10,10 +10,7 @@ app.use(express.json())
 
 // Connect to MongoDB
 mongoose
-  .connect("mongodb://localhost:27017/yourDatabaseName", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect("mongodb://localhost:27017/yourDatabaseName", {})
   .then(() => console.log("MongoDB connected..."))
   .catch((err) => console.log(err))
 
@@ -37,6 +34,26 @@ app.get("/api/items/:id", async (req, res) => {
     res.status(500).json({ message: err.message })
   }
 })
+
+const items = [
+  { name: "Item 1", description: "Description for Item 1" },
+  { name: "Item 2", description: "Description for Item 2" },
+  { name: "Item 3", description: "Description for Item 3" },
+]
+
+const populateDB = async () => {
+  try {
+    await Item.deleteMany() // Clear the existing items
+    await Item.insertMany(items) // Insert new items
+    console.log("Database populated with sample items")
+  } catch (err) {
+    console.error("Error populating database:", err)
+  } finally {
+    mongoose.connection.close()
+  }
+}
+
+populateDB()
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`)
