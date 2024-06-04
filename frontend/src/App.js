@@ -11,8 +11,6 @@ import Login from "./components/login/Login"
 import SingleItem from "./components/single-item/SingleItem"
 import Cart from "./components/cart/Cart"
 import "./App.css"
-import Item from "./Item"
-import Jome from "./Jome"
 const App = () => {
   return (
     <Contexts>
@@ -30,8 +28,6 @@ const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/singleItem/:id" element={<SingleItem />} />
             <Route path="/cart" element={<Cart />} />
-            {/* <Route path="/item/:id" element={<Item />} />
-            <Route path="/" element={<Jome />} /> */}
           </Routes>
         </div>
       </Router>
