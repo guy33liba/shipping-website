@@ -7,17 +7,30 @@ const port = 5000 // Your desired port
 
 app.use(cors())
 app.use(express.json())
-
 const items = [
   { name: "Item 1", description: "Description for Item 1" },
   { name: "Item 2", description: "Description for Item 2" },
   { name: "Item 3", description: "Description for Item 3" },
 ]
+const populateDB = async () => {
+  try {
+    await Item.deleteMany() // Clear the existing items
+    await Item.insertMany(items) // Insert new items
+    console.log("Database populated with sample items")
+  } catch (err) {
+    console.error("Error populating database:", err)
+  } finally {
+    mongoose.connection.close()
+  }
+}
+
+populateDB()
+
 // Connect to MongoDB
 mongoose
   .connect(
     "mongodb+srv://guy33liba:g33g33g33@shipping.bnmim8g.mongodb.net/?retryWrites=true&w=majority&appName=shipping",
-    {},
+    {}
   )
   .then(() => console.log("MongoDB connected..."))
   .catch((err) => console.log(err))
@@ -43,30 +56,26 @@ app.get("/api/items/:id", async (req, res) => {
   }
 })
 
-// app.get("/api/items", async (req, res) => {
-//   try {
-//     const items = await Item.find({})
-//     res.json(items)
-//   } catch (err) {
-//     console.error("Error fetching items:", err) // Log the detailed error
-//     res.status(500).json({ message: "Server error", error: err.message })
-//   }
-// })
-
-const populateDB = async () => {
+app.get("/api/items", async (req, res) => {
   try {
-    await Item.deleteMany() // Clear the existing items
-    await Item.insertMany(items) // Insert new items
-    console.log("Database populated with sample items")
+    const items = await Item.find({})
+    res.status(200).json(items)
   } catch (err) {
-    console.error("Error populating database:", err)
-  } finally {
-    mongoose.connection.close()
+    console.error("Error fetching items:", err) // Log the detailed error
+    res.status(500).json({ message: "Server error", error: err.message })
   }
-}
+})
 
-populateDB()
-
+app.post("/api/items", async (req, res) => {
+  try {
+    const { name, description } = req.body
+    const item = new Item({ name, description })
+    res.status(200).json(item)
+  } catch (err) {
+    console.error("Error fetching items:", err) // Log the detailed error
+    res.status(500).json({ message: "Server error", error: err.message })
+  }
+})
 app.listen(port, () => {
   console.log(`Server running on port ${port}`)
 })

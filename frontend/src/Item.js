@@ -15,10 +15,12 @@ const Item = () => {
       try {
         const response = await axios.get(`http://localhost:5000/api/items/${id}`)
         if (isMounted) {
+          console.log(response.data.name)
           setItem(response.data)
         }
       } catch (err) {
         if (isMounted) {
+          console.log(err)
           setError(err.message)
         }
       } finally {
@@ -39,8 +41,8 @@ const Item = () => {
 
   return (
     <div>
-      <h1>{item.name}</h1>
-      <p>{item.description}</p>
+      <div>{item.name}</div>
+      <div>{item.description}</div>
     </div>
   )
 }
