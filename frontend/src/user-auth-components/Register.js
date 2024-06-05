@@ -20,14 +20,14 @@ const Register = () => {
   }
 
   return (
-    <divdiv>
+    <div>
       <h1>Register</h1>
       <form onSubmit={onSubmit}>
         <input type="text" name="name" value={name} onChange={onChange} required />
         <input type="email" name="email" value={email} onChange={onChange} required />
         <input type="password" name="password" value={password} onChange={onChange} required />
       </form>
-    </divdiv>
+    </div>
   )
 }
 export default Register
