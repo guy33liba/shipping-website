@@ -221,12 +221,11 @@ function biggestwrwrw(str) {
   let biggestWord = ""
   for (let i = 0; i < words.length; i++) {
     if (words[i].length > biggestWord.length) {
-      biggestWord = words[i];
+      biggestWord = words[i]
     }
   }
   return biggestWord
 }
-
 
 console.log(biggestwrwrw(sentence))
 function findLongestWord(str) {
@@ -242,3 +241,31 @@ function findLongestWord(str) {
 }
 
 console.log(findLongestWord("The quick brown fox jumped over the lazy dog")) // 6
+function papapa(str) {
+  str = str.split(" ")
+  const lengths = []
+  for (let i = 0; i < str.length; i++) {
+    const word = str[i]
+    lengths.push(word.length)
+  }
+  return lengths
+}
+
+// console.log(papapa("racecar is potentially receed to the the the sunset"))
+
+const array = [1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3]
+const countOccurrences = (arr) => {
+  const counts = {}
+  for (const num of arr) {
+    counts[num] = counts[num] ? counts[num] + 1 : 1
+  }
+  return counts
+}
+
+console.log(countOccurrences(array))
+
+function reveresedString(str) {
+  let reversed = str.split("").reverse().join("")
+  return reversed
+}
+console.log(reveresedString("hello"))
