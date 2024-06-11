@@ -36,3 +36,7 @@ const App = () => {
 }
 
 export default App
+<<<<<<< HEAD
+=======
+
+>>>>>>> 11fa10978aad238e6205a905806b397c9152f941
