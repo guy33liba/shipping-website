@@ -12,7 +12,6 @@
 // let str2 = "hello"
 // let str3 = "nitin"
 
-<<<<<<< HEAD
 // function reverseString(str) {
 //   return str.split("").reverse().join("")
 // }
@@ -215,27 +214,24 @@ function factorial(n) {
     return 1
   } else {
     return n * factorial(n - 1)
-=======
-function reverseString(str) {
-  return str.split("").reverse().join("")
-}
-console.log(reverseString("hello"))
-console.log(palindrome(str3))
-function factorialize(num) {
-  if (num < 0) return -1
-  else if (num == 0) return 1
-  if (num) {
-    return num * factorialize(num - 1)
->>>>>>> 2cbb26e939091683a1974ac55a750806c350f958
+    function reverseString(str) {
+      return str.split("").reverse().join("")
+    }
+    console.log(reverseString("hello"))
+    console.log(palindrome(str3))
+    function factorialize(num) {
+      if (num < 0) return -1
+      else if (num == 0) return 1
+      if (num) {
+        return num * factorialize(num - 1)
+      }
+    }
+    // console.log(factorial(5))
   }
-}
-// console.log(factorial(5))
+  const array1 = [1, 2, 3]
+  const array2 = [4, 5, 6]
 
-<<<<<<< HEAD
-const array1 = [1, 2, 3]
-const array2 = [4, 5, 6]
-
-// function merge(arr1, arr2) {
+  // function merge(arr1, arr2) {
   //   const result1 = [...arr1, ...arr2]
   //   const result2 = arr1.concat(arr2)
   //   let mergedArray = [...array1]
@@ -282,7 +278,6 @@ console.log(findthelastWord("hello world howsadfdasfas you doing"))
 
 // console.log(findLongestWord("The quick brown fox jumped over the lazy dog")) // 6
 
-=======
 function palindrome(str) {
   let len = str.length
   for (let i = 0; i < len; i++) {
@@ -511,19 +506,24 @@ function papapa(str) {
 // console.log(papapa("racecar is potentially receed to the the the sunset"))
 
 const array = [1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3]
-const countOccurrences = (arr) => {
-  const counts = {}
-  for (const num of arr) {
-    counts[num] = counts[num] ? counts[num] + 1 : 1
+
+function countoccurrences(str) {
+  let count = {}
+  let maxlength = 0
+  let key = ''
+  for (let i = 0; i < str.length; i++) {
+    let char = str[i]
+
+    if (count[char]) {
+      count[char]++
+    } else {
+      count[char] = 1
+    }
+    if (count[char] > maxlength) {
+      maxlength = count[char]
+      key=char
+    }
   }
-  return counts
+  return { count, maxlength ,key}
 }
-
-console.log(countOccurrences(array))
-
-function reveresedString(str) {
-  let reversed = str.split("").reverse().join("")
-  return reversed
-}
-console.log(reveresedString("hello"))
->>>>>>> 2cbb26e939091683a1974ac55a750806c350f958
+console.log(countoccurrences(array))
