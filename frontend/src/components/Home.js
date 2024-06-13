@@ -32,6 +32,7 @@ const Home = () => {
     }
     const getUsersList = async () => {
       const { data } = await axios.get("/users")
+      console.log(data)
       setusers([...data])
     }
     getProducts()
@@ -42,8 +43,7 @@ const Home = () => {
   }
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>{login.name}</h1>
-      {console.log(login)}
+      <h1 style={{ textAlign: "center" }}> </h1>
       <div style={{ display: "flex", width: "100vw" }}>
         <div className="prodcutsContainer">
           {products.map((product, index) => (
@@ -62,8 +62,8 @@ const Home = () => {
         </div>
         <div className="usersList">
           {users?.map(({ register, index }) => (
-            <div>
-              <div >{register.name}</div>
+            <div key={index}>
+              <div>{register.name}</div>
               <div>{register.email}</div>
             </div>
           ))}
