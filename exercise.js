@@ -504,8 +504,6 @@ function papapa(str) {
 }
 
 // console.log(papapa("racecar is potentially receed to the the the sunset"))
-
-<<<<<<< HEAD
 // const array = [1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3]
 
 // const countOccurrences = (arr) => {
@@ -649,21 +647,19 @@ console.log(reduce(nums, reducer, initial)) // Output: 10
 const words = "hello world"
 function capitalizeFirstLetterOfEachWord(letter) {
   if (!letter) return ""
- return letter
+  return letter
     .split(" ")
     .map((item) => item.charAt(0).toUpperCase() + item.slice(1))
     .join(" ")
-
 }
 
 console.log(capitalizeFirstLetterOfEachWord(words))
-=======
 const array = [1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3]
 
 function countoccurrences(str) {
   let count = {}
   let maxlength = 0
-  let key = ''
+  let key = ""
   for (let i = 0; i < str.length; i++) {
     let char = str[i]
 
@@ -674,10 +670,9 @@ function countoccurrences(str) {
     }
     if (count[char] > maxlength) {
       maxlength = count[char]
-      key=char
+      key = char
     }
   }
-  return { count, maxlength ,key}
+  return { count, maxlength, key }
 }
 console.log(countoccurrences(array))
->>>>>>> 80d76fae9743ea3a2071c09dcba66b4f0f35a0d5
