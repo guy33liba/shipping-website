@@ -505,6 +505,159 @@ function papapa(str) {
 
 // console.log(papapa("racecar is potentially receed to the the the sunset"))
 
+<<<<<<< HEAD
+// const array = [1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3]
+
+// const countOccurrences = (arr) => {
+//   const counts = {}
+//   for (const num of arr) {
+//     counts[num] = counts[num] ? counts[num] + 1 : 1
+//   }
+//   return counts
+// }
+
+// console.log(countOccurrences(array))
+
+function reveresedString(str) {
+  let reversed = str.split("").reverse().join("")
+  return reversed
+}
+console.log(reveresedString("hello"))
+function fuzzfuzz() {
+  for (let i = 0; i < 100; i++) {
+    if (i % 3 === 0 && i % 5 === 0) {
+      console.log("fuzzfuzz")
+    } else if (i % 3 === 0) {
+      console.log("fuzz")
+    } else if (i % 5 === 0) {
+      console.log("fiiizz")
+    } else {
+      console.log(i)
+    }
+  }
+}
+// fuzzfuzz()
+
+// function summofArray(arr) {
+//   let sum = arr.reduce((i, j) => i + j)
+//   for (let i = 0; i < arr.length; i++) {
+//     sum += arr[i]
+//   }
+//   return console.log(sum)
+// }
+// summofArray(array)
+
+// function papapalindromromr(str) {
+//   let j = str.length - 1
+//   for (let i = 0; i < str.length; i++) {
+//     if (str[i] !== str[j]) {
+//       return false
+//     }
+//     j--
+//   }
+//   return true
+// }
+// console.log(papapalindromromr("racecar"))
+
+// const array = [1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3]
+// function getKeyByValue(object, value) {
+//   return Object.keys(object).find((key) => object[key] === value)
+// }
+
+// const myfunctionyey = (arr) => {
+//   const count = {}
+//   for (let i = 0; i < arr.length; i++) {
+//     if (!count[array[i]]) {
+//       count[array[i]] = 1
+//     } else {
+//       count[array[i]] = count[array[i]] + 1
+//     }
+//   }
+//   const myHighestMostWonderfullnessNumberIHaveInCount = Math.max(...Object.values(count))
+
+//   return getKeyByValue(count, myHighestMostWonderfullnessNumberIHaveInCount)
+// }
+
+// console.log(myfunctionyey(array))
+
+// // {1:5,2:8,3:5}
+
+// function recursionMethod(n) {
+//   if (n == 0) {
+//     return 1
+//   } else {
+//     return ( n * recursionMethod(n - 1))
+//   }
+// }
+// console.log(recursionMethod(5))
+// var createcounter = (init) => {
+//   function increment() {
+//     return (init = init + 1)
+//   }
+//   function decrement() {
+//     return (init = init - 1)
+//   }
+//   function reset() {
+//     return (init = 0)
+//   }
+//   return {
+//     increment,
+//     decrement,
+//     reset,
+//   }
+// }
+// console.log(createcounter(5).decrement())
+// var map = function(arr, fn) {
+//   let result = [];
+//   for (let i = 0; i < arr.length; i++) {
+//       result.push(fn(arr[i]));
+//   }
+//   return result;
+// };
+
+// // Example usage:
+// let result = map([1, 2, 3], function(x) {
+//   return x + 1;
+// });
+// console.log(result);  // Outputs: [2, 3, 4]
+
+// var filter = function(arr, fn) {
+//   var ar=[];
+//   for(var i=0; i<arr.length; i++){
+//       if(fn(arr[i], i)){
+//           ar.push(arr[i]);
+//       }
+//   }
+//   return ar;
+// };
+
+var reduce = function (nums, fn, init) {
+  let accumulator = init
+  for (let num of nums) {
+    accumulator = fn(accumulator, num)
+  }
+  return accumulator
+}
+
+// Example usage:
+const nums = [1, 2, 3, 4]
+const reducer = (acc, curr) => acc + curr
+const initial = 0
+
+console.log(reduce(nums, reducer, initial)) // Output: 10
+
+const words = "hello world"
+function capitalizeFirstLetterOfEachWord(letter) {
+  if (!letter) return ""
+ return letter
+    .split(" ")
+    .map((item) => item.charAt(0).toUpperCase() + item.slice(1))
+    .join(" ")
+
+}
+
+console.log(capitalizeFirstLetterOfEachWord(words))
+=======
 const array = [1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3]
 
 function countoccurrences(str) {
@@ -526,6 +679,7 @@ function countoccurrences(str) {
   }
   return { count, maxlength, key }
 }
+<<<<<<< HEAD
 // console.log(countoccurrences(array))
 
 function countOccurencesWithMap(str) {
@@ -590,3 +744,7 @@ function mathSequances(arr) {
 console.log(mathSequances([2, 4, 6, 8]))
 console.log(mathSequances([3, 9, 27]))
 console.log(mathSequances([2, 5, 14, 89]))
+=======
+console.log(countoccurrences(array))
+>>>>>>> 80d76fae9743ea3a2071c09dcba66b4f0f35a0d5
+>>>>>>> 80945b42cb92748ada459fdd7eb09c958e5b82c6
