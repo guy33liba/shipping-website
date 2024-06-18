@@ -675,7 +675,6 @@ function countoccurrences(str) {
   }
   return { count, maxlength, key }
 }
-<<<<<<< HEAD
 // console.log(countoccurrences(array))
 
 function countOccurencesWithMap(str) {
@@ -737,13 +736,12 @@ function mathSequances(arr) {
   console.log(`G : ${geo}`)
   // return arr
 }
-console.log(mathSequances([2, 4, 6, 8]))
-console.log(mathSequances([3, 9, 27]))
-console.log(mathSequances([2, 5, 14, 89]))
-=======
-console.log(countoccurrences(array))
-<<<<<<< HEAD
-=======
->>>>>>> 80d76fae9743ea3a2071c09dcba66b4f0f35a0d5
->>>>>>> 80945b42cb92748ada459fdd7eb09c958e5b82c6
->>>>>>> 14c6cc83918ead3ace71cd32037af71c9ffe27ae
+// console.log(mathSequances([2, 4, 6, 8]))
+// console.log(mathSequances([3, 9, 27]))
+// console.log(mathSequances([2, 5, 14, 89]))
+// console.log(countoccurrences(array))
+
+const extensionOfFileName = (str) => {
+  return str.slice(str.lastIndexOf("."))
+}
+console.log(extensionOfFileName("index.html"))
