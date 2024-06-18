@@ -479,7 +479,7 @@ function biggestwrwrw(str) {
   return biggestWord
 }
 
-console.log(biggestwrwrw(sentence))
+// console.log(biggestwrwrw(sentence))
 function findLongestWord(str) {
   let largest = ""
   console.log(str.split(" "))
@@ -492,7 +492,7 @@ function findLongestWord(str) {
   return largest
 }
 
-console.log(findLongestWord("The quick brown fox jumped over the lazy dog")) // 6
+// console.log(findLongestWord("The quick brown fox jumped over the lazy dog")) // 6
 function papapa(str) {
   str = str.split(" ")
   const lengths = []
@@ -675,4 +675,75 @@ function countoccurrences(str) {
   }
   return { count, maxlength, key }
 }
+<<<<<<< HEAD
+// console.log(countoccurrences(array))
+
+function countOccurencesWithMap(str) {
+  let count = {}
+  let maxlength = 0
+  let key = ""
+
+  str.map((item) => {
+    if (count[item]) {
+      count[item]++
+    } else {
+      count[item] = 1
+    }
+
+    if (count[item] > maxlength) {
+      maxlength = count[item]
+      key = item.toString() // Convert item to string if necessary
+    }
+  })
+  return { count, maxlength, key }
+}
+// console.log(countOccurencesWithMap(array))
+
+const findLongestWord2 = (str) => {
+  let words = str.split(" ")
+  let longestWord = ""
+  words.forEach((item) => {
+    if (!longestWord || item.length > longestWord.length) {
+      longestWord = item
+    }
+  })
+  return longestWord
+}
+// console.log(findLongestWord2("join me together"))
+
+const findLongestWord3 = (str) => {
+  let words = str.split(" ")
+  let longestWord = ""
+
+  for (let i = 0; i < words.length; i++) {
+    if (words[i].length > longestWord.length) {
+      longestWord = words[i]
+    }
+  }
+  return longestWord
+}
+// console.log(findLongestWord3("join me together withallus"))
+
+function mathSequances(arr) {
+  let arith = []
+  let geo = []
+  for (let i = 1; i < arr.length; i++) {
+    let number1 = arr[i] - arr[i - 1]
+    arith.push(number1)
+    let number2 = arr[i] / arr[i - 1]
+    geo.push(number2)
+  }
+  console.log(`A : ${arith}`)
+  console.log(`G : ${geo}`)
+  // return arr
+}
+console.log(mathSequances([2, 4, 6, 8]))
+console.log(mathSequances([3, 9, 27]))
+console.log(mathSequances([2, 5, 14, 89]))
+=======
 console.log(countoccurrences(array))
+<<<<<<< HEAD
+=======
+>>>>>>> 80d76fae9743ea3a2071c09dcba66b4f0f35a0d5
+>>>>>>> 80945b42cb92748ada459fdd7eb09c958e5b82c6
+>>>>>>> 14c6cc83918ead3ace71cd32037af71c9ffe27ae
