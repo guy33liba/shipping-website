@@ -744,4 +744,24 @@ function mathSequances(arr) {
 const extensionOfFileName = (str) => {
   return str.slice(str.lastIndexOf("."))
 }
-console.log(extensionOfFileName("index.html"))
+console.log(extensionOfFileName("webpack.config.js"))
+const checkTwoNumber = (a, b) => {
+  if (a === 100 || b === 100 || a + b === 100) {
+    return true
+  } else {
+    return false
+  }
+}
+console.log(checkTwoNumber(50, 50))
+
+const moveCharsForward = (str) => {
+  return str
+    .split("")
+
+    .map((char) => {
+      if (char === "z" && char.includes("z")) return (char = "a")
+      return String.fromCharCode(char.charCodeAt(0) + 1)
+    })
+    .join("")
+}
+console.log(moveCharsForward("abcdefghijklmnopqrstuvwxy"))
