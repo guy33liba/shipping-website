@@ -765,3 +765,17 @@ const moveCharsForward = (str) => {
     .join("")
 }
 console.log(moveCharsForward("abcdefghijklmnopqrstuvwxy"))
+
+function getDateFormat() {
+  const date = new Date()
+  const day = date.getDate()
+  const month = date.getMonth() + 1
+  const year = date.getFullYear()
+  return `${day} /${month}/ ${year}`
+}
+console.log(getDateFormat())
+
+function thatreturnsStringWithNew(str) {
+  return str.indexOf("New!") === 0 ? str : `New! ${str}`
+}
+console.log(thatReturnsStringWithNew("New! string"))
