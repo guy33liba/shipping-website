@@ -775,7 +775,12 @@ function getDateFormat() {
 }
 console.log(getDateFormat())
 
-function thatreturnsStringWithNew(str) {
+function thatReturnsStringWithNew(str) {
   return str.indexOf("New!") === 0 ? str : `New! ${str}`
 }
 console.log(thatReturnsStringWithNew("New! string"))
+
+const makeNewString = (str) => (str.length < 3 ? str : str.slice(0, 3) + str.slice(-3))
+console.log(makeNewString("abscdcdsf"))
+console.log(makeNewString("abscdcdsf567"))
+console.log(makeNewString("abscdcdsf123"))
