@@ -790,18 +790,18 @@ const extractTheFirstHalf = (str) => {
     console.log(word)
   }
 }
-extractTheFirstHalf("12345678")
+// extractTheFirstHalf("12345678")
 
 const concatenate = (str1, str2) => {
   return str1.slice(1) + str2.slice(1)
 }
 
-console.log(concatenate("123", "456"))
+// console.log(concatenate("123", "456"))
 
 const findNumberClosestTo100 = (a, b) => {
   return 100 - a < 100 - b ? a : b
 }
-console.log(findNumberClosestTo100(78, 88))
+// console.log(findNumberClosestTo100(78, 88))
 
 const countChars = (str, char) => {
   return str.split("").filter((ch) => ch === char).length
@@ -809,15 +809,33 @@ const countChars = (str, char) => {
 const contains2To4 = (str, char) => {
   return countChars(str, char) >= 2 && countChars(str, char) <= 4
 }
- console.log(contains2To4("oh!", "o"))
-console.log(contains2To4("ooh!", "o"))
-console.log(contains2To4("ooooooh!", "o"))
-console.log(contains2To4("ooh!", "o"))
-console.log(contains2To4("ooh!", "o"))
+// console.log(contains2To4("oh!", "o"))
+// console.log(contains2To4("ooh!", "o"))
+// console.log(contains2To4("ooooooh!", "o"))
+// console.log(contains2To4("ooh!", "o"))
+// console.log(contains2To4("ooh!", "o"))
 
 const findTheEvenNumber = (arr) => {
-  
+  let num = 0
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] % 2 === 0) {
+      num++
+    }
+  }
+  return num
+}
+function findTheEvenNumber2(arr) {
   return arr.filter((num) => num % 2 === 0).length
 }
 
-console.log(findTheEvenNumber([2,2,2,4,4,4,1,1,1,1,1]))
+// console.log(findTheEvenNumber([2, 2, 2, 4, 4, 4, 1, 1, 1, 1, 1]))
+// console.log(findTheEvenNumber2([2, 2,6,6, 2, 4, 4, 4, 1, 1, 1, 1, 1]))
+const createArrayofNumbers = (num) => {
+  const arrayOfnumber = []
+  for (let i = 1; i <= num; i++) {
+    arrayOfnumber.push(i)
+  }
+  return arrayOfnumber
+}
+console.log(findTheEvenNumber(createArrayofNumbers(6)))
+console.log(findTheEvenNumber(createArrayofNumbers(9)))
