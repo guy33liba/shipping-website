@@ -814,3 +814,9 @@ console.log(contains2To4("ooh!", "o"))
 console.log(contains2To4("ooooooh!", "o"))
 console.log(contains2To4("ooh!", "o"))
 console.log(contains2To4("ooh!", "o"))
+
+const findTheEvenNumber = (num) => {
+  if (num % 2 === 0) return "even"
+  if (num % 2 !== 0) return "not even"
+}
+console.log(findTheEvenNumber(2))
