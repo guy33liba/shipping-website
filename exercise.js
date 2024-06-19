@@ -784,3 +784,12 @@ const makeNewString = (str) => (str.length < 3 ? str : str.slice(0, 3) + str.sli
 console.log(makeNewString("abscdcdsf"))
 console.log(makeNewString("abscdcdsf567"))
 console.log(makeNewString("abscdcdsf123"))
+
+const extractTheFirstHalf = (str) => {
+  let word = ""
+  for (let i = 0; i < str.length / 2; i++) {
+    word += str[i]
+    console.log(word)
+  }
+}
+extractTheFirstHalf("12345678")
