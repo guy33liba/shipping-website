@@ -782,8 +782,6 @@ console.log(thatReturnsStringWithNew("New! string"))
 
 const makeNewString = (str) => (str.length < 3 ? str : str.slice(0, 3) + str.slice(-3))
 console.log(makeNewString("abscdcdsf"))
-console.log(makeNewString("abscdcdsf567"))
-console.log(makeNewString("abscdcdsf123"))
 
 const extractTheFirstHalf = (str) => {
   let word = ""
@@ -793,3 +791,18 @@ const extractTheFirstHalf = (str) => {
   }
 }
 extractTheFirstHalf("12345678")
+
+const concatenate = (str1, str2) => {
+  return str1.slice(1) + str2.slice(1)
+}
+
+console.log(concatenate("123", "456"))
+
+const findNumberClosestTo100 = (a, b) => {
+  return 100 - a < 100 - b ? a : b
+}
+console.log(findNumberClosestTo100(78, 88))
+
+const countChars = (str, char) => {
+  str.split("").filter((ch) => ch === char)
+}
