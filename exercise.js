@@ -809,14 +809,15 @@ const countChars = (str, char) => {
 const contains2To4 = (str, char) => {
   return countChars(str, char) >= 2 && countChars(str, char) <= 4
 }
-console.log(contains2To4("oh!", "o"))
+ console.log(contains2To4("oh!", "o"))
 console.log(contains2To4("ooh!", "o"))
 console.log(contains2To4("ooooooh!", "o"))
 console.log(contains2To4("ooh!", "o"))
 console.log(contains2To4("ooh!", "o"))
 
-const findTheEvenNumber = (num) => {
-  if (num % 2 === 0) return "even"
-  if (num % 2 !== 0) return "not even"
+const findTheEvenNumber = (arr) => {
+  
+  return arr.filter((num) => num % 2 === 0).length
 }
-console.log(findTheEvenNumber(2))
+
+console.log(findTheEvenNumber([2,2,2,4,4,4,1,1,1,1,1]))
