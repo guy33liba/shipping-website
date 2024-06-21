@@ -3,23 +3,22 @@ import dotenv from "dotenv"
 import express from "express"
 import User from "../model/userSchema.js"
 import bcrypt from "bcryptjs"
-const loginRouter = express.Router()
-dotenv.config()
 
+dotenv.config()
+const loginRouter = express.Router()
+
+// Login route
 loginRouter.post("/", async (req, res) => {
   const { email, password } = req.body.login
   try {
     console.log({ email })
     const user = await User.findOne({ "register.email": email })
 
-    // console.log(`Queried user from database: ${user}`) // Log the queried user
-
     if (!user) {
       return res.status(404).json("No Record Existed")
     }
-    const hash = await bcrypt.hash(password, 2)
 
-    const isPasswordValid = bcrypt.compare(hash, user.register.password)
+    const isPasswordValid = await bcrypt.compare(password, user.register.password)
     if (!isPasswordValid) {
       return res.status(401).json("The password is incorrect")
     }
@@ -27,35 +26,37 @@ loginRouter.post("/", async (req, res) => {
     const accessToken = jwt.sign(
       { userId: user._id, email: user.register.email, name: user.register.name },
       process.env.JWT_SECRET,
-      {
-        expiresIn: "1h",
-      }
+      { expiresIn: "1h" }
     )
     const refreshToken = jwt.sign(
       { userId: user._id, email: user.register.email },
-      "REFERSH_TOKEN",
+      process.env.REFRESH_TOKEN_SECRET,
       { expiresIn: "7d" }
     )
+
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
       secure: true,
       sameSite: "Strict",
     })
+
+    // Update last login time
+    user.lastLogin = new Date()
+    await user.save()
+
     res.status(200).json({ accessToken })
   } catch (error) {
-    console.error("Error during login process:", error) // Log any error
+    console.error("Error during login process:", error)
     res.status(500).json({ message: error.message })
   }
 })
-//////////
-//////////
+
+// Refresh token route
 loginRouter.post("/refresh-token", (req, res) => {
   const refreshToken = req.cookies.refreshToken
 
   if (!refreshToken) {
-    return res
-      .status(401)
-      .json({ message: "Refresh Token not found, please log in again" })
+    return res.status(401).json({ message: "Refresh Token not found, please log in again" })
   }
 
   try {
@@ -77,12 +78,13 @@ loginRouter.post("/refresh-token", (req, res) => {
     res.status(500).json({ message: "Internal Server Error" })
   }
 })
-loginRouter.get("/", async (req, res) => {
+
+// Fetch user details route
+loginRouter.get("/:id", async (req, res) => {
   const { id } = req.params
   try {
-    const user = await User.findOne({ id })
-    console.log(user.register.name)
-    console.log("hello")
+    const user = await User.findById(id)
+
     if (!user) {
       return res.status(404).json({ message: "User not found" })
     }
@@ -93,4 +95,5 @@ loginRouter.get("/", async (req, res) => {
     res.status(500).json({ message: "Internal Server Error" })
   }
 })
+
 export default loginRouter

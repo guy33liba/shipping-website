@@ -53,6 +53,7 @@ const Register = () => {
         <div className="checkbox">
           <div>Is Admin</div>
           <input
+            style={{ width: "20px" }}
             type="checkbox"
             checked={register.isAdmin}
             onChange={(e) => handleUsersChange("isAdmin", e.target.checked)}

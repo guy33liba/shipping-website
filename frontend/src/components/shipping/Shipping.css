@@ -1,5 +1,5 @@
 .shippingInputs {
-  width: 400px;
+  width: 500px;
   height: 250px;
   border: solid 1px black;
   display: flex;
@@ -17,11 +17,15 @@
   margin-top: 10px;
   width: 225px;
 }
+.shippingInputs input {
+  font-size: 20px;
+}
+
 .shippingInputs img {
   width: 120px;
   height: 100px;
   position: absolute;
-  left: 19%;
+  left: 21%;
   top: 17%;
 }
 .selection {
@@ -29,6 +33,7 @@
   margin-top: 25px;
   height: 30px;
   border-radius: 10px;
+  font-size: 20px;
   margin-left: 10px;
 }
 .bottom {
@@ -42,6 +47,7 @@
   height: 30px;
   margin-top: 25px;
   border-radius: 10px;
-  margin-right: 10px;
-  width: 100px;
+  margin-right: 20px;
+  width: 160px;
+  font-size: 20px;
 }

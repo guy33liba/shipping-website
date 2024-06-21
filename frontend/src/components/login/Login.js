@@ -48,24 +48,25 @@ const Login = () => {
                 placeholder="Name"
               />
             </div> */}
-            <div>
-              <input
-                type="email"
-                value={login.email}
-                onChange={(e) => handleLogin("email", e.target.value)}
-                placeholder="Email"
-              />
-            </div>
+            <div style={{ marginTop: "30px" }}>
+              <div>
+                <input
+                  type="email"
+                  value={login.email}
+                  onChange={(e) => handleLogin("email", e.target.value)}
+                  placeholder="Email"
+                />
+              </div>
 
-            <div>
-              <input
-                type="password"
-                value={login.password}
-                onChange={(e) => handleLogin("password", e.target.value)}
-                placeholder="Password"
-              />
+              <div>
+                <input
+                  type="password"
+                  value={login.password}
+                  onChange={(e) => handleLogin("password", e.target.value)}
+                  placeholder="Password"
+                />
+              </div>
             </div>
-
             <button
               onClick={(e) => {
                 loginPost(e)
