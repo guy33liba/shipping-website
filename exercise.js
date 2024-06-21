@@ -839,3 +839,11 @@ const createArrayofNumbers = (num) => {
 }
 console.log(findTheEvenNumber(createArrayofNumbers(6)))
 console.log(findTheEvenNumber(createArrayofNumbers(9)))
+
+const isAscending = (arr) => {
+  for (let i = 0; i < arr.length - 1; i++) {
+    if (arr[i + 1] < arr[i]) return false
+  }
+  return true
+}
+console.log(isAscending([1, 2, 3, 2, 1, 2, 3, 2, 1])) // Output: true
