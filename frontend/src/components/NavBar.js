@@ -19,7 +19,7 @@ const NavBar = () => {
           <ol>
             <Link to="/users">Users List </Link>
           </ol>
-          <ol style={{ marginLeft: "60rem" }}>
+          <ol style={{ marginLeft: "40rem" }}>
             <Link to="/login">Login </Link>
           </ol>
           <ol>
