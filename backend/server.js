@@ -10,7 +10,10 @@ import singleProductRoute from "./routes/singleProductRoute.js"
 export const mongoURI =
   "mongodb+srv://guy33liba:g33g33g33@shipping.bnmim8g.mongodb.net/?retryWrites=true&w=majority&appName=shipping"
 
-mongoose.connect(mongoURI)
+mongoose
+  .connect(mongoURI)
+  .then(console.log("mongo connected"))
+  .catch((err) => console.error("Failed to connect to MongoDB", err))
 const app = express()
 
 app.use(cors())
@@ -23,5 +26,5 @@ app.use("/login", loginRouter)
 app.use("/product/:id", singleProductRoute)
 app.use("/users/:id", loginRouter)
 app.listen(4000, () => {
-  console.log("4000")
+  console.log("port connected in 4000")
 })
