@@ -1,0 +1,34 @@
+.user-container {
+  border: 1px solid black;
+  margin: 20px;
+  width: 420px;
+  height:'300'
+}
+
+.user-details {
+  margin: 20px;
+  display: flex;
+}
+
+.user-details h2 {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.user-details h2:first-child {
+  margin-top: 0;
+}
+
+.user-details h2 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 400px;
+}
+
+.user-details h2 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 400px;
+}

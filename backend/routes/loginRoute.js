@@ -11,7 +11,6 @@ const loginRouter = express.Router()
 loginRouter.post("/", async (req, res) => {
   const { email, password } = req.body.login
   try {
-    console.log({ email })
     const user = await User.findOne({ "register.email": email })
 
     if (!user) {
@@ -26,12 +25,12 @@ loginRouter.post("/", async (req, res) => {
     const accessToken = jwt.sign(
       { userId: user._id, email: user.register.email, name: user.register.name },
       process.env.JWT_SECRET,
-      { expiresIn: "1h" }
+      { expiresIn: "1h" },
     )
     const refreshToken = jwt.sign(
       { userId: user._id, email: user.register.email },
       process.env.REFRESH_TOKEN_SECRET,
-      { expiresIn: "7d" }
+      { expiresIn: "7d" },
     )
 
     res.cookie("refreshToken", refreshToken, {
@@ -44,13 +43,12 @@ loginRouter.post("/", async (req, res) => {
     user.lastLogin = new Date()
     await user.save()
 
-    res.status(200).json({ accessToken })
+    res.status(200).json({ accessToken, userId: user._id }) // Include userId in response
   } catch (error) {
     console.error("Error during login process:", error)
     res.status(500).json({ message: error.message })
   }
 })
-
 // Refresh token route
 loginRouter.post("/refresh-token", (req, res) => {
   const refreshToken = req.cookies.refreshToken
@@ -68,7 +66,7 @@ loginRouter.post("/refresh-token", (req, res) => {
       const newAccessToken = jwt.sign(
         { userId: user.userId, email: user.email },
         process.env.JWT_SECRET,
-        { expiresIn: "15m" }
+        { expiresIn: "15m" },
       )
 
       res.status(200).json({ accessToken: newAccessToken })

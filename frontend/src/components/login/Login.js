@@ -1,27 +1,40 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useState } from "react"
 import axios from "axios"
 import { allStatesContexts } from "../Contexts"
 import { useNavigate } from "react-router-dom"
 import "./Login.css"
+
 const Login = () => {
   const navigate = useNavigate()
   const { login, setLogin } = useContext(allStatesContexts)
+
   const handleLogin = (key, value) => {
     setLogin((prev) => ({ ...prev, [key]: value }))
   }
+
   const loginPost = async (e) => {
     e.preventDefault()
-    const { data } = await axios.post("/login", { login })
-    console.log(data)
-    // navigate("/")
+    try {
+      const response = await axios.post("/login", { login })
+      const { accessToken, userId } = response.data
+      console.log("Login successful:", accessToken)
+      await fetchSingleUser(userId) // Use userId from the login response
+    } catch (error) {
+      console.error("Login failed:", error.response?.data || error.message)
+    }
   }
+
   const fetchSingleUser = async (id) => {
-    const { data } = await axios.get(`/users/${id}`)
-    console.log(data)
-    setLogin(data)
-    navigate("/")
+    try {
+      const { data } = await axios.get(`/users/${id}`)
+      console.log("Fetched user data:", data)
+      setLogin((prev) => ({ ...prev, name: data }))
+      navigate("/")
+    } catch (error) {
+      console.error("Fetching user failed:", error.response?.data || error.message)
+    }
   }
-  useEffect(() => {}, [])
+
   return (
     <div>
       <form onSubmit={loginPost}>
@@ -35,19 +48,10 @@ const Login = () => {
               position: "fixed",
               left: "45%",
               backgroundColor: "white",
-            }}
-          >
+            }}>
             Login Page
           </h1>
           <div className="loginInputs">
-            {/* <div>
-              <input
-                type="text"
-                value={login.name}
-                onChange={(e) => handleLogin("name", e.target.value)}
-                placeholder="Name"
-              />
-            </div> */}
             <div style={{ marginTop: "30px" }}>
               <div>
                 <input
@@ -57,7 +61,6 @@ const Login = () => {
                   placeholder="Email"
                 />
               </div>
-
               <div>
                 <input
                   type="password"
@@ -67,14 +70,7 @@ const Login = () => {
                 />
               </div>
             </div>
-            <button
-              onClick={(e) => {
-                loginPost(e)
-                fetchSingleUser(login.name)
-              }}
-            >
-              Login Submit
-            </button>
+            <button type="submit">Login Submit</button>
           </div>
         </div>
       </form>

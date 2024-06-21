@@ -1,6 +1,6 @@
 import axios from "axios"
 import React, { useEffect, useState } from "react"
-
+import "./UsersList.css"
 const UsersList = () => {
   const [userList, setuserList] = useState([])
 
@@ -28,8 +28,7 @@ const UsersList = () => {
                     textOverflow: "ellipsis",
                     whiteSpace: "nowrap",
                     width: "400px",
-                  }}
-                >
+                  }}>
                   Password : {register.password}
                 </h2>
                 <h2>IsAdmin : {register.isAdmin ? "yes" : "no"}</h2>
