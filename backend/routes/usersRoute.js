@@ -6,6 +6,7 @@ import mongoose from "mongoose"
 
 const userRouter = express.Router()
 
+// Fetch all users
 userRouter.get("/", async (req, res) => {
   try {
     const users = await User.find({})
@@ -14,15 +15,14 @@ userRouter.get("/", async (req, res) => {
     res.status(500).json({ message: error.message })
   }
 })
+
+// Register a new user
 userRouter.post("/", async (req, res) => {
   const { name, email, password } = req.body.register
-})
-userRouter.post("/", async (req, res) => {
-  const { email, password } = req.body.register
 
   // Input validation
-  if (!email || !password) {
-    return res.status(400).json({ message: "Email and password are required." })
+  if (!name || !email || !password) {
+    return res.status(400).json({ message: "Name, email, and password are required." })
   }
 
   try {
@@ -38,6 +38,7 @@ userRouter.post("/", async (req, res) => {
     // Create a new user instance
     const newUser = new User({
       register: {
+        name,
         email,
         password: hashedPassword,
       },
