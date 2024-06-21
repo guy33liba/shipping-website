@@ -744,7 +744,7 @@ function mathSequances(arr) {
 const extensionOfFileName = (str) => {
   return str.slice(str.lastIndexOf("."))
 }
-console.log(extensionOfFileName("webpack.config.js"))
+// console.log(extensionOfFileName("webpack.config.js"))
 const checkTwoNumber = (a, b) => {
   if (a === 100 || b === 100 || a + b === 100) {
     return true
@@ -752,7 +752,7 @@ const checkTwoNumber = (a, b) => {
     return false
   }
 }
-console.log(checkTwoNumber(50, 50))
+// console.log(checkTwoNumber(50, 50))
 
 const moveCharsForward = (str) => {
   return str
@@ -764,7 +764,7 @@ const moveCharsForward = (str) => {
     })
     .join("")
 }
-console.log(moveCharsForward("abcdefghijklmnopqrstuvwxy"))
+// console.log(moveCharsForward("abcdefghijklmnopqrstuvwxy"))
 
 function getDateFormat() {
   const date = new Date()
@@ -787,7 +787,7 @@ const extractTheFirstHalf = (str) => {
   let word = ""
   for (let i = 0; i < str.length / 2; i++) {
     word += str[i]
-    console.log(word)
+    // console.log(word)
   }
 }
 // extractTheFirstHalf("12345678")
@@ -837,6 +837,7 @@ const createArrayofNumbers = (num) => {
   }
   return arrayOfnumber
 }
+<<<<<<< HEAD
 console.log(findTheEvenNumber(createArrayofNumbers(6)))
 console.log(findTheEvenNumber(createArrayofNumbers(9)))
 
@@ -847,3 +848,27 @@ const isAscending = (arr) => {
   return true
 }
 console.log(isAscending([1, 2, 3, 2, 1, 2, 3, 2, 1])) // Output: true
+=======
+// console.log(findTheEvenNumber(createArrayofNumbers(6)))
+// console.log(findTheEvenNumber(createArrayofNumbers(9)))
+
+function mathSequances(arr) {
+  let arith = new Set()
+  let geo = new Set()
+  for (let i = 1; i < arr.length; i++) {
+    let number1 = arr[i] - arr[i - 1]
+    arith.add(number1)
+    let number2 = arr[i] / arr[i - 1]
+    geo.add(number2)
+  }
+  if (arith.size == 1) {
+    return `arithmic: ${arith} `
+  }
+  if (geo.size == 1) return `geometric ${geo}`
+  return -1
+}
+
+console.log(mathSequances([2, 4, 6, 8]))
+console.log(mathSequances([3, 9, 27]))
+console.log(mathSequances([2, 5, 14, 89]))
+>>>>>>> ca8ed80938566248c2417e2db517965e7425aa52
