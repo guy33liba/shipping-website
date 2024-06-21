@@ -25,12 +25,12 @@ loginRouter.post("/", async (req, res) => {
     const accessToken = jwt.sign(
       { userId: user._id, email: user.register.email, name: user.register.name },
       process.env.JWT_SECRET,
-      { expiresIn: "1h" },
+      { expiresIn: "1h" }
     )
     const refreshToken = jwt.sign(
       { userId: user._id, email: user.register.email },
       process.env.REFRESH_TOKEN_SECRET,
-      { expiresIn: "7d" },
+      { expiresIn: "7d" }
     )
 
     res.cookie("refreshToken", refreshToken, {
@@ -54,7 +54,9 @@ loginRouter.post("/refresh-token", (req, res) => {
   const refreshToken = req.cookies.refreshToken
 
   if (!refreshToken) {
-    return res.status(401).json({ message: "Refresh Token not found, please log in again" })
+    return res
+      .status(401)
+      .json({ message: "Refresh Token not found, please log in again" })
   }
 
   try {
@@ -66,7 +68,7 @@ loginRouter.post("/refresh-token", (req, res) => {
       const newAccessToken = jwt.sign(
         { userId: user.userId, email: user.email },
         process.env.JWT_SECRET,
-        { expiresIn: "15m" },
+        { expiresIn: "15m" }
       )
 
       res.status(200).json({ accessToken: newAccessToken })
@@ -87,11 +89,11 @@ loginRouter.get("/:id", async (req, res) => {
       return res.status(404).json({ message: "User not found" })
     }
 
-    res.status(200).json(user.register.name)
+    // Assuming user.register.name is a string
+    res.status(200).json({ name: user.register.name }) // Return as JSON object
   } catch (error) {
     console.error("Error fetching user details:", error)
     res.status(500).json({ message: "Internal Server Error" })
   }
 })
-
 export default loginRouter
