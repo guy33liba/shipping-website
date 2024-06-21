@@ -48,7 +48,8 @@ const Login = () => {
               position: "fixed",
               left: "45%",
               backgroundColor: "white",
-            }}>
+            }}
+          >
             Login Page
           </h1>
           <div className="loginInputs">

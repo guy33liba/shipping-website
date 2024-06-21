@@ -1,8 +1,6 @@
-import React, { useContext } from "react"
+import React from "react"
 import { Link } from "react-router-dom"
-import { allStatesContexts } from "./Contexts"
 const NavBar = () => {
-  const { toggle, handleToggle } = useContext(allStatesContexts)
   return (
     <div className="navbar">
       <nav>

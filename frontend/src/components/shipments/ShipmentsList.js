@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
-
+import "./Shipments.css"
 const ShipmentsList = () => {
   const [shipments, setShipments] = useState([])
 
@@ -19,17 +19,20 @@ const ShipmentsList = () => {
   }, [])
 
   return (
-    <div>
+    <div className="container">
       <h1>Shipments :</h1>
       {shipments.map(({ paymentMethod, shippingAddress }, index) => {
         return (
-          <div key={index} style={{ border: "1px solid black", width: "30%" }}>
-            <div key={index} style={{ marginLeft: "20px" }}>
-              <h3>Address : {shippingAddress.address}</h3>
-              <h3>City : {shippingAddress.city}</h3>
-              <h3>Postal Code : {shippingAddress.postalCode}</h3>
-              <h3>Country : {shippingAddress.country}</h3>
-              <h2>Payment Method : {paymentMethod}</h2>
+          <div
+            key={index}
+            style={{ border: "1px solid black", width: "30%", margin: "40px" }}
+          >
+            <div key={index} style={{ marginLeft: "20px", fontSize: "25px" }}>
+              <p>Address : {shippingAddress.address}</p>
+              <p>City : {shippingAddress.city}</p>
+              <p>Postal Code : {shippingAddress.postalCode}</p>
+              <p>Country : {shippingAddress.country}</p>
+              <h3>Payment Method : {paymentMethod}</h3>
             </div>
           </div>
         )

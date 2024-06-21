@@ -1,34 +1,19 @@
-.user-container {
-  border: 1px solid black;
+.userContainer {
   margin: 20px;
-  width: 420px;
-  height:'300'
-}
-
-.user-details {
-  margin: 20px;
+  width: 60rem;
   display: flex;
+  flex-wrap: wrap;
+  margin: auto 0;
 }
-
-.user-details h2 {
-  margin-bottom: 10px;
-  font-size: 18px;
-}
-
-.user-details h2:first-child {
-  margin-top: 0;
-}
-
-.user-details h2 {
-  white-space: nowrap;
+.userContainer h2 {
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
   width: 400px;
 }
-
-.user-details h2 {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 400px;
+.userListContainer {
+  border: 1px solid black;
+  width: 420px;
+  margin-left: 20px;
+  margin-top: 20px;
 }
