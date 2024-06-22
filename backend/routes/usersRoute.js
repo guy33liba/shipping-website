@@ -9,7 +9,7 @@ const userRouter = express.Router()
 // Fetch all users
 userRouter.get("/", async (req, res) => {
   try {
-    const users = await User.find({})
+    const users = await User.find()
     res.json(users)
   } catch (error) {
     res.status(500).json({ message: error.message })
