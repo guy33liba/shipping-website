@@ -24,7 +24,7 @@ app.use("/shipments", shippingRouter)
 app.use("/products", productRouter)
 app.use("/login", loginRouter)
 app.use("/product/:id", singleProductRoute)
-app.use("/users/:id", loginRouter)
+app.use("/users", loginRouter)
 app.listen(4000, () => {
   console.log("port connected in 4000")
 })

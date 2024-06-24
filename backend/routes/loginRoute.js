@@ -4,8 +4,8 @@ import express from "express"
 import User from "../model/userSchema.js"
 import bcrypt from "bcryptjs"
 
-dotenv.config()
 const loginRouter = express.Router()
+dotenv.config()
 
 // Login route
 loginRouter.post("/", async (req, res) => {
@@ -81,9 +81,8 @@ loginRouter.post("/refresh-token", (req, res) => {
 
 // Fetch user details route
 loginRouter.get("/:id", async (req, res) => {
-  const { id } = req.params
   try {
-    const user = await User.findById(id)
+    const user = await User.findOne(email)
 
     if (!user) {
       return res.status(404).json({ message: "User not found" })
@@ -97,3 +96,34 @@ loginRouter.get("/:id", async (req, res) => {
   }
 })
 export default loginRouter
+// import express from "express"
+// import bcrypt from "bcryptjs"
+// import jwt from "jsonwebtoken"
+// import User from "../model/userSchema.js" // Adjust the import path to your User model
+
+// const loginRouter = express.Router()
+
+// loginRouter.post("/", async (req, res) => {
+//   try {
+//     const { email, password } = req.body // Directly destructure from req.body
+
+//     const user = await User.findOne({ "register.email": email })
+
+//     if (!user) {
+//       return res.status(401).json({ error: "Invalid email" })
+//     }
+
+//     const passwordMatch = await bcrypt.compare(password, user.password)
+//     if (!passwordMatch) {
+//       return res.status(401).json({ error: "Incorrect password" })
+//     }
+
+//     const token = jwt.sign({ _id: user._id }, "secret key", { expiresIn: "1h" })
+//     res.status(200).json({ token })
+//   } catch (error) {
+//     console.error("Login error:", error) // Optional: log the error for debugging
+//     res.status(500).json({ error: "Login failed" })
+//   }
+// })
+
+// export default loginRouter
