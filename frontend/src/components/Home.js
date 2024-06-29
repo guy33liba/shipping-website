@@ -3,6 +3,7 @@ import axios from "axios"
 import { BsFillStarFill, BsStarHalf, BsStar } from "react-icons/bs"
 import { useLocation, useNavigate } from "react-router-dom"
 import { allStatesContexts } from "./Contexts"
+import Newcard from "./Newcard"
 const Home = () => {
   const [products, setProducts] = useState([])
   const [users, setusers] = useState([])
@@ -46,18 +47,23 @@ const Home = () => {
       <h1 style={{ textAlign: "center" }}> </h1>
       <div style={{ display: "flex", width: "100vw" }}>
         <div className="prodcutsContainer">
-          {products.map((product, index) => (
-            <div key={product._id}>
-              <img
-                src={product.image}
-                alt={product.name}
-                onClick={() => getSingleProduct(product)}
-              />
-              <h2 className="stars">{renderStars(product.rating)}</h2>
-              <h2>{product.name}</h2>
-              <p>{product.description}</p>
-              <p>${product.price}</p>
-            </div>
+          {products.map((item, index) => (
+            //   <div key={product._id}>
+            //   <img
+            //     src={product.image}
+            //     alt={product.name}
+            //     onClick={() => getSingleProduct(product)}
+            //   />
+            //   <h2 className="stars">{renderStars(product.rating)}</h2>
+            //   <h2>{product.name}</h2>
+            //   <p>{product.description}</p>
+            //   <p>${product.price}</p>
+            // </div>
+            <Newcard
+              item={item}
+              getSingleProduct={getSingleProduct}
+              renderStars={renderStars}
+            />
           ))}
         </div>
         <div className="usersList">
