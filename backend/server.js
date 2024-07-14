@@ -7,7 +7,8 @@ import productRouter from "./routes/productsRoute.js"
 import loginRouter from "./routes/loginRoute.js"
 import singleProductRoute from "./routes/singleProductRoute.js"
 //
-export const mongoURI =
+
+const mongoURI =
   "mongodb+srv://guy33liba:g33g33g33@shipping.bnmim8g.mongodb.net/?retryWrites=true&w=majority&appName=shipping"
 
 mongoose
